@@ -1,0 +1,40 @@
+{
+  "created_utc": "2026-08-23T09:19:36+00:00",
+  "fields": {
+    "company": "name of the merchant or business issuing the receipt",
+    "date": "date of purchase, exactly as printed on the receipt",
+    "address": "full street address of the merchant",
+    "total": "final total amount paid"
+  },
+  "system_prompt": "You are a document extraction engine. You read a document and return only a single JSON object matching the schema you are given. No explanations.",
+  "instruction_template": "Extract the following fields from this receipt: {schema}\n\nRespond with a single JSON object containing exactly these keys, in this order. If a field does not appear in the receipt, use null.\n\nReceipt text:\n{raw_text}",
+  "format": "TRL conversational prompt-completion (prompt/completion)",
+  "counts": {
+    "train": 1128,
+    "validation": 62,
+    "test": 347
+  },
+  "stats": {
+    "missing_address": 1,
+    "train_receipts": 564,
+    "train_examples": 1128,
+    "validation_receipts": 62,
+    "validation_examples": 62,
+    "test_receipts": 347,
+    "test_examples": 347
+  },
+  "config": {
+    "source": "hf",
+    "hf_dataset": null,
+    "raw_dir": "C:\\Users\\tiwar\\OneDrive\\Desktop\\ParseTune\\data\\raw",
+    "out_dir": "C:\\Users\\tiwar\\OneDrive\\Desktop\\ParseTune\\data\\processed",
+    "val_ratio": 0.1,
+    "test_ratio": 0.2,
+    "schema_variants": 2,
+    "max_chars": 4000,
+    "line_tol": 10,
+    "flat_text": false,
+    "limit": null,
+    "seed": 42
+  }
+}

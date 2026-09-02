@@ -1,0 +1,2110 @@
+[
+  {
+    "id": "sroie-validation-00000-v0",
+    "receipt_id": "train-262",
+    "split": "validation",
+    "schema": [
+      "company",
+      "date",
+      "address",
+      "total"
+    ],
+    "receipt_text": "POSTEL\n99 SPEED MART 5/B (519537-X)\nLOT P.T. 2811, JALAN ANGSA,\nTANAN BERKELEY\n41150 KLANG, SELANGOR\n1032-SUBANG PERDANA\nGST ID. NO : 000181747712\nINVOICE NO : 18039/103/10209\n04:56PM 565420 21-05-17\n154 AJINOMOTO 1KB RM20,80 s\n@2 × RM 10.40\nTotal Sales (Inclusive OST) RM 20.90\nCASH RM 21.00\nCHANGE RM .20\nGST Summary Amount (RM) Tax (RM)\nS = 6% 19,62 1,18\n20- 0\nThank You, Please come again",
+    "target": {
+      "company": "99 SPEED MART 5/B",
+      "date": "21-05-17",
+      "address": "LOT P.T. 2811, JALAN ANGSA, TANAN BERKELEY 41150 KLANG, SELANGOR 1032-SUBANG PERDANA",
+      "total": "RM20,80"
+    },
+    "prompt": [
+      {
+        "role": "system",
+        "content": "You are a document extraction engine. You read a document and return only a single JSON object matching the schema you are given. No explanations."
+      },
+      {
+        "role": "user",
+        "content": "Extract the following fields from this receipt: {\"company\": \"name of the merchant or business issuing the receipt\", \"date\": \"date of purchase, exactly as printed on the receipt\", \"address\": \"full street address of the merchant\", \"total\": \"final total amount paid\"}\n\nRespond with a single JSON object containing exactly these keys, in this order. If a field does not appear in the receipt, use null.\n\nReceipt text:\nPOSTEL\n99 SPEED MART 5/B (519537-X)\nLOT P.T. 2811, JALAN ANGSA,\nTANAN BERKELEY\n41150 KLANG, SELANGOR\n1032-SUBANG PERDANA\nGST ID. NO : 000181747712\nINVOICE NO : 18039/103/10209\n04:56PM 565420 21-05-17\n154 AJINOMOTO 1KB RM20,80 s\n@2 × RM 10.40\nTotal Sales (Inclusive OST) RM 20.90\nCASH RM 21.00\nCHANGE RM .20\nGST Summary Amount (RM) Tax (RM)\nS = 6% 19,62 1,18\n20- 0\nThank You, Please come again"
+      }
+    ],
+    "completion": [
+      {
+        "role": "assistant",
+        "content": "{\"company\": \"99 SPEED MART 5/B\", \"date\": \"21-05-17\", \"address\": \"LOT P.T. 2811, JALAN ANGSA, TANAN BERKELEY 41150 KLANG, SELANGOR 1032-SUBANG PERDANA\", \"total\": \"RM20,80\"}"
+      }
+    ]
+  },
+  {
+    "id": "sroie-validation-00001-v0",
+    "receipt_id": "train-313",
+    "split": "validation",
+    "schema": [
+      "company",
+      "date",
+      "address",
+      "total"
+    ],
+    "receipt_text": "Toilet Roll & coffee\nTF Value-Mart Sdn Bhd (482123-U)\nBentong-2\nGST Reg No 000184401920\nJalan Tras Batu 1\n28700 Bentong\nPahang Darul Makmur.\nTel : 09-2201388\nTax Invoice : BTB09201805190274 19/05/18\nCashier : bt2_nina Rojina 21:17:14\nKCA TOILET ROLL 3PLY 10R\n9555227800168 12.50*2 25.00 S\nSUPER CRWC 36G*15 HAZELNUT\n9555037203555 13.90*1 13.90 S\nSUPER CRWC 40G*15 CLASSIC\n8888240000897 13.90*1 13.90 S\nITEM: 3 Total with GST @ 6% 52.80\nQTY: 4 ROUNDING 0.00\nTOTAL 52.80\nTENDER\nVisa 6258 App: 518361 52.80\nCHANGE 0.00\nGST Analysis Goods Tax Amount\nS = 6% 49.80 3.00\nZ = 0% 0.00 0.00\nThank You . See You Again !!\nPlease Retain Receipt In Case Of Goods Exchange\nWithin 7 Days Of Purchase Except PERISHABLE,\nFROZEN & CHILLED ITEMS. No Refund Is Allowed.",
+    "target": {
+      "company": "TF Value-Mart Sdn Bhd",
+      "date": "19/05/18",
+      "address": "Jalan Tras Batu 1 28700 Bentong Pahang Darul Makmur.",
+      "total": "52.80"
+    },
+    "prompt": [
+      {
+        "role": "system",
+        "content": "You are a document extraction engine. You read a document and return only a single JSON object matching the schema you are given. No explanations."
+      },
+      {
+        "role": "user",
+        "content": "Extract the following fields from this receipt: {\"company\": \"name of the merchant or business issuing the receipt\", \"date\": \"date of purchase, exactly as printed on the receipt\", \"address\": \"full street address of the merchant\", \"total\": \"final total amount paid\"}\n\nRespond with a single JSON object containing exactly these keys, in this order. If a field does not appear in the receipt, use null.\n\nReceipt text:\nToilet Roll & coffee\nTF Value-Mart Sdn Bhd (482123-U)\nBentong-2\nGST Reg No 000184401920\nJalan Tras Batu 1\n28700 Bentong\nPahang Darul Makmur.\nTel : 09-2201388\nTax Invoice : BTB09201805190274 19/05/18\nCashier : bt2_nina Rojina 21:17:14\nKCA TOILET ROLL 3PLY 10R\n9555227800168 12.50*2 25.00 S\nSUPER CRWC 36G*15 HAZELNUT\n9555037203555 13.90*1 13.90 S\nSUPER CRWC 40G*15 CLASSIC\n8888240000897 13.90*1 13.90 S\nITEM: 3 Total with GST @ 6% 52.80\nQTY: 4 ROUNDING 0.00\nTOTAL 52.80\nTENDER\nVisa 6258 App: 518361 52.80\nCHANGE 0.00\nGST Analysis Goods Tax Amount\nS = 6% 49.80 3.00\nZ = 0% 0.00 0.00\nThank You . See You Again !!\nPlease Retain Receipt In Case Of Goods Exchange\nWithin 7 Days Of Purchase Except PERISHABLE,\nFROZEN & CHILLED ITEMS. No Refund Is Allowed."
+      }
+    ],
+    "completion": [
+      {
+        "role": "assistant",
+        "content": "{\"company\": \"TF Value-Mart Sdn Bhd\", \"date\": \"19/05/18\", \"address\": \"Jalan Tras Batu 1 28700 Bentong Pahang Darul Makmur.\", \"total\": \"52.80\"}"
+      }
+    ]
+  },
+  {
+    "id": "sroie-validation-00002-v0",
+    "receipt_id": "train-621",
+    "split": "validation",
+    "schema": [
+      "company",
+      "date",
+      "address",
+      "total"
+    ],
+    "receipt_text": "ONE ONE THREE SEAFOOD RESTAURANT SON BHD\n(1120908-M)\nNO.1, TAMAN SRI DENGKIL, JALAN AIR HITAM\n43800 DENGKIL, SELANGOR.\n(GST Reg. No : 000670224384)\nTax Invoice\nTable 37\nBill#:V001-540417 Order#: 140523\nDate 15-06-2018 11:35:35\nCashier: 113 CASHIER Pax(s): 0\nQty Description Total TAX\n0 120.00 SR\nCat Fish Item\nD 18.00 SR\nVege item\n- D 5.50 SR\nWhite Rice\n5.00 SR\nBeverage\nTotal (Excluding GST) : 148.50\nTotal (Inclusive of GST): 148.50\nTOTAL: 148.50\nClosed: 1 15-06-2018 12:08:44\nServer: 113 CASHIER\nCASH : 148.50\nGST Summary Amount (RM) Tax (RM)\nSR @ 0%) 148.50 0.00\n**** Thank You ****\nPlease Come Again",
+    "target": {
+      "company": "ONE ONE THREE SEAFOOD RESTAURANT SON BHD",
+      "date": "15-06-2018",
+      "address": "NO.1, TAMAN SRI DENGKIL, JALAN AIR HITAM 43800 DENGKIL, SELANGOR.",
+      "total": "148.50"
+    },
+    "prompt": [
+      {
+        "role": "system",
+        "content": "You are a document extraction engine. You read a document and return only a single JSON object matching the schema you are given. No explanations."
+      },
+      {
+        "role": "user",
+        "content": "Extract the following fields from this receipt: {\"company\": \"name of the merchant or business issuing the receipt\", \"date\": \"date of purchase, exactly as printed on the receipt\", \"address\": \"full street address of the merchant\", \"total\": \"final total amount paid\"}\n\nRespond with a single JSON object containing exactly these keys, in this order. If a field does not appear in the receipt, use null.\n\nReceipt text:\nONE ONE THREE SEAFOOD RESTAURANT SON BHD\n(1120908-M)\nNO.1, TAMAN SRI DENGKIL, JALAN AIR HITAM\n43800 DENGKIL, SELANGOR.\n(GST Reg. No : 000670224384)\nTax Invoice\nTable 37\nBill#:V001-540417 Order#: 140523\nDate 15-06-2018 11:35:35\nCashier: 113 CASHIER Pax(s): 0\nQty Description Total TAX\n0 120.00 SR\nCat Fish Item\nD 18.00 SR\nVege item\n- D 5.50 SR\nWhite Rice\n5.00 SR\nBeverage\nTotal (Excluding GST) : 148.50\nTotal (Inclusive of GST): 148.50\nTOTAL: 148.50\nClosed: 1 15-06-2018 12:08:44\nServer: 113 CASHIER\nCASH : 148.50\nGST Summary Amount (RM) Tax (RM)\nSR @ 0%) 148.50 0.00\n**** Thank You ****\nPlease Come Again"
+      }
+    ],
+    "completion": [
+      {
+        "role": "assistant",
+        "content": "{\"company\": \"ONE ONE THREE SEAFOOD RESTAURANT SON BHD\", \"date\": \"15-06-2018\", \"address\": \"NO.1, TAMAN SRI DENGKIL, JALAN AIR HITAM 43800 DENGKIL, SELANGOR.\", \"total\": \"148.50\"}"
+      }
+    ]
+  },
+  {
+    "id": "sroie-validation-00003-v0",
+    "receipt_id": "train-75",
+    "split": "validation",
+    "schema": [
+      "company",
+      "date",
+      "address",
+      "total"
+    ],
+    "receipt_text": "3180303 CHECKED\nLIAN HING STATIONERY SDN BHD\n(162761-M)\nNO.32 & 33. JALAN SR 1/9. SEKSYEN 9.\nTAMAN SERDANG RAYA.\n43300 SERI KEMBANGAN, SELANGOR\nDARUL EHSAN\nGSTID : 002139201536\nTax Invoice\n30/03/2018 No. : CS-20322\nQty Tax RM\nDurafile H399 (110 × 95mm) 200 SR 116.60\nName Badge (H) @ 0.5500\n809 Metal Name Badge Clip 2 SR 42.40\n- 100's @@ 20 0000\nTotal Amt Incl. GST @@ 6% : 159.00\nRounding Adjustment :\nTotal Amt Payable : 159.00\nPaid Amount : 200.00\nChange : 41.00\nTotal Qty Tender : 202\nGST Summary Amount Tax\n(RM) (RM)\nSR (@ A 150.00 9.00\nTotal 150.00 9.00\nTHANK YOU\nFor anv enquirv. please contact us:",
+    "target": {
+      "company": "LIAN HING STATIONERY SDN BHD",
+      "date": "30/03/2018",
+      "address": "NO.32 & 33. JALAN SR 1/9. SEKSYEN 9. TAMAN SERDANG RAYA. 43300 SERI KEMBANGAN, SELANGOR DARUL EHSAN",
+      "total": "159.00"
+    },
+    "prompt": [
+      {
+        "role": "system",
+        "content": "You are a document extraction engine. You read a document and return only a single JSON object matching the schema you are given. No explanations."
+      },
+      {
+        "role": "user",
+        "content": "Extract the following fields from this receipt: {\"company\": \"name of the merchant or business issuing the receipt\", \"date\": \"date of purchase, exactly as printed on the receipt\", \"address\": \"full street address of the merchant\", \"total\": \"final total amount paid\"}\n\nRespond with a single JSON object containing exactly these keys, in this order. If a field does not appear in the receipt, use null.\n\nReceipt text:\n3180303 CHECKED\nLIAN HING STATIONERY SDN BHD\n(162761-M)\nNO.32 & 33. JALAN SR 1/9. SEKSYEN 9.\nTAMAN SERDANG RAYA.\n43300 SERI KEMBANGAN, SELANGOR\nDARUL EHSAN\nGSTID : 002139201536\nTax Invoice\n30/03/2018 No. : CS-20322\nQty Tax RM\nDurafile H399 (110 × 95mm) 200 SR 116.60\nName Badge (H) @ 0.5500\n809 Metal Name Badge Clip 2 SR 42.40\n- 100's @@ 20 0000\nTotal Amt Incl. GST @@ 6% : 159.00\nRounding Adjustment :\nTotal Amt Payable : 159.00\nPaid Amount : 200.00\nChange : 41.00\nTotal Qty Tender : 202\nGST Summary Amount Tax\n(RM) (RM)\nSR (@ A 150.00 9.00\nTotal 150.00 9.00\nTHANK YOU\nFor anv enquirv. please contact us:"
+      }
+    ],
+    "completion": [
+      {
+        "role": "assistant",
+        "content": "{\"company\": \"LIAN HING STATIONERY SDN BHD\", \"date\": \"30/03/2018\", \"address\": \"NO.32 & 33. JALAN SR 1/9. SEKSYEN 9. TAMAN SERDANG RAYA. 43300 SERI KEMBANGAN, SELANGOR DARUL EHSAN\", \"total\": \"159.00\"}"
+      }
+    ]
+  },
+  {
+    "id": "sroie-validation-00004-v0",
+    "receipt_id": "train-576",
+    "split": "validation",
+    "schema": [
+      "company",
+      "date",
+      "address",
+      "total"
+    ],
+    "receipt_text": "99 SPEED MART S/B (519537-X)\nLOT P.T. 2811, JALAN ANGSA,\nTAMAN BERKELEY\n41150 KLANG, SELANGOR\n1237-TMN INDAH PERDANA\nGST ID. NO : 000181747712\nINVOICE NO : 18396/102/T0362\n03:46PM 568268 13-05-18\n0715 KNORR CHICKEN STOCK 1K RM16.85 $\n5596 HYGIENIC 7.5 INCH COLO RM6.06 $\n@6 X RM 1.01\nTotal Sales (Inclusive GST) RM 22.91\nRounding Adjustment RM 2.01\nRounding RM 22.90\nCASH RM 50.00\nCHANGE RM 27.10\nGST Summary Amount (RM) Tax (RM)\n$ = 6% 21.60 1.31\nThank You. Please come again\nKeep the invoice for applicable returns",
+    "target": {
+      "company": "99 SPEED MART S/B",
+      "date": "13-05-18",
+      "address": "LOT P.T. 2811, JALAN ANGSA, TAMAN BERKELEY 41150 KLANG, SELANGOR 1237-TMN INDAH PERDANA",
+      "total": "22.90"
+    },
+    "prompt": [
+      {
+        "role": "system",
+        "content": "You are a document extraction engine. You read a document and return only a single JSON object matching the schema you are given. No explanations."
+      },
+      {
+        "role": "user",
+        "content": "Extract the following fields from this receipt: {\"company\": \"name of the merchant or business issuing the receipt\", \"date\": \"date of purchase, exactly as printed on the receipt\", \"address\": \"full street address of the merchant\", \"total\": \"final total amount paid\"}\n\nRespond with a single JSON object containing exactly these keys, in this order. If a field does not appear in the receipt, use null.\n\nReceipt text:\n99 SPEED MART S/B (519537-X)\nLOT P.T. 2811, JALAN ANGSA,\nTAMAN BERKELEY\n41150 KLANG, SELANGOR\n1237-TMN INDAH PERDANA\nGST ID. NO : 000181747712\nINVOICE NO : 18396/102/T0362\n03:46PM 568268 13-05-18\n0715 KNORR CHICKEN STOCK 1K RM16.85 $\n5596 HYGIENIC 7.5 INCH COLO RM6.06 $\n@6 X RM 1.01\nTotal Sales (Inclusive GST) RM 22.91\nRounding Adjustment RM 2.01\nRounding RM 22.90\nCASH RM 50.00\nCHANGE RM 27.10\nGST Summary Amount (RM) Tax (RM)\n$ = 6% 21.60 1.31\nThank You. Please come again\nKeep the invoice for applicable returns"
+      }
+    ],
+    "completion": [
+      {
+        "role": "assistant",
+        "content": "{\"company\": \"99 SPEED MART S/B\", \"date\": \"13-05-18\", \"address\": \"LOT P.T. 2811, JALAN ANGSA, TAMAN BERKELEY 41150 KLANG, SELANGOR 1237-TMN INDAH PERDANA\", \"total\": \"22.90\"}"
+      }
+    ]
+  },
+  {
+    "id": "sroie-validation-00005-v0",
+    "receipt_id": "train-12",
+    "split": "validation",
+    "schema": [
+      "company",
+      "date",
+      "address",
+      "total"
+    ],
+    "receipt_text": "HOME MASTER HARDWARE &\nELECTRICAL\nNO.113G & 115G, JALAN SETIA GEMBILANG\nU13/EG BANDAR SETIA ALAM,\n40170 BANDAR SETIA ALAM,\nSELANGOR.\nCompany Reg No. :SA03711551-P\nGST Reg No. :001637511168\nTAX INVOICE\nInvolce No.: CS 67832\nDate : 22/12/2017 14:03\nCashler #: CASHIER\nRM Code\n24MMx7Y M.ONE TAPE\n1.00 15.90 15.90 SR\nSubtotal : 15.90\nTotal Excl. of GST 15.00\nTotal Incl. of GST 15.90\n- -\nTotal Amt Rounded 15.90\nPayment : 50.00\nChange Due : 34.10\nTotal Item(6) : 1\nG Summary Amount (RM) Tax (RM)\nSR 15.00 0.90\n........ THANK YOU .\nANY GOODS RETURN PLEASE DO WITHIN\n7 DAYS WITH ORIGINAL RECEIPT TQM",
+    "target": {
+      "company": "HOME MASTER HARDWARE & ELECTRICAL",
+      "date": "22/12/2017",
+      "address": "NO.113G & 115G, JALAN SETIA GEMBILANG U13/EG BANDAR SETIA ALAM, 40170 BANDAR SETIA ALAM, SELANGOR.",
+      "total": "15.90"
+    },
+    "prompt": [
+      {
+        "role": "system",
+        "content": "You are a document extraction engine. You read a document and return only a single JSON object matching the schema you are given. No explanations."
+      },
+      {
+        "role": "user",
+        "content": "Extract the following fields from this receipt: {\"company\": \"name of the merchant or business issuing the receipt\", \"date\": \"date of purchase, exactly as printed on the receipt\", \"address\": \"full street address of the merchant\", \"total\": \"final total amount paid\"}\n\nRespond with a single JSON object containing exactly these keys, in this order. If a field does not appear in the receipt, use null.\n\nReceipt text:\nHOME MASTER HARDWARE &\nELECTRICAL\nNO.113G & 115G, JALAN SETIA GEMBILANG\nU13/EG BANDAR SETIA ALAM,\n40170 BANDAR SETIA ALAM,\nSELANGOR.\nCompany Reg No. :SA03711551-P\nGST Reg No. :001637511168\nTAX INVOICE\nInvolce No.: CS 67832\nDate : 22/12/2017 14:03\nCashler #: CASHIER\nRM Code\n24MMx7Y M.ONE TAPE\n1.00 15.90 15.90 SR\nSubtotal : 15.90\nTotal Excl. of GST 15.00\nTotal Incl. of GST 15.90\n- -\nTotal Amt Rounded 15.90\nPayment : 50.00\nChange Due : 34.10\nTotal Item(6) : 1\nG Summary Amount (RM) Tax (RM)\nSR 15.00 0.90\n........ THANK YOU .\nANY GOODS RETURN PLEASE DO WITHIN\n7 DAYS WITH ORIGINAL RECEIPT TQM"
+      }
+    ],
+    "completion": [
+      {
+        "role": "assistant",
+        "content": "{\"company\": \"HOME MASTER HARDWARE & ELECTRICAL\", \"date\": \"22/12/2017\", \"address\": \"NO.113G & 115G, JALAN SETIA GEMBILANG U13/EG BANDAR SETIA ALAM, 40170 BANDAR SETIA ALAM, SELANGOR.\", \"total\": \"15.90\"}"
+      }
+    ]
+  },
+  {
+    "id": "sroie-validation-00006-v0",
+    "receipt_id": "train-566",
+    "split": "validation",
+    "schema": [
+      "company",
+      "date",
+      "address",
+      "total"
+    ],
+    "receipt_text": "RESTORAN WAN SHENG\n002043319-W\nNo.2, Jalan Temenggung 19/9,\nSeksyen 9, Bandar Mahkota Cheras,\n43200 Cheras, Selangor\nGST REG NO: 001335787520\nTax Invoice\nINV No.: 1175805/Cashier: Thandar\nDate : 04-06-2018 15:53:52\nDescription Qty U.price Total TAX\nTeh (B)\n1 × 2.20 2.20 ZRL\nCham (B)\n1 × 2.20 2.20 ZRL\nBunga Kekwa\n1 × 1.70 1.70 ZRL\nTake Away\n3 × 0.20 0.60 ZRL\nTotal QTY: 6\nTotal (Excluding GST): 6.70\nTotal (Inclusive of GST): 6.70\nTOTAL : 6.70\nCASH : 6.70\nGST Summary Amount (RM) Tax (RM)\nZRL (@ 0%) 6.70 0.00",
+    "target": {
+      "company": "RESTORAN WAN SHENG",
+      "date": "04-06-2018",
+      "address": "No.2, Jalan Temenggung 19/9, Seksyen 9, Bandar Mahkota Cheras, 43200 Cheras, Selangor",
+      "total": "6.70"
+    },
+    "prompt": [
+      {
+        "role": "system",
+        "content": "You are a document extraction engine. You read a document and return only a single JSON object matching the schema you are given. No explanations."
+      },
+      {
+        "role": "user",
+        "content": "Extract the following fields from this receipt: {\"company\": \"name of the merchant or business issuing the receipt\", \"date\": \"date of purchase, exactly as printed on the receipt\", \"address\": \"full street address of the merchant\", \"total\": \"final total amount paid\"}\n\nRespond with a single JSON object containing exactly these keys, in this order. If a field does not appear in the receipt, use null.\n\nReceipt text:\nRESTORAN WAN SHENG\n002043319-W\nNo.2, Jalan Temenggung 19/9,\nSeksyen 9, Bandar Mahkota Cheras,\n43200 Cheras, Selangor\nGST REG NO: 001335787520\nTax Invoice\nINV No.: 1175805/Cashier: Thandar\nDate : 04-06-2018 15:53:52\nDescription Qty U.price Total TAX\nTeh (B)\n1 × 2.20 2.20 ZRL\nCham (B)\n1 × 2.20 2.20 ZRL\nBunga Kekwa\n1 × 1.70 1.70 ZRL\nTake Away\n3 × 0.20 0.60 ZRL\nTotal QTY: 6\nTotal (Excluding GST): 6.70\nTotal (Inclusive of GST): 6.70\nTOTAL : 6.70\nCASH : 6.70\nGST Summary Amount (RM) Tax (RM)\nZRL (@ 0%) 6.70 0.00"
+      }
+    ],
+    "completion": [
+      {
+        "role": "assistant",
+        "content": "{\"company\": \"RESTORAN WAN SHENG\", \"date\": \"04-06-2018\", \"address\": \"No.2, Jalan Temenggung 19/9, Seksyen 9, Bandar Mahkota Cheras, 43200 Cheras, Selangor\", \"total\": \"6.70\"}"
+      }
+    ]
+  },
+  {
+    "id": "sroie-validation-00007-v0",
+    "receipt_id": "train-607",
+    "split": "validation",
+    "schema": [
+      "company",
+      "date",
+      "address",
+      "total"
+    ],
+    "receipt_text": "KEDAI PAPAN YEW CHUAN\n(0005583085-K)\nLOT 276 JALAN BANTING\n43800 DENGKIL, SELANGOR.\nTEL : 03-87686092 FAX 03-87686092\nGST ID : 000781500416\nTAX INVOICE\nBill To :\nSUCI ALAM JAYA TRANSPORT\nNO 1 JALAN AMAN 2\nTAMAN DESA 43800\nDENGKIL SELANGOR\n017-6057770\nDoc No. : CS00012330 Date: 30/04/2018\nCashier : USER Time: 13:01:00\nSalesperson : Ref.:\n(GST) (GST)\nItem Qty S/Price S/Price Amount Tax\n00139 6 17 00 18 02 108.12 SR\nBESI Y 10 (CQ)\n100135 4 8.00 8.48 33.92 SR\nBESI R 5.5 (CQ)\n101756 15 16.50 17.49 262.35 SR\nSIMEN\nTotal Qty: 25 404.39\nTotal Sales (Excluding GST) : 381.50\nDiscount : 0.00\nTotal GST : 22.89\nRounding 0.00\nTotal Sales (Inclusive of GST) : 404.39\nCASH : 404.39\nChange : 0.00\nGST SUMMARY\nTax Code Amt (RM) Tax (RM)\nSR 6 381.50 22.89\nTotal : 381.50 22.89\nGOODS SOLD ARE NOT RETURNABLE, THANK YOU.",
+    "target": {
+      "company": "KEDAI PAPAN YEW CHUAN",
+      "date": "30/04/2018",
+      "address": "LOT 276 JALAN BANTING 43800 DENGKIL, SELANGOR.",
+      "total": "404.39"
+    },
+    "prompt": [
+      {
+        "role": "system",
+        "content": "You are a document extraction engine. You read a document and return only a single JSON object matching the schema you are given. No explanations."
+      },
+      {
+        "role": "user",
+        "content": "Extract the following fields from this receipt: {\"company\": \"name of the merchant or business issuing the receipt\", \"date\": \"date of purchase, exactly as printed on the receipt\", \"address\": \"full street address of the merchant\", \"total\": \"final total amount paid\"}\n\nRespond with a single JSON object containing exactly these keys, in this order. If a field does not appear in the receipt, use null.\n\nReceipt text:\nKEDAI PAPAN YEW CHUAN\n(0005583085-K)\nLOT 276 JALAN BANTING\n43800 DENGKIL, SELANGOR.\nTEL : 03-87686092 FAX 03-87686092\nGST ID : 000781500416\nTAX INVOICE\nBill To :\nSUCI ALAM JAYA TRANSPORT\nNO 1 JALAN AMAN 2\nTAMAN DESA 43800\nDENGKIL SELANGOR\n017-6057770\nDoc No. : CS00012330 Date: 30/04/2018\nCashier : USER Time: 13:01:00\nSalesperson : Ref.:\n(GST) (GST)\nItem Qty S/Price S/Price Amount Tax\n00139 6 17 00 18 02 108.12 SR\nBESI Y 10 (CQ)\n100135 4 8.00 8.48 33.92 SR\nBESI R 5.5 (CQ)\n101756 15 16.50 17.49 262.35 SR\nSIMEN\nTotal Qty: 25 404.39\nTotal Sales (Excluding GST) : 381.50\nDiscount : 0.00\nTotal GST : 22.89\nRounding 0.00\nTotal Sales (Inclusive of GST) : 404.39\nCASH : 404.39\nChange : 0.00\nGST SUMMARY\nTax Code Amt (RM) Tax (RM)\nSR 6 381.50 22.89\nTotal : 381.50 22.89\nGOODS SOLD ARE NOT RETURNABLE, THANK YOU."
+      }
+    ],
+    "completion": [
+      {
+        "role": "assistant",
+        "content": "{\"company\": \"KEDAI PAPAN YEW CHUAN\", \"date\": \"30/04/2018\", \"address\": \"LOT 276 JALAN BANTING 43800 DENGKIL, SELANGOR.\", \"total\": \"404.39\"}"
+      }
+    ]
+  },
+  {
+    "id": "sroie-validation-00008-v0",
+    "receipt_id": "train-451",
+    "split": "validation",
+    "schema": [
+      "company",
+      "date",
+      "address",
+      "total"
+    ],
+    "receipt_text": "CELE Sunw Tpl\n-DOwas SV, Lumpur. you\nVELOCITY Lingkaran Kuala Thank\n31804 065 YWAY\n290, 55100\n&\n8-29C\nMR. D.I.Y. (M) SON BHD\n(CO.REG : 860671-D)\nLOT 1851-A & 1851-B, JALAN KPB\n6,\nKAWASAN PERINDUSTRIAN BALAKONG,\n43300 SERI KEMBANGAN, SELANGOR\n(GST ID No :000306020352)\n( IOI PUCHONG)\n-TAX INVOICE-\nLAVA FOOD CONTAINER FC202 500ml\n*S\nWA26 - 12/144\n9555047302026 1 × 1.80\n1.80\nLAVA CANISTER CST7700 530ml\n*S\nWA33 - 12/144\n9555047301890 2 × 1.60 3.20\nItem(s) : 2\nQty (s) : 3\nTotal Incl. GST@6%\nCASH RM 5.00\nCHANGE RM 50.00\nRM 45.00\nGST @6% included in total\nRM 0.28\n*---.\n30-04-18 18:17 ---*\nSH01 ZJ86 T2\nOPERATOR R000121653\nTRAINEE CASHIER\nEXCHANGE ARE ALLOWED\nWITHIN\n7 DAY WITH RECEIPT.\nSTRICTLY NO CASH REFUND.",
+    "target": {
+      "company": "MR. D.I.Y. (M) SON BHD",
+      "date": "30-04-18",
+      "address": "LOT 1851-A & 1851-B, JALAN KPB 6, KAWASAN PERINDUSTRIAN BALAKONG, 43300 SERI KEMBANGAN, SELANGOR",
+      "total": "5.00"
+    },
+    "prompt": [
+      {
+        "role": "system",
+        "content": "You are a document extraction engine. You read a document and return only a single JSON object matching the schema you are given. No explanations."
+      },
+      {
+        "role": "user",
+        "content": "Extract the following fields from this receipt: {\"company\": \"name of the merchant or business issuing the receipt\", \"date\": \"date of purchase, exactly as printed on the receipt\", \"address\": \"full street address of the merchant\", \"total\": \"final total amount paid\"}\n\nRespond with a single JSON object containing exactly these keys, in this order. If a field does not appear in the receipt, use null.\n\nReceipt text:\nCELE Sunw Tpl\n-DOwas SV, Lumpur. you\nVELOCITY Lingkaran Kuala Thank\n31804 065 YWAY\n290, 55100\n&\n8-29C\nMR. D.I.Y. (M) SON BHD\n(CO.REG : 860671-D)\nLOT 1851-A & 1851-B, JALAN KPB\n6,\nKAWASAN PERINDUSTRIAN BALAKONG,\n43300 SERI KEMBANGAN, SELANGOR\n(GST ID No :000306020352)\n( IOI PUCHONG)\n-TAX INVOICE-\nLAVA FOOD CONTAINER FC202 500ml\n*S\nWA26 - 12/144\n9555047302026 1 × 1.80\n1.80\nLAVA CANISTER CST7700 530ml\n*S\nWA33 - 12/144\n9555047301890 2 × 1.60 3.20\nItem(s) : 2\nQty (s) : 3\nTotal Incl. GST@6%\nCASH RM 5.00\nCHANGE RM 50.00\nRM 45.00\nGST @6% included in total\nRM 0.28\n*---.\n30-04-18 18:17 ---*\nSH01 ZJ86 T2\nOPERATOR R000121653\nTRAINEE CASHIER\nEXCHANGE ARE ALLOWED\nWITHIN\n7 DAY WITH RECEIPT.\nSTRICTLY NO CASH REFUND."
+      }
+    ],
+    "completion": [
+      {
+        "role": "assistant",
+        "content": "{\"company\": \"MR. D.I.Y. (M) SON BHD\", \"date\": \"30-04-18\", \"address\": \"LOT 1851-A & 1851-B, JALAN KPB 6, KAWASAN PERINDUSTRIAN BALAKONG, 43300 SERI KEMBANGAN, SELANGOR\", \"total\": \"5.00\"}"
+      }
+    ]
+  },
+  {
+    "id": "sroie-validation-00009-v0",
+    "receipt_id": "train-132",
+    "split": "validation",
+    "schema": [
+      "company",
+      "date",
+      "address",
+      "total"
+    ],
+    "receipt_text": "3180301\nFor staff : Leoup some Foode\nFarmasi Maluri S/B (587969-U)\nGST NO: 000342237184 (ID:5033)\n23, JIn Burung Jentayu, Tmn Bukit\nMaluri, Kepong, 52100 KL.\nTAX INVOICE\nCashier : pos1N M/c. ID : POS7\nReceipt : 71857936 02/03/18 05:16 PM\nDescription Disc. Subtotal\n061558 - ** BMS MILK THISTLE\n1 × 111.30 36. 75 72.35 S\n910845 - TRILON-E CRM\n1 × 7.00 7.00 Z\nTOTAL (Including GST) 79.35\nROUNDING 0.00\nNET 79. 35\nTENDER 100.00\nCHANGE/BALANCE 20. 65\nGST Summary Amt (Excl. Gst) Tax (RM)\nZRL @0. 00% 7.00 0.00\nSR @6. 00% 68. 25 4 .- 10\nGOODS SOLD ARE NON-REFUNDABLE BUT\nEXCHANGEABLE WITHIN 7 DAYS WITH\nRECEIPT PLUS GOODS ARE IN\nRESALEABLE CONDITION.\nAll face mask & injectable are\nnon-returnable & non -exchangeable\n** special promotion",
+    "target": {
+      "company": "Farmasi Maluri S/B",
+      "date": "02/03/18",
+      "address": "23, JIn Burung Jentayu, Tmn Bukit Maluri, Kepong, 52100 KL.",
+      "total": "79.35"
+    },
+    "prompt": [
+      {
+        "role": "system",
+        "content": "You are a document extraction engine. You read a document and return only a single JSON object matching the schema you are given. No explanations."
+      },
+      {
+        "role": "user",
+        "content": "Extract the following fields from this receipt: {\"company\": \"name of the merchant or business issuing the receipt\", \"date\": \"date of purchase, exactly as printed on the receipt\", \"address\": \"full street address of the merchant\", \"total\": \"final total amount paid\"}\n\nRespond with a single JSON object containing exactly these keys, in this order. If a field does not appear in the receipt, use null.\n\nReceipt text:\n3180301\nFor staff : Leoup some Foode\nFarmasi Maluri S/B (587969-U)\nGST NO: 000342237184 (ID:5033)\n23, JIn Burung Jentayu, Tmn Bukit\nMaluri, Kepong, 52100 KL.\nTAX INVOICE\nCashier : pos1N M/c. ID : POS7\nReceipt : 71857936 02/03/18 05:16 PM\nDescription Disc. Subtotal\n061558 - ** BMS MILK THISTLE\n1 × 111.30 36. 75 72.35 S\n910845 - TRILON-E CRM\n1 × 7.00 7.00 Z\nTOTAL (Including GST) 79.35\nROUNDING 0.00\nNET 79. 35\nTENDER 100.00\nCHANGE/BALANCE 20. 65\nGST Summary Amt (Excl. Gst) Tax (RM)\nZRL @0. 00% 7.00 0.00\nSR @6. 00% 68. 25 4 .- 10\nGOODS SOLD ARE NON-REFUNDABLE BUT\nEXCHANGEABLE WITHIN 7 DAYS WITH\nRECEIPT PLUS GOODS ARE IN\nRESALEABLE CONDITION.\nAll face mask & injectable are\nnon-returnable & non -exchangeable\n** special promotion"
+      }
+    ],
+    "completion": [
+      {
+        "role": "assistant",
+        "content": "{\"company\": \"Farmasi Maluri S/B\", \"date\": \"02/03/18\", \"address\": \"23, JIn Burung Jentayu, Tmn Bukit Maluri, Kepong, 52100 KL.\", \"total\": \"79.35\"}"
+      }
+    ]
+  },
+  {
+    "id": "sroie-validation-00010-v0",
+    "receipt_id": "train-338",
+    "split": "validation",
+    "schema": [
+      "company",
+      "date",
+      "address",
+      "total"
+    ],
+    "receipt_text": "GARDENIA BAKERIES (KL) SDN BHD (139386 X)\nLot 3, Jalan Pelabur 23/1,\n40300 Shah Alam, Selangor.\nTel: 03- 55423228 Fax:03- 55423213\nGST ID: 000381399040\nTAX INVOICE / ADJUSTMENT NOTE\nCash Inv No.: 7819F712\nVE0514 Date: 19/08/2017\nMAKASSAR FRESH MARKET SDN BHD\nGROUND FLOOR, NO. 4 & 6,\nJALAN SS 15/4B,\n47500 SUBANG JAYA, SELANGOR\nVE05: Ridzuan(11900)\nDD: 19/08/2017 10:38\nDescription U.P Iss Exc D Sale Amt(RM)\nO.C. WHITE 2.13 5 0 2 4.26\nWHOLEMEAL 2.78 3 COW 3 8.34\nO.C JUMBO 2.97 S 5 14.85\nTotal 0% supplies: 27.45\nDELICIA-B/SCOTCH 3.72 2 0 2 7.44\nCR-B' SCOTCH 0.72 20 20 14.40\nTotal 6% supplies (excl. GST): 21.84\nGST: 1.31\nTotal 6% supplies (Inc. GST): 23.15\nTotal 0% supplies: 27.45\nTotal Payable: 50.60\nE.&.0. E.\nReceived above goods in good order condition.\nThe recipient of Gardenia's products is\nrequired to make necessary adjustments to its\ninput tax claims, on the basic of the\nadjustments shown in this Tax Invoice /\nAdjustment Note\nCUSTOMER'S COPY",
+    "target": {
+      "company": "GARDENIA BAKERIES (KL) SDN BHD",
+      "date": "19/08/2017",
+      "address": "Lot 3, Jalan Pelabur 23/1, 40300 Shah Alam, Selangor.",
+      "total": "50.60"
+    },
+    "prompt": [
+      {
+        "role": "system",
+        "content": "You are a document extraction engine. You read a document and return only a single JSON object matching the schema you are given. No explanations."
+      },
+      {
+        "role": "user",
+        "content": "Extract the following fields from this receipt: {\"company\": \"name of the merchant or business issuing the receipt\", \"date\": \"date of purchase, exactly as printed on the receipt\", \"address\": \"full street address of the merchant\", \"total\": \"final total amount paid\"}\n\nRespond with a single JSON object containing exactly these keys, in this order. If a field does not appear in the receipt, use null.\n\nReceipt text:\nGARDENIA BAKERIES (KL) SDN BHD (139386 X)\nLot 3, Jalan Pelabur 23/1,\n40300 Shah Alam, Selangor.\nTel: 03- 55423228 Fax:03- 55423213\nGST ID: 000381399040\nTAX INVOICE / ADJUSTMENT NOTE\nCash Inv No.: 7819F712\nVE0514 Date: 19/08/2017\nMAKASSAR FRESH MARKET SDN BHD\nGROUND FLOOR, NO. 4 & 6,\nJALAN SS 15/4B,\n47500 SUBANG JAYA, SELANGOR\nVE05: Ridzuan(11900)\nDD: 19/08/2017 10:38\nDescription U.P Iss Exc D Sale Amt(RM)\nO.C. WHITE 2.13 5 0 2 4.26\nWHOLEMEAL 2.78 3 COW 3 8.34\nO.C JUMBO 2.97 S 5 14.85\nTotal 0% supplies: 27.45\nDELICIA-B/SCOTCH 3.72 2 0 2 7.44\nCR-B' SCOTCH 0.72 20 20 14.40\nTotal 6% supplies (excl. GST): 21.84\nGST: 1.31\nTotal 6% supplies (Inc. GST): 23.15\nTotal 0% supplies: 27.45\nTotal Payable: 50.60\nE.&.0. E.\nReceived above goods in good order condition.\nThe recipient of Gardenia's products is\nrequired to make necessary adjustments to its\ninput tax claims, on the basic of the\nadjustments shown in this Tax Invoice /\nAdjustment Note\nCUSTOMER'S COPY"
+      }
+    ],
+    "completion": [
+      {
+        "role": "assistant",
+        "content": "{\"company\": \"GARDENIA BAKERIES (KL) SDN BHD\", \"date\": \"19/08/2017\", \"address\": \"Lot 3, Jalan Pelabur 23/1, 40300 Shah Alam, Selangor.\", \"total\": \"50.60\"}"
+      }
+    ]
+  },
+  {
+    "id": "sroie-validation-00011-v0",
+    "receipt_id": "train-221",
+    "split": "validation",
+    "schema": [
+      "company",
+      "date",
+      "address",
+      "total"
+    ],
+    "receipt_text": "POPULAR BOOK\nCO. (M) SDN BHD\n(Co. No. 113825-W)\n(GST Reg No. 001492992000)\nNo 8, Jalan 7/118B, Desa Tun Razak\n56000 Kuala Lumpur, Malaysia\nAEON SHAH ALAM\nTel : 03-55235214\n24/01/18 16:14 Slip No. : 8020178503\nTasha Trans: 192915\nDescription Amount\nPB SHT/P 11H A4 50'S 16.90 T\nNo Plastic Bag Campai 0.20 T\nIssue Spring Ingot RM\nPB 2D R/FILE A4 40MM\n2pc @ 7.99 15.98 T\nStat-Buy 23RM 13 -2.98\nTotal RM Incl. of GST 30.10\nCash -40. 10\nCHANGE 10.00\nItem Count 5\nGST Summary Amount (RM) Tax (RM)\nT @ 6% 28.39 1. 71\nZ @ 0% 0. 00 0. 00\nTotal Savings -2.98\nBE A POPULAR CARD MEMBER\nAND ENJOY SPECIAL DISCOUNTS\nTHANK YOU. PLEASE COME AGAIN.\nwww. popular.com. my\nBuy Chinese books online\nwww. popularonline.com. my",
+    "target": {
+      "company": "POPULAR BOOK CO. (M) SDN BHD",
+      "date": "24/01/18",
+      "address": "No 8, Jalan 7/118B, Desa Tun Razak 56000 Kuala Lumpur, Malaysia",
+      "total": "30.10"
+    },
+    "prompt": [
+      {
+        "role": "system",
+        "content": "You are a document extraction engine. You read a document and return only a single JSON object matching the schema you are given. No explanations."
+      },
+      {
+        "role": "user",
+        "content": "Extract the following fields from this receipt: {\"company\": \"name of the merchant or business issuing the receipt\", \"date\": \"date of purchase, exactly as printed on the receipt\", \"address\": \"full street address of the merchant\", \"total\": \"final total amount paid\"}\n\nRespond with a single JSON object containing exactly these keys, in this order. If a field does not appear in the receipt, use null.\n\nReceipt text:\nPOPULAR BOOK\nCO. (M) SDN BHD\n(Co. No. 113825-W)\n(GST Reg No. 001492992000)\nNo 8, Jalan 7/118B, Desa Tun Razak\n56000 Kuala Lumpur, Malaysia\nAEON SHAH ALAM\nTel : 03-55235214\n24/01/18 16:14 Slip No. : 8020178503\nTasha Trans: 192915\nDescription Amount\nPB SHT/P 11H A4 50'S 16.90 T\nNo Plastic Bag Campai 0.20 T\nIssue Spring Ingot RM\nPB 2D R/FILE A4 40MM\n2pc @ 7.99 15.98 T\nStat-Buy 23RM 13 -2.98\nTotal RM Incl. of GST 30.10\nCash -40. 10\nCHANGE 10.00\nItem Count 5\nGST Summary Amount (RM) Tax (RM)\nT @ 6% 28.39 1. 71\nZ @ 0% 0. 00 0. 00\nTotal Savings -2.98\nBE A POPULAR CARD MEMBER\nAND ENJOY SPECIAL DISCOUNTS\nTHANK YOU. PLEASE COME AGAIN.\nwww. popular.com. my\nBuy Chinese books online\nwww. popularonline.com. my"
+      }
+    ],
+    "completion": [
+      {
+        "role": "assistant",
+        "content": "{\"company\": \"POPULAR BOOK CO. (M) SDN BHD\", \"date\": \"24/01/18\", \"address\": \"No 8, Jalan 7/118B, Desa Tun Razak 56000 Kuala Lumpur, Malaysia\", \"total\": \"30.10\"}"
+      }
+    ]
+  },
+  {
+    "id": "sroie-validation-00012-v0",
+    "receipt_id": "train-490",
+    "split": "validation",
+    "schema": [
+      "company",
+      "date",
+      "address",
+      "total"
+    ],
+    "receipt_text": "SANYU STATIONERY SHOP\nNO. 31G&33G, JALAN SETIA INDAH X ,U13/X\n40170 SETIA ALAM\nMobile /Whatsapps : +6012-918 7937\nTel: +603-3362 4137\nGST ID No: 001531760640 TAX INVOICE\nOwned By :\nSANYU SUPPLY SDN BHD (1135772-K)\nCASH SALES COUNTER\n1. 2012-0029 RESTAURANT ORDER CHIT NCR\n3.5\"x6\"\n3 × 2.9000 8.70 SR\nTotal Sales Inclusive GST @6% 8.70\nDiscount 0.00\nTotal 8.70\nRound Adj 0.00\nFinal Total 8.70\n== = :: == ==\nCASH 10.00\nCHANGE 1.30\nGST Summary Amount(RM) Tax(RM)\nSR @ 6% 8.21 0.49\nINV NO: CS-SA-0122588 Date : 06/11/2017\nKaunter\nGoods sold are not Returnable & Refundable\nTHANK YOU FOR YOUR PATRONAGE\nPLEASE COME AC NN.\nTERIMA KASIH SILA DA NG LAGI\n** PLEASE KEEP THIS RECEIPT FOR PROVE OF\nPURCHASE DATE FOR I.T PRODUCT WARRANTY\nPURPOSE **\nFollow us in Facebook : Sanyu.Stationery",
+    "target": {
+      "company": "SANYU STATIONERY SHOP",
+      "date": "06/11/2017",
+      "address": "NO. 31G&33G, JALAN SETIA INDAH X ,U13/X 40170 SETIA ALAM",
+      "total": "8.70"
+    },
+    "prompt": [
+      {
+        "role": "system",
+        "content": "You are a document extraction engine. You read a document and return only a single JSON object matching the schema you are given. No explanations."
+      },
+      {
+        "role": "user",
+        "content": "Extract the following fields from this receipt: {\"company\": \"name of the merchant or business issuing the receipt\", \"date\": \"date of purchase, exactly as printed on the receipt\", \"address\": \"full street address of the merchant\", \"total\": \"final total amount paid\"}\n\nRespond with a single JSON object containing exactly these keys, in this order. If a field does not appear in the receipt, use null.\n\nReceipt text:\nSANYU STATIONERY SHOP\nNO. 31G&33G, JALAN SETIA INDAH X ,U13/X\n40170 SETIA ALAM\nMobile /Whatsapps : +6012-918 7937\nTel: +603-3362 4137\nGST ID No: 001531760640 TAX INVOICE\nOwned By :\nSANYU SUPPLY SDN BHD (1135772-K)\nCASH SALES COUNTER\n1. 2012-0029 RESTAURANT ORDER CHIT NCR\n3.5\"x6\"\n3 × 2.9000 8.70 SR\nTotal Sales Inclusive GST @6% 8.70\nDiscount 0.00\nTotal 8.70\nRound Adj 0.00\nFinal Total 8.70\n== = :: == ==\nCASH 10.00\nCHANGE 1.30\nGST Summary Amount(RM) Tax(RM)\nSR @ 6% 8.21 0.49\nINV NO: CS-SA-0122588 Date : 06/11/2017\nKaunter\nGoods sold are not Returnable & Refundable\nTHANK YOU FOR YOUR PATRONAGE\nPLEASE COME AC NN.\nTERIMA KASIH SILA DA NG LAGI\n** PLEASE KEEP THIS RECEIPT FOR PROVE OF\nPURCHASE DATE FOR I.T PRODUCT WARRANTY\nPURPOSE **\nFollow us in Facebook : Sanyu.Stationery"
+      }
+    ],
+    "completion": [
+      {
+        "role": "assistant",
+        "content": "{\"company\": \"SANYU STATIONERY SHOP\", \"date\": \"06/11/2017\", \"address\": \"NO. 31G&33G, JALAN SETIA INDAH X ,U13/X 40170 SETIA ALAM\", \"total\": \"8.70\"}"
+      }
+    ]
+  },
+  {
+    "id": "sroie-validation-00013-v0",
+    "receipt_id": "train-559",
+    "split": "validation",
+    "schema": [
+      "company",
+      "date",
+      "address",
+      "total"
+    ],
+    "receipt_text": "RESTORAN WAN SHENG\n002043319-W\nNo.2, Jalan Temenggung 19/9,\nSeksyen 9, Bandar Mahkota Cheras,\n43200 Cheras, Selangor\nGST REG NO: 001335787520\nTax Invoice\nINV No.: 1188875 Cashier: Nicole\nDate : 12-06-2018 17:46:16\nDescription Qty U.price Total TAX\nTeh (B)\n- X 2.10 2.10 ZRL\nCham (B)\n1 × 2.10 2.10 ZRL\nTake Away\n2 x 0.20 0.40 ZRL\nTotal QTY: 4\nTotal (Excluding GST) : 4.60\nTotal (Inclusive of GST) : 4.60\nTOTAL : 4.60\nCASH : 4.60\nGST Summary Amount (RM) Tax (RM)\nZRL. (@ 0%) 4.60 0.00",
+    "target": {
+      "company": "RESTORAN WAN SHENG",
+      "date": "12-06-2018",
+      "address": "No.2, Jalan Temenggung 19/9, Seksyen 9, Bandar Mahkota Cheras, 43200 Cheras, Selangor",
+      "total": "4.60"
+    },
+    "prompt": [
+      {
+        "role": "system",
+        "content": "You are a document extraction engine. You read a document and return only a single JSON object matching the schema you are given. No explanations."
+      },
+      {
+        "role": "user",
+        "content": "Extract the following fields from this receipt: {\"company\": \"name of the merchant or business issuing the receipt\", \"date\": \"date of purchase, exactly as printed on the receipt\", \"address\": \"full street address of the merchant\", \"total\": \"final total amount paid\"}\n\nRespond with a single JSON object containing exactly these keys, in this order. If a field does not appear in the receipt, use null.\n\nReceipt text:\nRESTORAN WAN SHENG\n002043319-W\nNo.2, Jalan Temenggung 19/9,\nSeksyen 9, Bandar Mahkota Cheras,\n43200 Cheras, Selangor\nGST REG NO: 001335787520\nTax Invoice\nINV No.: 1188875 Cashier: Nicole\nDate : 12-06-2018 17:46:16\nDescription Qty U.price Total TAX\nTeh (B)\n- X 2.10 2.10 ZRL\nCham (B)\n1 × 2.10 2.10 ZRL\nTake Away\n2 x 0.20 0.40 ZRL\nTotal QTY: 4\nTotal (Excluding GST) : 4.60\nTotal (Inclusive of GST) : 4.60\nTOTAL : 4.60\nCASH : 4.60\nGST Summary Amount (RM) Tax (RM)\nZRL. (@ 0%) 4.60 0.00"
+      }
+    ],
+    "completion": [
+      {
+        "role": "assistant",
+        "content": "{\"company\": \"RESTORAN WAN SHENG\", \"date\": \"12-06-2018\", \"address\": \"No.2, Jalan Temenggung 19/9, Seksyen 9, Bandar Mahkota Cheras, 43200 Cheras, Selangor\", \"total\": \"4.60\"}"
+      }
+    ]
+  },
+  {
+    "id": "sroie-validation-00014-v0",
+    "receipt_id": "train-266",
+    "split": "validation",
+    "schema": [
+      "company",
+      "date",
+      "address",
+      "total"
+    ],
+    "receipt_text": "RESTORAN WAN SHENG\n002043319-W\nNo. 2. Jalan Temenggung 19/9,\nSeksyen 9, Bandar Mahkota Cheras,\n43200 Cheras, Selangor\nGST REG NO: 001335787520\nTax Invoice\nINV No. : 854150 Cashier: Nicole\nDate : 12-11-2017 18:45:28\n--\nDescription Qty U. price Total TAX\nGuiness Stout (B) Promotion\n4 x 15.40 61.60 SR\nBottle (B)\n4 X 0.30 1.20 ZRL\nTotal QTY: 8\nTotal (Excluding GST) : 59. 31\nGST payable (6%) : 3.49\nTotal (Inclusive of GST) : 62. 80\nTOTAL: 62.80\nCASH : 62.80\nGST Summary Amount (RM) Tax (RM)\nSR (@ 6%) 58. 11 3.49\nZRL (@ 0%) 1.20 0.00",
+    "target": {
+      "company": "RESTORAN WAN SHENG",
+      "date": "12-11-2017",
+      "address": "No. 2. Jalan Temenggung 19/9, Seksyen 9, Bandar Mahkota Cheras, 43200 Cheras, Selangor",
+      "total": "62.80"
+    },
+    "prompt": [
+      {
+        "role": "system",
+        "content": "You are a document extraction engine. You read a document and return only a single JSON object matching the schema you are given. No explanations."
+      },
+      {
+        "role": "user",
+        "content": "Extract the following fields from this receipt: {\"company\": \"name of the merchant or business issuing the receipt\", \"date\": \"date of purchase, exactly as printed on the receipt\", \"address\": \"full street address of the merchant\", \"total\": \"final total amount paid\"}\n\nRespond with a single JSON object containing exactly these keys, in this order. If a field does not appear in the receipt, use null.\n\nReceipt text:\nRESTORAN WAN SHENG\n002043319-W\nNo. 2. Jalan Temenggung 19/9,\nSeksyen 9, Bandar Mahkota Cheras,\n43200 Cheras, Selangor\nGST REG NO: 001335787520\nTax Invoice\nINV No. : 854150 Cashier: Nicole\nDate : 12-11-2017 18:45:28\n--\nDescription Qty U. price Total TAX\nGuiness Stout (B) Promotion\n4 x 15.40 61.60 SR\nBottle (B)\n4 X 0.30 1.20 ZRL\nTotal QTY: 8\nTotal (Excluding GST) : 59. 31\nGST payable (6%) : 3.49\nTotal (Inclusive of GST) : 62. 80\nTOTAL: 62.80\nCASH : 62.80\nGST Summary Amount (RM) Tax (RM)\nSR (@ 6%) 58. 11 3.49\nZRL (@ 0%) 1.20 0.00"
+      }
+    ],
+    "completion": [
+      {
+        "role": "assistant",
+        "content": "{\"company\": \"RESTORAN WAN SHENG\", \"date\": \"12-11-2017\", \"address\": \"No. 2. Jalan Temenggung 19/9, Seksyen 9, Bandar Mahkota Cheras, 43200 Cheras, Selangor\", \"total\": \"62.80\"}"
+      }
+    ]
+  },
+  {
+    "id": "sroie-validation-00015-v0",
+    "receipt_id": "train-147",
+    "split": "validation",
+    "schema": [
+      "company",
+      "date",
+      "address",
+      "total"
+    ],
+    "receipt_text": "SUSHI MENTAI - MAHKOTA CHERAS\nMIZU MENTAI SDN. BHD. (1248446-V)\nNO: 1-1&2 GROUND FLOOR,\nJLN TEMENGGUNG 13/9,\n43200 CHERAS SELANGOR.\n(GST Reg. No : 001375580160)\nTax Invoice\nTable 9\nOrder#: 114105\nBill#: V042- 513777 Pax(s): 0\nDate : 31-03-2018 18:12:41\nCashier: SOFYA\nDescription Qty U.price Total TAX\nB1 Green Tea\n2 x 1.00 2.00 SR\nN8 Shiro Ramen\n1 × 12.80 12.80 SR\nR9 Unagi Don\n1 × 19.80 19.80 SR\nF8 Tori Karaage\n1 x 8.80 8.80 SR\nSB01 Sushi Yellow\n4 X 1.80 7.20 SR\nSB02 Sushi Red\n2 × 2.80 5.60 SR\nTotal (Excluding GST): 56.20\nServ. Charge (10%) : 5.62\nGST Payable: 3.71\nTotal (Inclusive of GST): 65.53\nRounding Adj: 0.02\nTOTAL : 65.55\nClosed: ;201710016 31-03-2018 18:43:22\nServer: SOFYA\nVISA 65.55\nGST Summary Amount (RM) Tax (RM)\nSR (@ 6%) 61.82 3.71\nThank you!!!\nPlease Come Again!!!\nPowered By WWW.SISPOS.COM.MY",
+    "target": {
+      "company": "MIZU MENTAI SDN. BHD.",
+      "date": "31-03-2018",
+      "address": "NO: 1-1&2 GROUND FLOOR, JLN TEMENGGUNG 13/9, 43200 CHERAS SELANGOR.",
+      "total": "65.55"
+    },
+    "prompt": [
+      {
+        "role": "system",
+        "content": "You are a document extraction engine. You read a document and return only a single JSON object matching the schema you are given. No explanations."
+      },
+      {
+        "role": "user",
+        "content": "Extract the following fields from this receipt: {\"company\": \"name of the merchant or business issuing the receipt\", \"date\": \"date of purchase, exactly as printed on the receipt\", \"address\": \"full street address of the merchant\", \"total\": \"final total amount paid\"}\n\nRespond with a single JSON object containing exactly these keys, in this order. If a field does not appear in the receipt, use null.\n\nReceipt text:\nSUSHI MENTAI - MAHKOTA CHERAS\nMIZU MENTAI SDN. BHD. (1248446-V)\nNO: 1-1&2 GROUND FLOOR,\nJLN TEMENGGUNG 13/9,\n43200 CHERAS SELANGOR.\n(GST Reg. No : 001375580160)\nTax Invoice\nTable 9\nOrder#: 114105\nBill#: V042- 513777 Pax(s): 0\nDate : 31-03-2018 18:12:41\nCashier: SOFYA\nDescription Qty U.price Total TAX\nB1 Green Tea\n2 x 1.00 2.00 SR\nN8 Shiro Ramen\n1 × 12.80 12.80 SR\nR9 Unagi Don\n1 × 19.80 19.80 SR\nF8 Tori Karaage\n1 x 8.80 8.80 SR\nSB01 Sushi Yellow\n4 X 1.80 7.20 SR\nSB02 Sushi Red\n2 × 2.80 5.60 SR\nTotal (Excluding GST): 56.20\nServ. Charge (10%) : 5.62\nGST Payable: 3.71\nTotal (Inclusive of GST): 65.53\nRounding Adj: 0.02\nTOTAL : 65.55\nClosed: ;201710016 31-03-2018 18:43:22\nServer: SOFYA\nVISA 65.55\nGST Summary Amount (RM) Tax (RM)\nSR (@ 6%) 61.82 3.71\nThank you!!!\nPlease Come Again!!!\nPowered By WWW.SISPOS.COM.MY"
+      }
+    ],
+    "completion": [
+      {
+        "role": "assistant",
+        "content": "{\"company\": \"MIZU MENTAI SDN. BHD.\", \"date\": \"31-03-2018\", \"address\": \"NO: 1-1&2 GROUND FLOOR, JLN TEMENGGUNG 13/9, 43200 CHERAS SELANGOR.\", \"total\": \"65.55\"}"
+      }
+    ]
+  },
+  {
+    "id": "sroie-validation-00016-v0",
+    "receipt_id": "train-62",
+    "split": "validation",
+    "schema": [
+      "company",
+      "date",
+      "address",
+      "total"
+    ],
+    "receipt_text": "99 SPEED MART S/B (519537-X)\nLOT P.T. 2811, JALAN ANGSA,\nTAMAN BERKELEY\n41150 KLANG, SELANGOR\n1245-DESA SRI HARTAMAS\nGST ID. NO : 000181747712\nINVOICE NO : 18341/103/10138\n09:06PM 569547 19-03-18\n103 SUNQUICK OREN 840ML RM11.40 s\nTotal Sales (Inclusive GST) RM 11.40\nCASH RM 11.40\nCHANGE RM 00\nGST Summary Amount (RM) Tax (RM)\n$ = 6% 10.75 .65\nThank You. Please come again\nKeep the invoice for applicable returns",
+    "target": {
+      "company": "99 SPEED MART S/B",
+      "date": "19-03-18",
+      "address": "LOT P.T. 2811, JALAN ANGSA, TAMAN BERKELEY 41150 KLANG, SELANGOR 1245-DESA SRI HARTAMAS",
+      "total": "RM11.40"
+    },
+    "prompt": [
+      {
+        "role": "system",
+        "content": "You are a document extraction engine. You read a document and return only a single JSON object matching the schema you are given. No explanations."
+      },
+      {
+        "role": "user",
+        "content": "Extract the following fields from this receipt: {\"company\": \"name of the merchant or business issuing the receipt\", \"date\": \"date of purchase, exactly as printed on the receipt\", \"address\": \"full street address of the merchant\", \"total\": \"final total amount paid\"}\n\nRespond with a single JSON object containing exactly these keys, in this order. If a field does not appear in the receipt, use null.\n\nReceipt text:\n99 SPEED MART S/B (519537-X)\nLOT P.T. 2811, JALAN ANGSA,\nTAMAN BERKELEY\n41150 KLANG, SELANGOR\n1245-DESA SRI HARTAMAS\nGST ID. NO : 000181747712\nINVOICE NO : 18341/103/10138\n09:06PM 569547 19-03-18\n103 SUNQUICK OREN 840ML RM11.40 s\nTotal Sales (Inclusive GST) RM 11.40\nCASH RM 11.40\nCHANGE RM 00\nGST Summary Amount (RM) Tax (RM)\n$ = 6% 10.75 .65\nThank You. Please come again\nKeep the invoice for applicable returns"
+      }
+    ],
+    "completion": [
+      {
+        "role": "assistant",
+        "content": "{\"company\": \"99 SPEED MART S/B\", \"date\": \"19-03-18\", \"address\": \"LOT P.T. 2811, JALAN ANGSA, TAMAN BERKELEY 41150 KLANG, SELANGOR 1245-DESA SRI HARTAMAS\", \"total\": \"RM11.40\"}"
+      }
+    ]
+  },
+  {
+    "id": "sroie-validation-00017-v0",
+    "receipt_id": "train-611",
+    "split": "validation",
+    "schema": [
+      "company",
+      "date",
+      "address",
+      "total"
+    ],
+    "receipt_text": "AMTECH ELECTRICAL SUPPLIES\n(001963477-M)\n(GST ID No 001285423104)\n107, JALAN BANDAR RAWANG 2,\nPUSAT BANDAR RAWANG,\n48000 RAWANG SELANGOR D E\nemail: amtech886@yahoo.com\nTel/Fax 03 6093 5886\nTax Invoice\nBill No POS/27408\nDate 27/06/18 5:02:32 PM\nCashier : amt\nPayment : Cash\nItem Qty Price Amount\n30W SUPER T8 LED TUBE*D/L -FNM @16.00\n00004285 5 16.00 80.00 SR\n2x40W LED F/FITTING (EMPTY)-ITK @14.00\n00002348 14.00 56.00 SR\nGross Amt : 136.00\nGST (6%) : 0.00\nNet Amt : 136.00\nReceived 150.00\nChange 14.00\nRound Adj 0.00\nGST Summary Amount(RM) Tax(RM)\nSR @ 0% 136.00 0 00\nTHANK YOU\nPLEASE COME AGAIN",
+    "target": {
+      "company": "AMTECH ELECTRICAL SUPPLIES",
+      "date": "27/06/18",
+      "address": "001285423104) 107, JALAN BANDAR RAWANG 2, PUSAT BANDAR RAWANG, 48000 RAWANG SELANGOR D E",
+      "total": "136.00"
+    },
+    "prompt": [
+      {
+        "role": "system",
+        "content": "You are a document extraction engine. You read a document and return only a single JSON object matching the schema you are given. No explanations."
+      },
+      {
+        "role": "user",
+        "content": "Extract the following fields from this receipt: {\"company\": \"name of the merchant or business issuing the receipt\", \"date\": \"date of purchase, exactly as printed on the receipt\", \"address\": \"full street address of the merchant\", \"total\": \"final total amount paid\"}\n\nRespond with a single JSON object containing exactly these keys, in this order. If a field does not appear in the receipt, use null.\n\nReceipt text:\nAMTECH ELECTRICAL SUPPLIES\n(001963477-M)\n(GST ID No 001285423104)\n107, JALAN BANDAR RAWANG 2,\nPUSAT BANDAR RAWANG,\n48000 RAWANG SELANGOR D E\nemail: amtech886@yahoo.com\nTel/Fax 03 6093 5886\nTax Invoice\nBill No POS/27408\nDate 27/06/18 5:02:32 PM\nCashier : amt\nPayment : Cash\nItem Qty Price Amount\n30W SUPER T8 LED TUBE*D/L -FNM @16.00\n00004285 5 16.00 80.00 SR\n2x40W LED F/FITTING (EMPTY)-ITK @14.00\n00002348 14.00 56.00 SR\nGross Amt : 136.00\nGST (6%) : 0.00\nNet Amt : 136.00\nReceived 150.00\nChange 14.00\nRound Adj 0.00\nGST Summary Amount(RM) Tax(RM)\nSR @ 0% 136.00 0 00\nTHANK YOU\nPLEASE COME AGAIN"
+      }
+    ],
+    "completion": [
+      {
+        "role": "assistant",
+        "content": "{\"company\": \"AMTECH ELECTRICAL SUPPLIES\", \"date\": \"27/06/18\", \"address\": \"001285423104) 107, JALAN BANDAR RAWANG 2, PUSAT BANDAR RAWANG, 48000 RAWANG SELANGOR D E\", \"total\": \"136.00\"}"
+      }
+    ]
+  },
+  {
+    "id": "sroie-validation-00018-v0",
+    "receipt_id": "train-87",
+    "split": "validation",
+    "schema": [
+      "company",
+      "date",
+      "address",
+      "total"
+    ],
+    "receipt_text": "IKANO HANDEL SDN BHD\n(1074617K)\nIKEA Cheras\nNo 2A Jalan Cochrane\nTaman Maluri\n55100 KUALA LUMPUR\nGST No.: 000115154944\nTAX INVOICE\nSlip: 0000000011000136498\nDate: 27/07/17\nTime: 1:12\nTrans: 311136194 Staff : 95837\nDescription Amount TX\n50346155 BOSTRAK WRD 80X50X18\n2 pc @ 269.00 538.00 SRS\nTotal RM Including GST 6% 538.00\nRounding Adj 0.00\nTotal Rounded 538.00\nVisa -538.00\nGST SR 6% 538.00 30.45\nAmt. Excl. GST 507.55\nNo. of Items 2\n====\nThank you. Please come again.\n*T3620000011000136498*",
+    "target": {
+      "company": "IKANO HANDEL SDN BHD",
+      "date": "27/07/17",
+      "address": "No 2A Jalan Cochrane Taman Maluri 55100 KUALA LUMPUR",
+      "total": "538.00"
+    },
+    "prompt": [
+      {
+        "role": "system",
+        "content": "You are a document extraction engine. You read a document and return only a single JSON object matching the schema you are given. No explanations."
+      },
+      {
+        "role": "user",
+        "content": "Extract the following fields from this receipt: {\"company\": \"name of the merchant or business issuing the receipt\", \"date\": \"date of purchase, exactly as printed on the receipt\", \"address\": \"full street address of the merchant\", \"total\": \"final total amount paid\"}\n\nRespond with a single JSON object containing exactly these keys, in this order. If a field does not appear in the receipt, use null.\n\nReceipt text:\nIKANO HANDEL SDN BHD\n(1074617K)\nIKEA Cheras\nNo 2A Jalan Cochrane\nTaman Maluri\n55100 KUALA LUMPUR\nGST No.: 000115154944\nTAX INVOICE\nSlip: 0000000011000136498\nDate: 27/07/17\nTime: 1:12\nTrans: 311136194 Staff : 95837\nDescription Amount TX\n50346155 BOSTRAK WRD 80X50X18\n2 pc @ 269.00 538.00 SRS\nTotal RM Including GST 6% 538.00\nRounding Adj 0.00\nTotal Rounded 538.00\nVisa -538.00\nGST SR 6% 538.00 30.45\nAmt. Excl. GST 507.55\nNo. of Items 2\n====\nThank you. Please come again.\n*T3620000011000136498*"
+      }
+    ],
+    "completion": [
+      {
+        "role": "assistant",
+        "content": "{\"company\": \"IKANO HANDEL SDN BHD\", \"date\": \"27/07/17\", \"address\": \"No 2A Jalan Cochrane Taman Maluri 55100 KUALA LUMPUR\", \"total\": \"538.00\"}"
+      }
+    ]
+  },
+  {
+    "id": "sroie-validation-00019-v0",
+    "receipt_id": "train-138",
+    "split": "validation",
+    "schema": [
+      "company",
+      "date",
+      "address",
+      "total"
+    ],
+    "receipt_text": "RESTORAN WAN SHENG\n002043319-W\nNo.2, Jalan Temenggung 19/9,\nSeksyen 9, Bandar Mahkota Cheras,\n43200 Cheras, Selangor\nGST REG NO: 001335787520\nTax Invoice\nINV No.: 1044120 Cashier: Thandar\nDate 14-03-2018 10:06:20\nDescription Qty U.price Total TAX\nKopi (B)\n- X 2.20 2.20 SR\nCham (B)\n1 × 2.20 2.20 SR\nTake Away\n2 x 0.20 0.40 SR\nTotal QTY: 4\nTotal (Excluding GST) : 4.54\nGST payable (6%): 0.26\nTotal (Inclusive of GST): 4.80\nTOTAL : 4.80\nCASH : 4.80\nGST Summary Amount (RM) Tax (RM)\nSR (@ 6%) 4.54 0.26",
+    "target": {
+      "company": "RESTORAN WAN SHENG",
+      "date": "14-03-2018",
+      "address": "No.2, Jalan Temenggung 19/9, Seksyen 9, Bandar Mahkota Cheras, 43200 Cheras, Selangor",
+      "total": "4.80"
+    },
+    "prompt": [
+      {
+        "role": "system",
+        "content": "You are a document extraction engine. You read a document and return only a single JSON object matching the schema you are given. No explanations."
+      },
+      {
+        "role": "user",
+        "content": "Extract the following fields from this receipt: {\"company\": \"name of the merchant or business issuing the receipt\", \"date\": \"date of purchase, exactly as printed on the receipt\", \"address\": \"full street address of the merchant\", \"total\": \"final total amount paid\"}\n\nRespond with a single JSON object containing exactly these keys, in this order. If a field does not appear in the receipt, use null.\n\nReceipt text:\nRESTORAN WAN SHENG\n002043319-W\nNo.2, Jalan Temenggung 19/9,\nSeksyen 9, Bandar Mahkota Cheras,\n43200 Cheras, Selangor\nGST REG NO: 001335787520\nTax Invoice\nINV No.: 1044120 Cashier: Thandar\nDate 14-03-2018 10:06:20\nDescription Qty U.price Total TAX\nKopi (B)\n- X 2.20 2.20 SR\nCham (B)\n1 × 2.20 2.20 SR\nTake Away\n2 x 0.20 0.40 SR\nTotal QTY: 4\nTotal (Excluding GST) : 4.54\nGST payable (6%): 0.26\nTotal (Inclusive of GST): 4.80\nTOTAL : 4.80\nCASH : 4.80\nGST Summary Amount (RM) Tax (RM)\nSR (@ 6%) 4.54 0.26"
+      }
+    ],
+    "completion": [
+      {
+        "role": "assistant",
+        "content": "{\"company\": \"RESTORAN WAN SHENG\", \"date\": \"14-03-2018\", \"address\": \"No.2, Jalan Temenggung 19/9, Seksyen 9, Bandar Mahkota Cheras, 43200 Cheras, Selangor\", \"total\": \"4.80\"}"
+      }
+    ]
+  },
+  {
+    "id": "sroie-validation-00020-v0",
+    "receipt_id": "train-308",
+    "split": "validation",
+    "schema": [
+      "company",
+      "date",
+      "address",
+      "total"
+    ],
+    "receipt_text": "AolBin9\nAEON CO. (M) BHD (126926-H)\n3RD FLR, AEON TAMAN MALURI SC\nJLN JEJAKA, TAMAN MALURI\nCHERAS, 55100 KUALA LUMPUR\nGST ID : 002017394688\nSHOPPING HOURS\nSUN-THU: 1000 HRS - 2200 HRS\nFRI-SAT : 1000 HRS - 2300 HRS\n1× 000000517515 2.00SR\nASSORTED PREMIU\n1× 000000810692 2.40SR\nINDIVIDUAL SUS\nSub-total 4.40\nTotal Sales Incl GST 4.40\nTotal After Adj Incl GST 4.40\nCASH 50.50\nItem Count 2 Change Amt 46.10\nInvoice No: 2018041210090260073\nGST Summary Amount Tax\nSR @ 6% 4.15 0.25\nTotal 4.15 0.25\n12/04/2018 18:18 1009 026 0260073\n0900724 AZIZAH\nAEON TAMAN UNIVERSITI\nTEL 1-300-80-AEON (2366)\nTHANK YOU FOR YOUR PATRONAGE\nPLEASE COME AGAIN",
+    "target": {
+      "company": "AEON CO. (M) BHD",
+      "date": "12/04/2018",
+      "address": "3RD FLR, AEON TAMAN MALURI SC JLN JEJAKA, TAMAN MALURI CHERAS, 55100 KUALA LUMPUR",
+      "total": "4.40"
+    },
+    "prompt": [
+      {
+        "role": "system",
+        "content": "You are a document extraction engine. You read a document and return only a single JSON object matching the schema you are given. No explanations."
+      },
+      {
+        "role": "user",
+        "content": "Extract the following fields from this receipt: {\"company\": \"name of the merchant or business issuing the receipt\", \"date\": \"date of purchase, exactly as printed on the receipt\", \"address\": \"full street address of the merchant\", \"total\": \"final total amount paid\"}\n\nRespond with a single JSON object containing exactly these keys, in this order. If a field does not appear in the receipt, use null.\n\nReceipt text:\nAolBin9\nAEON CO. (M) BHD (126926-H)\n3RD FLR, AEON TAMAN MALURI SC\nJLN JEJAKA, TAMAN MALURI\nCHERAS, 55100 KUALA LUMPUR\nGST ID : 002017394688\nSHOPPING HOURS\nSUN-THU: 1000 HRS - 2200 HRS\nFRI-SAT : 1000 HRS - 2300 HRS\n1× 000000517515 2.00SR\nASSORTED PREMIU\n1× 000000810692 2.40SR\nINDIVIDUAL SUS\nSub-total 4.40\nTotal Sales Incl GST 4.40\nTotal After Adj Incl GST 4.40\nCASH 50.50\nItem Count 2 Change Amt 46.10\nInvoice No: 2018041210090260073\nGST Summary Amount Tax\nSR @ 6% 4.15 0.25\nTotal 4.15 0.25\n12/04/2018 18:18 1009 026 0260073\n0900724 AZIZAH\nAEON TAMAN UNIVERSITI\nTEL 1-300-80-AEON (2366)\nTHANK YOU FOR YOUR PATRONAGE\nPLEASE COME AGAIN"
+      }
+    ],
+    "completion": [
+      {
+        "role": "assistant",
+        "content": "{\"company\": \"AEON CO. (M) BHD\", \"date\": \"12/04/2018\", \"address\": \"3RD FLR, AEON TAMAN MALURI SC JLN JEJAKA, TAMAN MALURI CHERAS, 55100 KUALA LUMPUR\", \"total\": \"4.40\"}"
+      }
+    ]
+  },
+  {
+    "id": "sroie-validation-00021-v0",
+    "receipt_id": "train-128",
+    "split": "validation",
+    "schema": [
+      "company",
+      "date",
+      "address",
+      "total"
+    ],
+    "receipt_text": "3 18 0 2 01. 6\nSYARIKAT PERNIAGAAN GIN KEE\n(81109-A)\nNO 290, JALAN AIR PANAS.\nSETAPAK,\n53200, KUALA LUMPUR.\nTEL : 03-40210276\nGST ID : 000750673920\nSIMPLIFIED TAX INVOICE\nCASH\nDoc No : CS00013066 Date: 31/01/2018\nCashier : USER Time: 11:33:00\nSalesperson : Ref. :\nItem Qty S/Price Amount Tax\n1701 5 6.36 31.80 SR\n6/8 BATU (BAG)\n2167 1 50.88 50.88 SR\n4.5KG RENDEROC PLUG\nTotal Qty: 6 82.68\nTotal Sales (Excluding GST) 78.00\nDiscount 0.00\nTotal GST 4.68\nRounding 0.00\nTotal Sales (Inclusive of GST) : 82.68\nCASH : 82.68\nChange 0.00\nGST SUMMARY\nTax Code % Amt (RM) Tax (RM)\nSR 6 78.00 4.68\nTotal : 78.00 4.68\nGOODS SOLD ARE NOT RETURNABLE, THANK YOU",
+    "target": {
+      "company": "SYARIKAT PERNIAGAAN GIN KEE",
+      "date": "31/01/2018",
+      "address": "NO 290, JALAN AIR PANAS. SETAPAK, 53200, KUALA LUMPUR.",
+      "total": "82.68"
+    },
+    "prompt": [
+      {
+        "role": "system",
+        "content": "You are a document extraction engine. You read a document and return only a single JSON object matching the schema you are given. No explanations."
+      },
+      {
+        "role": "user",
+        "content": "Extract the following fields from this receipt: {\"company\": \"name of the merchant or business issuing the receipt\", \"date\": \"date of purchase, exactly as printed on the receipt\", \"address\": \"full street address of the merchant\", \"total\": \"final total amount paid\"}\n\nRespond with a single JSON object containing exactly these keys, in this order. If a field does not appear in the receipt, use null.\n\nReceipt text:\n3 18 0 2 01. 6\nSYARIKAT PERNIAGAAN GIN KEE\n(81109-A)\nNO 290, JALAN AIR PANAS.\nSETAPAK,\n53200, KUALA LUMPUR.\nTEL : 03-40210276\nGST ID : 000750673920\nSIMPLIFIED TAX INVOICE\nCASH\nDoc No : CS00013066 Date: 31/01/2018\nCashier : USER Time: 11:33:00\nSalesperson : Ref. :\nItem Qty S/Price Amount Tax\n1701 5 6.36 31.80 SR\n6/8 BATU (BAG)\n2167 1 50.88 50.88 SR\n4.5KG RENDEROC PLUG\nTotal Qty: 6 82.68\nTotal Sales (Excluding GST) 78.00\nDiscount 0.00\nTotal GST 4.68\nRounding 0.00\nTotal Sales (Inclusive of GST) : 82.68\nCASH : 82.68\nChange 0.00\nGST SUMMARY\nTax Code % Amt (RM) Tax (RM)\nSR 6 78.00 4.68\nTotal : 78.00 4.68\nGOODS SOLD ARE NOT RETURNABLE, THANK YOU"
+      }
+    ],
+    "completion": [
+      {
+        "role": "assistant",
+        "content": "{\"company\": \"SYARIKAT PERNIAGAAN GIN KEE\", \"date\": \"31/01/2018\", \"address\": \"NO 290, JALAN AIR PANAS. SETAPAK, 53200, KUALA LUMPUR.\", \"total\": \"82.68\"}"
+      }
+    ]
+  },
+  {
+    "id": "sroie-validation-00022-v0",
+    "receipt_id": "train-182",
+    "split": "validation",
+    "schema": [
+      "company",
+      "date",
+      "address",
+      "total"
+    ],
+    "receipt_text": "BILLION SIX ENTERPRISE\nNO 3, JALAN TAMAN JASA 2; .\nSECTION U6, 40150 SHAH ALAM.\nTel : 603-58856749\nGST Reg No: 000944312320\nTax Involce\nInvoice No : C .- 170891\nDate : 22/02/2018 7:41:46 AM\nCashier : 123\nDescription Qty Price Amount\n1 SR' 9566405112206 11 5.80 63.80\nTG7 7\" HIPS PLATE (50PCS) JP\nTotal : 63.80\nDisposal . Discount: 0.00\nTota 83.80\nMaster Card 63.80\n5148826201779121\nIST Summary % Amount(RM) Tax(RM)\nSR 6.00 60.19 3.61\n63. 80\nBarang yang sudah di beli, wang tidak dapat di\nkembalikan. Pertukaran barang hanya boleh\ndibuat dalam 3 hari sahaja dengan resit.",
+    "target": {
+      "company": "BILLION SIX",
+      "date": "22/02/2018",
+      "address": "ENTERPRISE NO 3, JALAN TAMAN JASA 2; . SECTION U6, 40150 SHAH ALAM.",
+      "total": "63.80"
+    },
+    "prompt": [
+      {
+        "role": "system",
+        "content": "You are a document extraction engine. You read a document and return only a single JSON object matching the schema you are given. No explanations."
+      },
+      {
+        "role": "user",
+        "content": "Extract the following fields from this receipt: {\"company\": \"name of the merchant or business issuing the receipt\", \"date\": \"date of purchase, exactly as printed on the receipt\", \"address\": \"full street address of the merchant\", \"total\": \"final total amount paid\"}\n\nRespond with a single JSON object containing exactly these keys, in this order. If a field does not appear in the receipt, use null.\n\nReceipt text:\nBILLION SIX ENTERPRISE\nNO 3, JALAN TAMAN JASA 2; .\nSECTION U6, 40150 SHAH ALAM.\nTel : 603-58856749\nGST Reg No: 000944312320\nTax Involce\nInvoice No : C .- 170891\nDate : 22/02/2018 7:41:46 AM\nCashier : 123\nDescription Qty Price Amount\n1 SR' 9566405112206 11 5.80 63.80\nTG7 7\" HIPS PLATE (50PCS) JP\nTotal : 63.80\nDisposal . Discount: 0.00\nTota 83.80\nMaster Card 63.80\n5148826201779121\nIST Summary % Amount(RM) Tax(RM)\nSR 6.00 60.19 3.61\n63. 80\nBarang yang sudah di beli, wang tidak dapat di\nkembalikan. Pertukaran barang hanya boleh\ndibuat dalam 3 hari sahaja dengan resit."
+      }
+    ],
+    "completion": [
+      {
+        "role": "assistant",
+        "content": "{\"company\": \"BILLION SIX\", \"date\": \"22/02/2018\", \"address\": \"ENTERPRISE NO 3, JALAN TAMAN JASA 2; . SECTION U6, 40150 SHAH ALAM.\", \"total\": \"63.80\"}"
+      }
+    ]
+  },
+  {
+    "id": "sroie-validation-00023-v0",
+    "receipt_id": "train-119",
+    "split": "validation",
+    "schema": [
+      "company",
+      "date",
+      "address",
+      "total"
+    ],
+    "receipt_text": "3 18 01:017\nSYARIKAT PERNIAGAAN GIN KEE\n(81109-A)\nNO 290, JALAN AIR PANAS,\nSETAPAK,\n53200, KUALA LUMPUR.\nTEL : 03-40210276\nGST ID : 000750673920\nSIMPLIFIED TAX INVOICE\nCASH\nDoc No. : CS00012494 Date: 02/01/2018\nCashier : USER Time: 09:29:00\nSalesperson Ref. :\nItem Qty S/Price Amount Tax\n1432 1 2.12 2.12 SR\nGLOVE 1200 (PER PAIR)\nTotal Qty: 2.12\nTotal Sales (Excluding GST) 2.00\nDiscount : 0.00\nTotal GST : 0.12\nRounding 0.00\nTotal Sales (Inclusive of GST) : 2.12\nCASH : 2.12\nChange : 0.00\nGST SUMMARY\nTax Code Amt (RM) Tax (RM)\nSR 6 2.00 0.12\nTotal : 2.00 0.12\nGOODS SOLD ARE NOT RETURNABLE, THANK YOU.",
+    "target": {
+      "company": "SYARIKAT PERNIAGAAN GIN KEE",
+      "date": "02/01/2018",
+      "address": "NO 290, JALAN AIR PANAS, SETAPAK, 53200, KUALA LUMPUR.",
+      "total": "2.12"
+    },
+    "prompt": [
+      {
+        "role": "system",
+        "content": "You are a document extraction engine. You read a document and return only a single JSON object matching the schema you are given. No explanations."
+      },
+      {
+        "role": "user",
+        "content": "Extract the following fields from this receipt: {\"company\": \"name of the merchant or business issuing the receipt\", \"date\": \"date of purchase, exactly as printed on the receipt\", \"address\": \"full street address of the merchant\", \"total\": \"final total amount paid\"}\n\nRespond with a single JSON object containing exactly these keys, in this order. If a field does not appear in the receipt, use null.\n\nReceipt text:\n3 18 01:017\nSYARIKAT PERNIAGAAN GIN KEE\n(81109-A)\nNO 290, JALAN AIR PANAS,\nSETAPAK,\n53200, KUALA LUMPUR.\nTEL : 03-40210276\nGST ID : 000750673920\nSIMPLIFIED TAX INVOICE\nCASH\nDoc No. : CS00012494 Date: 02/01/2018\nCashier : USER Time: 09:29:00\nSalesperson Ref. :\nItem Qty S/Price Amount Tax\n1432 1 2.12 2.12 SR\nGLOVE 1200 (PER PAIR)\nTotal Qty: 2.12\nTotal Sales (Excluding GST) 2.00\nDiscount : 0.00\nTotal GST : 0.12\nRounding 0.00\nTotal Sales (Inclusive of GST) : 2.12\nCASH : 2.12\nChange : 0.00\nGST SUMMARY\nTax Code Amt (RM) Tax (RM)\nSR 6 2.00 0.12\nTotal : 2.00 0.12\nGOODS SOLD ARE NOT RETURNABLE, THANK YOU."
+      }
+    ],
+    "completion": [
+      {
+        "role": "assistant",
+        "content": "{\"company\": \"SYARIKAT PERNIAGAAN GIN KEE\", \"date\": \"02/01/2018\", \"address\": \"NO 290, JALAN AIR PANAS, SETAPAK, 53200, KUALA LUMPUR.\", \"total\": \"2.12\"}"
+      }
+    ]
+  },
+  {
+    "id": "sroie-validation-00024-v0",
+    "receipt_id": "train-382",
+    "split": "validation",
+    "schema": [
+      "company",
+      "date",
+      "address",
+      "total"
+    ],
+    "receipt_text": "HAI-O RAYA BHD (169199-V)\nKEPONG OUTLET\nTEL / FAX : 03-62636977\nGST ID NO: 001600892928\nHQ ADD: LOT 11995, BATU 2, JALAN KAPAR\n41400 KLANG, SELANGOR\nDATE: 15/12/2016 10:24:42\nINVOICE NO: 11508705\nHERBY PIPA GAO CONCENTRATE-TCM 47.70\nSR 005820091 2x 26.5000\nVIP Disc. 10.00% -5.30\nSUBTOTAL INCL. GST 6.00% RM 47.70\nROUNDING ADJ RM 0.00\nTOTAL INCL. GST 6.00% RM 47.70\nTERMINAL: PBB\nVISA 47.70\nCHANGE RM 0.00\nGST Summary Amount (RM) Tax (RM)\nSR @ 6.00% 45.00 2.70\n--\nQTY: 2 01 107 MAH THIAM HUAT 5\nBRANCH: M003\nPRINT DATE: 15/12/2016 10:24:42\nVIP: LEE MEI YEIN\nTOTAL SAVING: RM 5.30\nTHANK YOU, PLEASE COME AGAIN.\nGOODS SOLD ARE NOT REFUNDABLE BUT\nEXCHANGEABLE AT STORE OF PURCHASE WITHIN\n7 DAYS WITH ORIGINAL RECEIPT\nAND PRODUCT IN ORIGINAL CONDITION.\nBUSINESS HOURS:\nMON-SUN 08:30 - 21:30\nVISIT US AT HTTP://WWW.HAI-O.COM.MY",
+    "target": {
+      "company": "HAI-O RAYA BHD",
+      "date": "15/12/2016",
+      "address": "LOT 11995, BATU 2, JALAN KAPAR 41400 KLANG, SELANGOR",
+      "total": "47.70"
+    },
+    "prompt": [
+      {
+        "role": "system",
+        "content": "You are a document extraction engine. You read a document and return only a single JSON object matching the schema you are given. No explanations."
+      },
+      {
+        "role": "user",
+        "content": "Extract the following fields from this receipt: {\"company\": \"name of the merchant or business issuing the receipt\", \"date\": \"date of purchase, exactly as printed on the receipt\", \"address\": \"full street address of the merchant\", \"total\": \"final total amount paid\"}\n\nRespond with a single JSON object containing exactly these keys, in this order. If a field does not appear in the receipt, use null.\n\nReceipt text:\nHAI-O RAYA BHD (169199-V)\nKEPONG OUTLET\nTEL / FAX : 03-62636977\nGST ID NO: 001600892928\nHQ ADD: LOT 11995, BATU 2, JALAN KAPAR\n41400 KLANG, SELANGOR\nDATE: 15/12/2016 10:24:42\nINVOICE NO: 11508705\nHERBY PIPA GAO CONCENTRATE-TCM 47.70\nSR 005820091 2x 26.5000\nVIP Disc. 10.00% -5.30\nSUBTOTAL INCL. GST 6.00% RM 47.70\nROUNDING ADJ RM 0.00\nTOTAL INCL. GST 6.00% RM 47.70\nTERMINAL: PBB\nVISA 47.70\nCHANGE RM 0.00\nGST Summary Amount (RM) Tax (RM)\nSR @ 6.00% 45.00 2.70\n--\nQTY: 2 01 107 MAH THIAM HUAT 5\nBRANCH: M003\nPRINT DATE: 15/12/2016 10:24:42\nVIP: LEE MEI YEIN\nTOTAL SAVING: RM 5.30\nTHANK YOU, PLEASE COME AGAIN.\nGOODS SOLD ARE NOT REFUNDABLE BUT\nEXCHANGEABLE AT STORE OF PURCHASE WITHIN\n7 DAYS WITH ORIGINAL RECEIPT\nAND PRODUCT IN ORIGINAL CONDITION.\nBUSINESS HOURS:\nMON-SUN 08:30 - 21:30\nVISIT US AT HTTP://WWW.HAI-O.COM.MY"
+      }
+    ],
+    "completion": [
+      {
+        "role": "assistant",
+        "content": "{\"company\": \"HAI-O RAYA BHD\", \"date\": \"15/12/2016\", \"address\": \"LOT 11995, BATU 2, JALAN KAPAR 41400 KLANG, SELANGOR\", \"total\": \"47.70\"}"
+      }
+    ]
+  },
+  {
+    "id": "sroie-validation-00025-v0",
+    "receipt_id": "train-597",
+    "split": "validation",
+    "schema": [
+      "company",
+      "date",
+      "address",
+      "total"
+    ],
+    "receipt_text": "ONE ONE THREE SEAFOOD RESTAURANT SDN BHD\n(1120908-M)\nNO.1, TAMAN SRI DENGKIL, JALAN AIR HITAM\n43800 DENGKIL, SELANGOR.\n(GST Reg. No : 000670224384)\nTax Invoice\nTable 38\nBill#:V001-538701 Order#: 138803\nDate : 22-05-2018 19:54:52\nCashier: 113 CASHIER Pax(s): 0\nQty Description Total TAX\n- D 32.00 SR\nChicken Item\n- D 4.00 SR\nWhite Rice\n- D 18.00 SR\nVege Item (M)\nD 8.00 SR\nRice w Seafood /Meat Item Single\nD 5.00 SR\nBeverage\nTotal (Excluding GST) : 67.00\nGST Payable: 4.02\nTotal (Inclusive of GST): 71.02\nRounding Adj: -0.02\nTOTAL : 71.00\nClosed: 1 22-05-2018 21:16:12\nServer: 113 CASHIER\nCASH : 71.00\nGST Summary Amount (RM) Tax (RM)\nSR (@ 6%) 67.00 4.02\n**** Thank You ****\nPlease Come Again",
+    "target": {
+      "company": "ONE ONE THREE SEAFOOD RESTAURANT SDN BHD",
+      "date": "22-05-2018",
+      "address": "NO.1, TAMAN SRI DENGKIL, JALAN AIR HITAM 43800 DENGKIL, SELANGOR.",
+      "total": "71.00"
+    },
+    "prompt": [
+      {
+        "role": "system",
+        "content": "You are a document extraction engine. You read a document and return only a single JSON object matching the schema you are given. No explanations."
+      },
+      {
+        "role": "user",
+        "content": "Extract the following fields from this receipt: {\"company\": \"name of the merchant or business issuing the receipt\", \"date\": \"date of purchase, exactly as printed on the receipt\", \"address\": \"full street address of the merchant\", \"total\": \"final total amount paid\"}\n\nRespond with a single JSON object containing exactly these keys, in this order. If a field does not appear in the receipt, use null.\n\nReceipt text:\nONE ONE THREE SEAFOOD RESTAURANT SDN BHD\n(1120908-M)\nNO.1, TAMAN SRI DENGKIL, JALAN AIR HITAM\n43800 DENGKIL, SELANGOR.\n(GST Reg. No : 000670224384)\nTax Invoice\nTable 38\nBill#:V001-538701 Order#: 138803\nDate : 22-05-2018 19:54:52\nCashier: 113 CASHIER Pax(s): 0\nQty Description Total TAX\n- D 32.00 SR\nChicken Item\n- D 4.00 SR\nWhite Rice\n- D 18.00 SR\nVege Item (M)\nD 8.00 SR\nRice w Seafood /Meat Item Single\nD 5.00 SR\nBeverage\nTotal (Excluding GST) : 67.00\nGST Payable: 4.02\nTotal (Inclusive of GST): 71.02\nRounding Adj: -0.02\nTOTAL : 71.00\nClosed: 1 22-05-2018 21:16:12\nServer: 113 CASHIER\nCASH : 71.00\nGST Summary Amount (RM) Tax (RM)\nSR (@ 6%) 67.00 4.02\n**** Thank You ****\nPlease Come Again"
+      }
+    ],
+    "completion": [
+      {
+        "role": "assistant",
+        "content": "{\"company\": \"ONE ONE THREE SEAFOOD RESTAURANT SDN BHD\", \"date\": \"22-05-2018\", \"address\": \"NO.1, TAMAN SRI DENGKIL, JALAN AIR HITAM 43800 DENGKIL, SELANGOR.\", \"total\": \"71.00\"}"
+      }
+    ]
+  },
+  {
+    "id": "sroie-validation-00026-v0",
+    "receipt_id": "train-431",
+    "split": "validation",
+    "schema": [
+      "company",
+      "date",
+      "address",
+      "total"
+    ],
+    "receipt_text": "UNIHAKKA INTERNATIONAL SDN BHD\n10 May 2018 12:32\n867388-U)\n12, Jalan Tampoi 7/4,Kawasan Perindustrian\nTampoi, 81200 Johor Bahru, Johor\nTAX INVOICE\nInvoice # : OR18051002160062\nItem Qty Total\nSR 100100000060- 4 Vege\n$5.50 1 $5.5\nSR 100100000009- Seafood (M)\n$4.80 $4.80\nTotal Amount: $10.30\nGST @6%: $0.58\nNett Total: $10.30\nPayment Mode Amount\nCASH $10.30\nChange $0.00\nGST Summary Amount($) Tax($)\nSR = GST @6% 9.72 0.58\nGST REG #000656195584\nBAR WANG RICE@PERMAS JAYA\n(Price Inclusive Of GST)\nThank You & Come Again!\nLike and Follow Us on Facebook!\nFacebook.com/BarWangRice",
+    "target": {
+      "company": "UNIHAKKA INTERNATIONAL SDN BHD",
+      "date": "10 May 2018",
+      "address": "12, Jalan Tampoi 7/4,Kawasan Perindustrian Tampoi, 81200 Johor Bahru, Johor",
+      "total": "$10.30"
+    },
+    "prompt": [
+      {
+        "role": "system",
+        "content": "You are a document extraction engine. You read a document and return only a single JSON object matching the schema you are given. No explanations."
+      },
+      {
+        "role": "user",
+        "content": "Extract the following fields from this receipt: {\"company\": \"name of the merchant or business issuing the receipt\", \"date\": \"date of purchase, exactly as printed on the receipt\", \"address\": \"full street address of the merchant\", \"total\": \"final total amount paid\"}\n\nRespond with a single JSON object containing exactly these keys, in this order. If a field does not appear in the receipt, use null.\n\nReceipt text:\nUNIHAKKA INTERNATIONAL SDN BHD\n10 May 2018 12:32\n867388-U)\n12, Jalan Tampoi 7/4,Kawasan Perindustrian\nTampoi, 81200 Johor Bahru, Johor\nTAX INVOICE\nInvoice # : OR18051002160062\nItem Qty Total\nSR 100100000060- 4 Vege\n$5.50 1 $5.5\nSR 100100000009- Seafood (M)\n$4.80 $4.80\nTotal Amount: $10.30\nGST @6%: $0.58\nNett Total: $10.30\nPayment Mode Amount\nCASH $10.30\nChange $0.00\nGST Summary Amount($) Tax($)\nSR = GST @6% 9.72 0.58\nGST REG #000656195584\nBAR WANG RICE@PERMAS JAYA\n(Price Inclusive Of GST)\nThank You & Come Again!\nLike and Follow Us on Facebook!\nFacebook.com/BarWangRice"
+      }
+    ],
+    "completion": [
+      {
+        "role": "assistant",
+        "content": "{\"company\": \"UNIHAKKA INTERNATIONAL SDN BHD\", \"date\": \"10 May 2018\", \"address\": \"12, Jalan Tampoi 7/4,Kawasan Perindustrian Tampoi, 81200 Johor Bahru, Johor\", \"total\": \"$10.30\"}"
+      }
+    ]
+  },
+  {
+    "id": "sroie-validation-00027-v0",
+    "receipt_id": "train-456",
+    "split": "validation",
+    "schema": [
+      "company",
+      "date",
+      "address",
+      "total"
+    ],
+    "receipt_text": "ENW Hardware Centre (M) Sdn. Bhd.\nCo. Reg No.: 795225-A\nGST Reg. No. : 000155453440\nNo: G3, BIK G, Jin PJU 1A/3,\nAra Damansara, 47301\nPetaling Jaya, Selangor Darul Ehsan.\nTEL. 03-7832 6929 , 012-659 9829\n09/04/2018 Tax Invoice\nNo. :CS00232967\nCash Sale (Ara D'sara)\nTel: 03-7832 6929\nH/P: 012-659 9829\nItem Qty U.Price\n001781 1 00 16.00 16.00 SR\nBig Cotton Mop 500g\n0021151.00 1.00 1.00 SR\nCement.\nWS150 1.00 25.00 25.00 SR\n320ml. 'WoodSheer.' Mahagany - 150\n102193 1.00 9.00 9.00 SR\nBroom -908\nTotal Amt incl. GST @ 6 % : 51.00\nRounding Adjusment : 0.00\nTotal Amt Payable : 51.00\nTotal Qty Tender : 4\nGST Summary Amount (RM) GST (RM)\nSR = 6 % 48.10 2.90\nPOINT : 0 00\nGoods sold are not returnable\nThank you for shopping at\nENW Hardware Centre (M) Sdn. Bhd.\nbuy First aid",
+    "target": {
+      "company": "ENW Hardware Centre (M) Sdn. Bhd.",
+      "date": "09/04/2018",
+      "address": "No: G3, BIK G, Jin PJU 1A/3, Ara Damansara, 47301 Petaling Jaya, Selangor Darul Ehsan.",
+      "total": "0021151.00"
+    },
+    "prompt": [
+      {
+        "role": "system",
+        "content": "You are a document extraction engine. You read a document and return only a single JSON object matching the schema you are given. No explanations."
+      },
+      {
+        "role": "user",
+        "content": "Extract the following fields from this receipt: {\"company\": \"name of the merchant or business issuing the receipt\", \"date\": \"date of purchase, exactly as printed on the receipt\", \"address\": \"full street address of the merchant\", \"total\": \"final total amount paid\"}\n\nRespond with a single JSON object containing exactly these keys, in this order. If a field does not appear in the receipt, use null.\n\nReceipt text:\nENW Hardware Centre (M) Sdn. Bhd.\nCo. Reg No.: 795225-A\nGST Reg. No. : 000155453440\nNo: G3, BIK G, Jin PJU 1A/3,\nAra Damansara, 47301\nPetaling Jaya, Selangor Darul Ehsan.\nTEL. 03-7832 6929 , 012-659 9829\n09/04/2018 Tax Invoice\nNo. :CS00232967\nCash Sale (Ara D'sara)\nTel: 03-7832 6929\nH/P: 012-659 9829\nItem Qty U.Price\n001781 1 00 16.00 16.00 SR\nBig Cotton Mop 500g\n0021151.00 1.00 1.00 SR\nCement.\nWS150 1.00 25.00 25.00 SR\n320ml. 'WoodSheer.' Mahagany - 150\n102193 1.00 9.00 9.00 SR\nBroom -908\nTotal Amt incl. GST @ 6 % : 51.00\nRounding Adjusment : 0.00\nTotal Amt Payable : 51.00\nTotal Qty Tender : 4\nGST Summary Amount (RM) GST (RM)\nSR = 6 % 48.10 2.90\nPOINT : 0 00\nGoods sold are not returnable\nThank you for shopping at\nENW Hardware Centre (M) Sdn. Bhd.\nbuy First aid"
+      }
+    ],
+    "completion": [
+      {
+        "role": "assistant",
+        "content": "{\"company\": \"ENW Hardware Centre (M) Sdn. Bhd.\", \"date\": \"09/04/2018\", \"address\": \"No: G3, BIK G, Jin PJU 1A/3, Ara Damansara, 47301 Petaling Jaya, Selangor Darul Ehsan.\", \"total\": \"0021151.00\"}"
+      }
+    ]
+  },
+  {
+    "id": "sroie-validation-00028-v0",
+    "receipt_id": "train-509",
+    "split": "validation",
+    "schema": [
+      "company",
+      "date",
+      "address",
+      "total"
+    ],
+    "receipt_text": "counter.\nAIK HUAT HARDWARE\nENTERPRISE (SETIA\nALAM) SON BHD\n822737-X\nNO. 17-G, JALAN SETIA INDAH\n(X) U13/X, SETIA ALAM,\nSEKSYEN U13, 40170 SHAH ALAM,\nTEL: 012 - 6651783 FAX: 03 - 33623608\nGST NO: 000394528768\nSIMPLIFIED TAX INVOICE\nCASH\nRECEIPT #: CSP0405591 DATE: 12/09/2017\nSALESPERSON : AH019 TIME: 15:22:00\nITEM QTY U/P AMOUNT\n(RM) (RM)\n9555783202031 30.00 30.00 S\n7001 CZ LEVER (SINK TYPE SINK TAP\nTOTAL QUANTITY\nSUB-TOTAL (GST) 30.00\nDISC 0.00\nROUNDING 0.00\nTOTAL 30.00\nCASH 30.00\nCHANGE 0.00\n*GST @ 6% INCLUDED IN TOTAL\nGST SUMMARY\nCODE AMOUNT % TAX/AMT\nSR 28.30 1.70\nTAX TOTAL: 1.70\nGOODS SOLD ARE NOT REFUNDABLE,\nTHANK YOU FOR CHOOSING US.\nPLS PROVIDE ORIGINAL BILL POR GOODS\nEXCHANGE WITHIN 1 WEEK FROM TRANSACTION\nGOODS MUST BE IN ORIGINAL SIATE TO BE\nENTITLED FOR EXCHANGE.",
+    "target": {
+      "company": "AIK HUAT HARDWARE ENTERPRISE (SETIA ALAM) SON BHD",
+      "date": "12/09/2017",
+      "address": "NO. 17-G, JALAN SETIA INDAH (X) U13/X, SETIA ALAM, SEKSYEN U13, 40170 SHAH ALAM,",
+      "total": "30.00"
+    },
+    "prompt": [
+      {
+        "role": "system",
+        "content": "You are a document extraction engine. You read a document and return only a single JSON object matching the schema you are given. No explanations."
+      },
+      {
+        "role": "user",
+        "content": "Extract the following fields from this receipt: {\"company\": \"name of the merchant or business issuing the receipt\", \"date\": \"date of purchase, exactly as printed on the receipt\", \"address\": \"full street address of the merchant\", \"total\": \"final total amount paid\"}\n\nRespond with a single JSON object containing exactly these keys, in this order. If a field does not appear in the receipt, use null.\n\nReceipt text:\ncounter.\nAIK HUAT HARDWARE\nENTERPRISE (SETIA\nALAM) SON BHD\n822737-X\nNO. 17-G, JALAN SETIA INDAH\n(X) U13/X, SETIA ALAM,\nSEKSYEN U13, 40170 SHAH ALAM,\nTEL: 012 - 6651783 FAX: 03 - 33623608\nGST NO: 000394528768\nSIMPLIFIED TAX INVOICE\nCASH\nRECEIPT #: CSP0405591 DATE: 12/09/2017\nSALESPERSON : AH019 TIME: 15:22:00\nITEM QTY U/P AMOUNT\n(RM) (RM)\n9555783202031 30.00 30.00 S\n7001 CZ LEVER (SINK TYPE SINK TAP\nTOTAL QUANTITY\nSUB-TOTAL (GST) 30.00\nDISC 0.00\nROUNDING 0.00\nTOTAL 30.00\nCASH 30.00\nCHANGE 0.00\n*GST @ 6% INCLUDED IN TOTAL\nGST SUMMARY\nCODE AMOUNT % TAX/AMT\nSR 28.30 1.70\nTAX TOTAL: 1.70\nGOODS SOLD ARE NOT REFUNDABLE,\nTHANK YOU FOR CHOOSING US.\nPLS PROVIDE ORIGINAL BILL POR GOODS\nEXCHANGE WITHIN 1 WEEK FROM TRANSACTION\nGOODS MUST BE IN ORIGINAL SIATE TO BE\nENTITLED FOR EXCHANGE."
+      }
+    ],
+    "completion": [
+      {
+        "role": "assistant",
+        "content": "{\"company\": \"AIK HUAT HARDWARE ENTERPRISE (SETIA ALAM) SON BHD\", \"date\": \"12/09/2017\", \"address\": \"NO. 17-G, JALAN SETIA INDAH (X) U13/X, SETIA ALAM, SEKSYEN U13, 40170 SHAH ALAM,\", \"total\": \"30.00\"}"
+      }
+    ]
+  },
+  {
+    "id": "sroie-validation-00029-v0",
+    "receipt_id": "train-305",
+    "split": "validation",
+    "schema": [
+      "company",
+      "date",
+      "address",
+      "total"
+    ],
+    "receipt_text": "YHM Aeon Tebrau City\n$117, Second Floor,\nAeon Tebrau City,\n1, Jalan Desa Tebrau,\nTaman Desa Tebrau,\n81100 Johor Bahru, Johor.\n002105827328\n* TAX INVOICE *\nOrder No. 1000070 17/04/2018 07:13 PM\nReceipt No. : 003-1227834 Pax:\nCashier : Cashier\nEat In\nItem Qty U.Price Amount Tax\nFG-A00019 2 1.50 3.00 SR\nGreen Tea 3.80 3.80 SR\nFG-H00027 1\nChikuwa Tempura 3.80 SR\nFG-H00030 1 3.80\nKaraage 16.80 16.80 SR\nFG-Y00133 1\nOtm Spicy Yakiniku Bowl R\nFG-Y00226 1 16.80 16.80 SR\nOtm Spicy Teri Chicken Bowl R\nFG-Y00229 1 18.80 18,80 SR\nOtm Tori Katsu Set SR\nFG-Y00268 0.00 0.00\nKatsu Sauce 0.00 SR\nFG-Y00264 1 0.00\nMiso Soup\nFG-Y00229 1 18.80 18.80 SR\nOtm Tori Katsu Set\nFG-Y00267 1 0.00 0.00 SR\nTaru Taru Sauce 0.00 SR\nFG-Y00265 1 0.00\nWakame Soup\nSubTotal 81.80\nTotal 81.80\nTOTAL : MYR 81.80\nTotal Excluded Tax 77.18\n4.62\nPayment Details 85.00\nCash 3.20\nCash Change\nTax Summary Tax(MYR)\nTax Code % Amount (MYR)\nSR 6 77.18 4,62\n**** Thank You ****\nPlease Come Again.",
+    "target": {
+      "company": "YHM Aeon Tebrau City",
+      "date": "17/04/2018",
+      "address": "$117, Second Floor, Aeon Tebrau City, 1, Jalan Desa Tebrau, Taman Desa Tebrau, 81100 Johor Bahru, Johor.",
+      "total": "81.80"
+    },
+    "prompt": [
+      {
+        "role": "system",
+        "content": "You are a document extraction engine. You read a document and return only a single JSON object matching the schema you are given. No explanations."
+      },
+      {
+        "role": "user",
+        "content": "Extract the following fields from this receipt: {\"company\": \"name of the merchant or business issuing the receipt\", \"date\": \"date of purchase, exactly as printed on the receipt\", \"address\": \"full street address of the merchant\", \"total\": \"final total amount paid\"}\n\nRespond with a single JSON object containing exactly these keys, in this order. If a field does not appear in the receipt, use null.\n\nReceipt text:\nYHM Aeon Tebrau City\n$117, Second Floor,\nAeon Tebrau City,\n1, Jalan Desa Tebrau,\nTaman Desa Tebrau,\n81100 Johor Bahru, Johor.\n002105827328\n* TAX INVOICE *\nOrder No. 1000070 17/04/2018 07:13 PM\nReceipt No. : 003-1227834 Pax:\nCashier : Cashier\nEat In\nItem Qty U.Price Amount Tax\nFG-A00019 2 1.50 3.00 SR\nGreen Tea 3.80 3.80 SR\nFG-H00027 1\nChikuwa Tempura 3.80 SR\nFG-H00030 1 3.80\nKaraage 16.80 16.80 SR\nFG-Y00133 1\nOtm Spicy Yakiniku Bowl R\nFG-Y00226 1 16.80 16.80 SR\nOtm Spicy Teri Chicken Bowl R\nFG-Y00229 1 18.80 18,80 SR\nOtm Tori Katsu Set SR\nFG-Y00268 0.00 0.00\nKatsu Sauce 0.00 SR\nFG-Y00264 1 0.00\nMiso Soup\nFG-Y00229 1 18.80 18.80 SR\nOtm Tori Katsu Set\nFG-Y00267 1 0.00 0.00 SR\nTaru Taru Sauce 0.00 SR\nFG-Y00265 1 0.00\nWakame Soup\nSubTotal 81.80\nTotal 81.80\nTOTAL : MYR 81.80\nTotal Excluded Tax 77.18\n4.62\nPayment Details 85.00\nCash 3.20\nCash Change\nTax Summary Tax(MYR)\nTax Code % Amount (MYR)\nSR 6 77.18 4,62\n**** Thank You ****\nPlease Come Again."
+      }
+    ],
+    "completion": [
+      {
+        "role": "assistant",
+        "content": "{\"company\": \"YHM Aeon Tebrau City\", \"date\": \"17/04/2018\", \"address\": \"$117, Second Floor, Aeon Tebrau City, 1, Jalan Desa Tebrau, Taman Desa Tebrau, 81100 Johor Bahru, Johor.\", \"total\": \"81.80\"}"
+      }
+    ]
+  },
+  {
+    "id": "sroie-validation-00030-v0",
+    "receipt_id": "train-247",
+    "split": "validation",
+    "schema": [
+      "company",
+      "date",
+      "address",
+      "total"
+    ],
+    "receipt_text": "YONG SOON FATT S/B (81497-P)\nLOT 1504, BATU 8 1/2, JALAN KLANG LAMA;\n46000 PETALING JAYA, SELANGOR.\nTEL : 016-2014209\nGST REG NO : 000788250624\nTAX INVOICE P. Plea\n==\nDESC QTY PRICE AMOUNT TAXCODE\n(RM) (RM)\n== === ===== ==\n011100029 KCL SOH HOON 5KG\n1 CTN 31.50 31.50 SR\n070100004 BAWANG PUTIH\n1 KG 37.50 37.50 ZRL\n51190030 A1 BIHUN ISTIMEWA 3KG\n5 PKT 10.00 50.00 ZRL\n010400058 ABC TEPUNG UBI KAYU 1KG\n1 CTN 27.00 27.00 ZRL\n50100010 LIMA GAJAH TEPUNG BERAS 500\n1 CTN 7 26.80 26,80 ZRL\n012700007 ALISHAN YOUNG CORN 425GM\n1 CTN 52.00 52.00 SR\n01270100 NEW SUN BUTTON MUSHROOM 425\n1 CTN 58.00 58.00 SR\n0010 RAMBUTAN BERAS SST 5% 10KG\n6 PKT 26.00 156,00 ZRL\n50460020 DAIRY CHAMP EVAP 390GM\n1 CTN 113,90 113.90 SR\n010700098 LIFE SOS CILI 340GM\n1 CTN 63.60 63.60 SR\n010700060 MAGGI SOS TOMATO 325GM\n1 CTM / 62.20 62.20 SR\n010700031 LIFE SOS CILI 500GM\n1 CTN 41.20 41.20 SR\n010700057 MAGGI SOS TOMATO 475GM\n1 CTN 39.00 39.00 SR\nTotal Inc. GST 6%: 758.70\nRounding Adjustment: 0.00\nFinal Total 758.70\nCash 760.00\nChange 1.30\nGST Summary Amount (RM) Tax(RM)\nSR 6 % 435.29 26.12\nZRL 0 % 297,30 0.00\nC01099379 6/2/2017 12:42 PM\n102 2002\n758- 70",
+    "target": {
+      "company": "YONG SOON FATT S/B",
+      "date": "6/2/2017",
+      "address": "LOT 1504, BATU 8 1/2, JALAN KLANG LAMA; 46000 PETALING JAYA, SELANGOR.",
+      "total": "758.70"
+    },
+    "prompt": [
+      {
+        "role": "system",
+        "content": "You are a document extraction engine. You read a document and return only a single JSON object matching the schema you are given. No explanations."
+      },
+      {
+        "role": "user",
+        "content": "Extract the following fields from this receipt: {\"company\": \"name of the merchant or business issuing the receipt\", \"date\": \"date of purchase, exactly as printed on the receipt\", \"address\": \"full street address of the merchant\", \"total\": \"final total amount paid\"}\n\nRespond with a single JSON object containing exactly these keys, in this order. If a field does not appear in the receipt, use null.\n\nReceipt text:\nYONG SOON FATT S/B (81497-P)\nLOT 1504, BATU 8 1/2, JALAN KLANG LAMA;\n46000 PETALING JAYA, SELANGOR.\nTEL : 016-2014209\nGST REG NO : 000788250624\nTAX INVOICE P. Plea\n==\nDESC QTY PRICE AMOUNT TAXCODE\n(RM) (RM)\n== === ===== ==\n011100029 KCL SOH HOON 5KG\n1 CTN 31.50 31.50 SR\n070100004 BAWANG PUTIH\n1 KG 37.50 37.50 ZRL\n51190030 A1 BIHUN ISTIMEWA 3KG\n5 PKT 10.00 50.00 ZRL\n010400058 ABC TEPUNG UBI KAYU 1KG\n1 CTN 27.00 27.00 ZRL\n50100010 LIMA GAJAH TEPUNG BERAS 500\n1 CTN 7 26.80 26,80 ZRL\n012700007 ALISHAN YOUNG CORN 425GM\n1 CTN 52.00 52.00 SR\n01270100 NEW SUN BUTTON MUSHROOM 425\n1 CTN 58.00 58.00 SR\n0010 RAMBUTAN BERAS SST 5% 10KG\n6 PKT 26.00 156,00 ZRL\n50460020 DAIRY CHAMP EVAP 390GM\n1 CTN 113,90 113.90 SR\n010700098 LIFE SOS CILI 340GM\n1 CTN 63.60 63.60 SR\n010700060 MAGGI SOS TOMATO 325GM\n1 CTM / 62.20 62.20 SR\n010700031 LIFE SOS CILI 500GM\n1 CTN 41.20 41.20 SR\n010700057 MAGGI SOS TOMATO 475GM\n1 CTN 39.00 39.00 SR\nTotal Inc. GST 6%: 758.70\nRounding Adjustment: 0.00\nFinal Total 758.70\nCash 760.00\nChange 1.30\nGST Summary Amount (RM) Tax(RM)\nSR 6 % 435.29 26.12\nZRL 0 % 297,30 0.00\nC01099379 6/2/2017 12:42 PM\n102 2002\n758- 70"
+      }
+    ],
+    "completion": [
+      {
+        "role": "assistant",
+        "content": "{\"company\": \"YONG SOON FATT S/B\", \"date\": \"6/2/2017\", \"address\": \"LOT 1504, BATU 8 1/2, JALAN KLANG LAMA; 46000 PETALING JAYA, SELANGOR.\", \"total\": \"758.70\"}"
+      }
+    ]
+  },
+  {
+    "id": "sroie-validation-00031-v0",
+    "receipt_id": "train-515",
+    "split": "validation",
+    "schema": [
+      "company",
+      "date",
+      "address",
+      "total"
+    ],
+    "receipt_text": "TUICAR KEPALA\nGAS ! !! DAPUR\nAIK HUAT HARDWARE\nENTERPRISE (SETIA\nALAM) SON BHU\n822737-X\nNO. 17-G, JALAN SETIA INDAH\n(X) U13/X, SETIA ALAM,\nSEKSYEN U13, 40170 SHAH ALAM.\nTEL: 012 - 6651783 FAX: 03 - 33623608\nGST NO: 000394528768\nSIMPLIFIED TAX INVOICE\nCASH\nRECEIPT #: CSP0404314 DATE: 04/09/2017\nSALESPERSON : AH019 TIME: 12:01:00\nITEM QTY U/P AMOUNT\n(RM) (RM)\n9555019100268 28.00 28.00 S\nMILUX M268 GAS REGULATOR H/D\nTOTAL QUANTITY\nSUB-TOTAL (GST) 28.00\nDISC 0.00\nROUNDING 0.00\nTOTAL 28.00\nCASH 40.00\nCHANGE 12.00\n*GST @ 6% INCLUDED IN TOTAL\nGST SUMMARY\nCODE AMOUNT TAX/AMT\nSR 26.42 6 1.58\nTAX TOTAL: 1.58\nGOODS SOLD ARE NOT REFUNDABLE,\nTHANK YOU FOR CHOOSING US.\nPLS PROVIDE ORIGINAL BILL FOR GOODS\nEXCHANGE WITHIN 1 WEEE FROM TRANSACTION\nGOODS MUST BE' IN ORIGINAL, STAIR TO LE\nENTITLED FOR EXCHANGE.",
+    "target": {
+      "company": "AIK HUAT HARDWARE ENTERPRISE (SETIA ALAM) SON BHU",
+      "date": "04/09/2017",
+      "address": "NO. 17-G, JALAN SETIA INDAH (X) U13/X, SETIA ALAM, SEKSYEN U13, 40170 SHAH ALAM.",
+      "total": "28.00"
+    },
+    "prompt": [
+      {
+        "role": "system",
+        "content": "You are a document extraction engine. You read a document and return only a single JSON object matching the schema you are given. No explanations."
+      },
+      {
+        "role": "user",
+        "content": "Extract the following fields from this receipt: {\"company\": \"name of the merchant or business issuing the receipt\", \"date\": \"date of purchase, exactly as printed on the receipt\", \"address\": \"full street address of the merchant\", \"total\": \"final total amount paid\"}\n\nRespond with a single JSON object containing exactly these keys, in this order. If a field does not appear in the receipt, use null.\n\nReceipt text:\nTUICAR KEPALA\nGAS ! !! DAPUR\nAIK HUAT HARDWARE\nENTERPRISE (SETIA\nALAM) SON BHU\n822737-X\nNO. 17-G, JALAN SETIA INDAH\n(X) U13/X, SETIA ALAM,\nSEKSYEN U13, 40170 SHAH ALAM.\nTEL: 012 - 6651783 FAX: 03 - 33623608\nGST NO: 000394528768\nSIMPLIFIED TAX INVOICE\nCASH\nRECEIPT #: CSP0404314 DATE: 04/09/2017\nSALESPERSON : AH019 TIME: 12:01:00\nITEM QTY U/P AMOUNT\n(RM) (RM)\n9555019100268 28.00 28.00 S\nMILUX M268 GAS REGULATOR H/D\nTOTAL QUANTITY\nSUB-TOTAL (GST) 28.00\nDISC 0.00\nROUNDING 0.00\nTOTAL 28.00\nCASH 40.00\nCHANGE 12.00\n*GST @ 6% INCLUDED IN TOTAL\nGST SUMMARY\nCODE AMOUNT TAX/AMT\nSR 26.42 6 1.58\nTAX TOTAL: 1.58\nGOODS SOLD ARE NOT REFUNDABLE,\nTHANK YOU FOR CHOOSING US.\nPLS PROVIDE ORIGINAL BILL FOR GOODS\nEXCHANGE WITHIN 1 WEEE FROM TRANSACTION\nGOODS MUST BE' IN ORIGINAL, STAIR TO LE\nENTITLED FOR EXCHANGE."
+      }
+    ],
+    "completion": [
+      {
+        "role": "assistant",
+        "content": "{\"company\": \"AIK HUAT HARDWARE ENTERPRISE (SETIA ALAM) SON BHU\", \"date\": \"04/09/2017\", \"address\": \"NO. 17-G, JALAN SETIA INDAH (X) U13/X, SETIA ALAM, SEKSYEN U13, 40170 SHAH ALAM.\", \"total\": \"28.00\"}"
+      }
+    ]
+  },
+  {
+    "id": "sroie-validation-00032-v0",
+    "receipt_id": "train-92",
+    "split": "validation",
+    "schema": [
+      "company",
+      "date",
+      "address",
+      "total"
+    ],
+    "receipt_text": "ADVANCO COMPANY\nCompany Reg. No. : 725186-V\nNO 1&3, Jalan Wangsa Delima 12,\nWangsa Link, Wangsa Maju,\n53300 Kuala Lumpur\n03-41318972\nGST Reg : 001658445824\nTAX INVOICE\nCB#: 398313 23/03/2018 3:13:19\nM#: M2 - 0\nCashier : c2000 -\nQty Description Price Total\nFUJI XEROX EVERYDAY A4 70GSM : SR\n5 27499 11.00 55.00\nItem Discount $0.20 -1.00\nCANON PG-47BK E400 BLACK FINE ( SR\n1 27736 29.00 29.00\n6 Type: 2 Total 84.00\nDisc $.20 × 5 -1.00\nRounding Adj 0.00\nTotal Inclusive GST: 83.00\nCASH 85.00\nChange 2.00\nGST Summary\nCode % Net Amt GST Total\nSR 6% 78.30 4.70 83.00\nTotal 78.30 4.70 83.00\nThank you & Please come again.\nGoods sold are not returnable for refund or\nexchange !!",
+    "target": {
+      "company": "ADVANCO COMPANY",
+      "date": "23/03/2018",
+      "address": "NO 1&3, Jalan Wangsa Delima 12, Wangsa Link, Wangsa Maju, 53300 Kuala Lumpur",
+      "total": "83.00"
+    },
+    "prompt": [
+      {
+        "role": "system",
+        "content": "You are a document extraction engine. You read a document and return only a single JSON object matching the schema you are given. No explanations."
+      },
+      {
+        "role": "user",
+        "content": "Extract the following fields from this receipt: {\"company\": \"name of the merchant or business issuing the receipt\", \"date\": \"date of purchase, exactly as printed on the receipt\", \"address\": \"full street address of the merchant\", \"total\": \"final total amount paid\"}\n\nRespond with a single JSON object containing exactly these keys, in this order. If a field does not appear in the receipt, use null.\n\nReceipt text:\nADVANCO COMPANY\nCompany Reg. No. : 725186-V\nNO 1&3, Jalan Wangsa Delima 12,\nWangsa Link, Wangsa Maju,\n53300 Kuala Lumpur\n03-41318972\nGST Reg : 001658445824\nTAX INVOICE\nCB#: 398313 23/03/2018 3:13:19\nM#: M2 - 0\nCashier : c2000 -\nQty Description Price Total\nFUJI XEROX EVERYDAY A4 70GSM : SR\n5 27499 11.00 55.00\nItem Discount $0.20 -1.00\nCANON PG-47BK E400 BLACK FINE ( SR\n1 27736 29.00 29.00\n6 Type: 2 Total 84.00\nDisc $.20 × 5 -1.00\nRounding Adj 0.00\nTotal Inclusive GST: 83.00\nCASH 85.00\nChange 2.00\nGST Summary\nCode % Net Amt GST Total\nSR 6% 78.30 4.70 83.00\nTotal 78.30 4.70 83.00\nThank you & Please come again.\nGoods sold are not returnable for refund or\nexchange !!"
+      }
+    ],
+    "completion": [
+      {
+        "role": "assistant",
+        "content": "{\"company\": \"ADVANCO COMPANY\", \"date\": \"23/03/2018\", \"address\": \"NO 1&3, Jalan Wangsa Delima 12, Wangsa Link, Wangsa Maju, 53300 Kuala Lumpur\", \"total\": \"83.00\"}"
+      }
+    ]
+  },
+  {
+    "id": "sroie-validation-00033-v0",
+    "receipt_id": "train-116",
+    "split": "validation",
+    "schema": [
+      "company",
+      "date",
+      "address",
+      "total"
+    ],
+    "receipt_text": "3 18 01.017\nSYARIKAT PERNIAGAAN GIN KEE\n(81109-A)\nNO 290, JALAN AIR PANAS,\nSETAPAK,\n53200, KUALA LUMPUR.\nTEL : 03-40210276\nGST ID : 000750673920\nSIMPLIFIED TAX INVOICE\nCASH\nDoc No. CS00012664 Date: 11/01/2018\nCashier : USER Time: 11:42:00\nSalesperson Ref. :\nItem Qty S/Price Amount Tax\n1627 1 4.45 4.45 SR\nWALL SCRAPER 3\"\n2167 2 50.88 101.76 SR\n4.5KG RENDEROC PLUG\n1735 1 10.07 10.07 SR\n5\" SCRAPER (ADAMARK)\nTotal Qty: 4 116.28\nTotal Sales (Excluding GST) 109.70\nDiscount 0.00\nTotal GST 6.58\nRounding 0.00\nTotal Sales (Inclusive of GST) : 116.28\nCASH : 116.28\nChange : 0.00\nGST SUMMARY\nTax Code Amt (RM) Tax (RM)\nSR 109.70 6.58\nTotal : 109.70 6.58\nGOODS SOLD ARE NOT RETURNABLE, THANK YOU",
+    "target": {
+      "company": "SYARIKAT PERNIAGAAN GIN KEE",
+      "date": "11/01/2018",
+      "address": "NO 290, JALAN AIR PANAS, SETAPAK, 53200, KUALA LUMPUR.",
+      "total": "116.28"
+    },
+    "prompt": [
+      {
+        "role": "system",
+        "content": "You are a document extraction engine. You read a document and return only a single JSON object matching the schema you are given. No explanations."
+      },
+      {
+        "role": "user",
+        "content": "Extract the following fields from this receipt: {\"company\": \"name of the merchant or business issuing the receipt\", \"date\": \"date of purchase, exactly as printed on the receipt\", \"address\": \"full street address of the merchant\", \"total\": \"final total amount paid\"}\n\nRespond with a single JSON object containing exactly these keys, in this order. If a field does not appear in the receipt, use null.\n\nReceipt text:\n3 18 01.017\nSYARIKAT PERNIAGAAN GIN KEE\n(81109-A)\nNO 290, JALAN AIR PANAS,\nSETAPAK,\n53200, KUALA LUMPUR.\nTEL : 03-40210276\nGST ID : 000750673920\nSIMPLIFIED TAX INVOICE\nCASH\nDoc No. CS00012664 Date: 11/01/2018\nCashier : USER Time: 11:42:00\nSalesperson Ref. :\nItem Qty S/Price Amount Tax\n1627 1 4.45 4.45 SR\nWALL SCRAPER 3\"\n2167 2 50.88 101.76 SR\n4.5KG RENDEROC PLUG\n1735 1 10.07 10.07 SR\n5\" SCRAPER (ADAMARK)\nTotal Qty: 4 116.28\nTotal Sales (Excluding GST) 109.70\nDiscount 0.00\nTotal GST 6.58\nRounding 0.00\nTotal Sales (Inclusive of GST) : 116.28\nCASH : 116.28\nChange : 0.00\nGST SUMMARY\nTax Code Amt (RM) Tax (RM)\nSR 109.70 6.58\nTotal : 109.70 6.58\nGOODS SOLD ARE NOT RETURNABLE, THANK YOU"
+      }
+    ],
+    "completion": [
+      {
+        "role": "assistant",
+        "content": "{\"company\": \"SYARIKAT PERNIAGAAN GIN KEE\", \"date\": \"11/01/2018\", \"address\": \"NO 290, JALAN AIR PANAS, SETAPAK, 53200, KUALA LUMPUR.\", \"total\": \"116.28\"}"
+      }
+    ]
+  },
+  {
+    "id": "sroie-validation-00034-v0",
+    "receipt_id": "train-345",
+    "split": "validation",
+    "schema": [
+      "company",
+      "date",
+      "address",
+      "total"
+    ],
+    "receipt_text": "GARDENIA BAKERIES (KL.) SDN BHD (139386 X)\nLot 3, Jalan Pelabur 23:1,\n40300 Shah Alam, Selangor.\nTel: 03 5423228 Fax:03 55423213\nGSTID: 000381399040\nTAX INVOICE / ADJUSTMENT NOTE\nCash Inv No.: 7903F711\nV E05 14 Date: 03/09/2017\nMAKASSAR FRESH MARKET SON BHD\nGROUND FLOOR, NO. 4 & 6,\nJALAN SS 15/4B,\n47500 SUBANG JAYA, SELANGOR\nVE05: Azlan(3737)\nDD: 03/09/2017 11:27\nDescription U.P Iss Exc D Sale Amt(RM)\nO.C. WHITE 2.13 0 -1 -2.13\nWHOLEMEAL 2.78 5 5 13.90\nO.C JUMBO 2.97 3 3 8.91\nBONZ SAVER 2.97 3 8.91\nTotal 0% supplies: 29.59\nCR-CHOCLT 0.72 6 6 0 0.00\nTotal 6% supplies (excl. GST): 0.00\nGST: 0.00\nTotal 6% supplies (Inc. GST): 0.00\nTotal 0% supplies: 29.59\nTotal Payable: 29.59\nE.&.O. E.\nReceived above goods in good order condition.\nThe recipient of Gardenia's products is\nrequired to make necessary adjustments to its\ninput tax claims, on the basic of the\nadjustments shown in this Tax Invoice /\nAdjustment Note\nCUSTOMER'S COPY",
+    "target": {
+      "company": "GARDENIA BAKERIES (KL.) SDN BHD",
+      "date": "03/09/2017",
+      "address": "Lot 3, Jalan Pelabur 23:1, 40300 Shah Alam, Selangor.",
+      "total": "29.59"
+    },
+    "prompt": [
+      {
+        "role": "system",
+        "content": "You are a document extraction engine. You read a document and return only a single JSON object matching the schema you are given. No explanations."
+      },
+      {
+        "role": "user",
+        "content": "Extract the following fields from this receipt: {\"company\": \"name of the merchant or business issuing the receipt\", \"date\": \"date of purchase, exactly as printed on the receipt\", \"address\": \"full street address of the merchant\", \"total\": \"final total amount paid\"}\n\nRespond with a single JSON object containing exactly these keys, in this order. If a field does not appear in the receipt, use null.\n\nReceipt text:\nGARDENIA BAKERIES (KL.) SDN BHD (139386 X)\nLot 3, Jalan Pelabur 23:1,\n40300 Shah Alam, Selangor.\nTel: 03 5423228 Fax:03 55423213\nGSTID: 000381399040\nTAX INVOICE / ADJUSTMENT NOTE\nCash Inv No.: 7903F711\nV E05 14 Date: 03/09/2017\nMAKASSAR FRESH MARKET SON BHD\nGROUND FLOOR, NO. 4 & 6,\nJALAN SS 15/4B,\n47500 SUBANG JAYA, SELANGOR\nVE05: Azlan(3737)\nDD: 03/09/2017 11:27\nDescription U.P Iss Exc D Sale Amt(RM)\nO.C. WHITE 2.13 0 -1 -2.13\nWHOLEMEAL 2.78 5 5 13.90\nO.C JUMBO 2.97 3 3 8.91\nBONZ SAVER 2.97 3 8.91\nTotal 0% supplies: 29.59\nCR-CHOCLT 0.72 6 6 0 0.00\nTotal 6% supplies (excl. GST): 0.00\nGST: 0.00\nTotal 6% supplies (Inc. GST): 0.00\nTotal 0% supplies: 29.59\nTotal Payable: 29.59\nE.&.O. E.\nReceived above goods in good order condition.\nThe recipient of Gardenia's products is\nrequired to make necessary adjustments to its\ninput tax claims, on the basic of the\nadjustments shown in this Tax Invoice /\nAdjustment Note\nCUSTOMER'S COPY"
+      }
+    ],
+    "completion": [
+      {
+        "role": "assistant",
+        "content": "{\"company\": \"GARDENIA BAKERIES (KL.) SDN BHD\", \"date\": \"03/09/2017\", \"address\": \"Lot 3, Jalan Pelabur 23:1, 40300 Shah Alam, Selangor.\", \"total\": \"29.59\"}"
+      }
+    ]
+  },
+  {
+    "id": "sroie-validation-00035-v0",
+    "receipt_id": "train-380",
+    "split": "validation",
+    "schema": [
+      "company",
+      "date",
+      "address",
+      "total"
+    ],
+    "receipt_text": "99 SPEED MART S/B (519537-X)\nLOT P.T. 2811, JALAN ANGSA,\nTAMAN BERKELEY\n41150 KLANG, SELANGOR\n1320-TMN BATU\nGST ID. NO : 000181747712\nINVOICE NO : 17881/102/10298\n07:49PM 563094 14-12-16\n5422 MI SEDAAP MI GORENG AS RM3.79 $\n0155 TWISTIES CHIPSTER ORIG RM2.85 $\n0954 MISTER POTATO BBQ (B) RM4.90 $\n@2 X RM 2.45\n5588 EAGLE FRIED DACE WT SA RM13.98 $\n22 X RM 6.99\n183 PLANTA MARJERIN 240G RM5.20 $\n507 COKE 1.5L RM5.98 $\n@2 X RM 2.99\n5725 CAP TAKRAW BERAS SUPER RM24.95 z\nTotal Sales (Inclusive GST) RM 61.65\nCREDIT RM 61.65\nCHANGE RM .00\nGST Summary Amount (RM) Tax (RM)\n$ = 6% 34.62 2.08\nz = 0% 24.95 .00\nThank You. Please come again\nKeep the invoice for applicable returns",
+    "target": {
+      "company": "99 SPEED MART S/B",
+      "date": "14-12-16",
+      "address": "LOT P.T. 2811, JALAN ANGSA, TAMAN BERKELEY 41150 KLANG, SELANGOR 1320-TMN BATU",
+      "total": "61.65"
+    },
+    "prompt": [
+      {
+        "role": "system",
+        "content": "You are a document extraction engine. You read a document and return only a single JSON object matching the schema you are given. No explanations."
+      },
+      {
+        "role": "user",
+        "content": "Extract the following fields from this receipt: {\"company\": \"name of the merchant or business issuing the receipt\", \"date\": \"date of purchase, exactly as printed on the receipt\", \"address\": \"full street address of the merchant\", \"total\": \"final total amount paid\"}\n\nRespond with a single JSON object containing exactly these keys, in this order. If a field does not appear in the receipt, use null.\n\nReceipt text:\n99 SPEED MART S/B (519537-X)\nLOT P.T. 2811, JALAN ANGSA,\nTAMAN BERKELEY\n41150 KLANG, SELANGOR\n1320-TMN BATU\nGST ID. NO : 000181747712\nINVOICE NO : 17881/102/10298\n07:49PM 563094 14-12-16\n5422 MI SEDAAP MI GORENG AS RM3.79 $\n0155 TWISTIES CHIPSTER ORIG RM2.85 $\n0954 MISTER POTATO BBQ (B) RM4.90 $\n@2 X RM 2.45\n5588 EAGLE FRIED DACE WT SA RM13.98 $\n22 X RM 6.99\n183 PLANTA MARJERIN 240G RM5.20 $\n507 COKE 1.5L RM5.98 $\n@2 X RM 2.99\n5725 CAP TAKRAW BERAS SUPER RM24.95 z\nTotal Sales (Inclusive GST) RM 61.65\nCREDIT RM 61.65\nCHANGE RM .00\nGST Summary Amount (RM) Tax (RM)\n$ = 6% 34.62 2.08\nz = 0% 24.95 .00\nThank You. Please come again\nKeep the invoice for applicable returns"
+      }
+    ],
+    "completion": [
+      {
+        "role": "assistant",
+        "content": "{\"company\": \"99 SPEED MART S/B\", \"date\": \"14-12-16\", \"address\": \"LOT P.T. 2811, JALAN ANGSA, TAMAN BERKELEY 41150 KLANG, SELANGOR 1320-TMN BATU\", \"total\": \"61.65\"}"
+      }
+    ]
+  },
+  {
+    "id": "sroie-validation-00036-v0",
+    "receipt_id": "train-360",
+    "split": "validation",
+    "schema": [
+      "company",
+      "date",
+      "address",
+      "total"
+    ],
+    "receipt_text": "GARDENIA BAKERIES (KL) SDN BHD (139386 X)\nLot 3, Jalan Pelabur 23/1,\n40300 Shah Alam, Selangor.\nTel: 03- 55423228 Fax:03- 55423213\nGST ID: 000381399040\nTAX INVOICE / ADJUSTMENT NOTE\nCash Inv No.: 7024F713\nVE0514 Date: 24/10/2017\nMAKASSAR FRESH MARKET SDN BHD\nGROUND FLOOR, NO. 4 & 6,\nJALAN SS 15/4B,\n47500 SUBANG JAYA, SELANGOR\nVE05: Ridzuan (11900)\nDD: 24/10/2017 12:17\nDescription U.P Iss Exc D Sale Amt(RM)\nO.C. WHITE 2.13 w 0 3 6.39\nWHOLEMEAL 2.78 w 3 8.34\nO. C JUMBO 2.97 + 4 11.88\nTotal 0% supplies: 26.61\nCR-VANILLA 0.72 20 0 0 20 14.40\nTotal 6% supplies (excl. GST): 14.40\nGST: 0.86\nTotal 6% supplies (Inc. GST): 15.26\nTotal 0% supplies: 26.61\nTotal Payable: 41.87\nE.&.0.E.\nReceived above goods in good order condition.\nThe recipient of Gardenia's products is\nrequired to make necessary adjustments to its\ninput tax claims, on the basic of the\nadjustments shown in this Tax Invoice /\nAdjustment Note\nCUSTOMER'S COPY",
+    "target": {
+      "company": "GARDENIA BAKERIES (KL) SDN BHD",
+      "date": "24/10/2017",
+      "address": "Lot 3, Jalan Pelabur 23/1, 40300 Shah Alam, Selangor.",
+      "total": "41.87"
+    },
+    "prompt": [
+      {
+        "role": "system",
+        "content": "You are a document extraction engine. You read a document and return only a single JSON object matching the schema you are given. No explanations."
+      },
+      {
+        "role": "user",
+        "content": "Extract the following fields from this receipt: {\"company\": \"name of the merchant or business issuing the receipt\", \"date\": \"date of purchase, exactly as printed on the receipt\", \"address\": \"full street address of the merchant\", \"total\": \"final total amount paid\"}\n\nRespond with a single JSON object containing exactly these keys, in this order. If a field does not appear in the receipt, use null.\n\nReceipt text:\nGARDENIA BAKERIES (KL) SDN BHD (139386 X)\nLot 3, Jalan Pelabur 23/1,\n40300 Shah Alam, Selangor.\nTel: 03- 55423228 Fax:03- 55423213\nGST ID: 000381399040\nTAX INVOICE / ADJUSTMENT NOTE\nCash Inv No.: 7024F713\nVE0514 Date: 24/10/2017\nMAKASSAR FRESH MARKET SDN BHD\nGROUND FLOOR, NO. 4 & 6,\nJALAN SS 15/4B,\n47500 SUBANG JAYA, SELANGOR\nVE05: Ridzuan (11900)\nDD: 24/10/2017 12:17\nDescription U.P Iss Exc D Sale Amt(RM)\nO.C. WHITE 2.13 w 0 3 6.39\nWHOLEMEAL 2.78 w 3 8.34\nO. C JUMBO 2.97 + 4 11.88\nTotal 0% supplies: 26.61\nCR-VANILLA 0.72 20 0 0 20 14.40\nTotal 6% supplies (excl. GST): 14.40\nGST: 0.86\nTotal 6% supplies (Inc. GST): 15.26\nTotal 0% supplies: 26.61\nTotal Payable: 41.87\nE.&.0.E.\nReceived above goods in good order condition.\nThe recipient of Gardenia's products is\nrequired to make necessary adjustments to its\ninput tax claims, on the basic of the\nadjustments shown in this Tax Invoice /\nAdjustment Note\nCUSTOMER'S COPY"
+      }
+    ],
+    "completion": [
+      {
+        "role": "assistant",
+        "content": "{\"company\": \"GARDENIA BAKERIES (KL) SDN BHD\", \"date\": \"24/10/2017\", \"address\": \"Lot 3, Jalan Pelabur 23/1, 40300 Shah Alam, Selangor.\", \"total\": \"41.87\"}"
+      }
+    ]
+  },
+  {
+    "id": "sroie-validation-00037-v0",
+    "receipt_id": "train-414",
+    "split": "validation",
+    "schema": [
+      "company",
+      "date",
+      "address",
+      "total"
+    ],
+    "receipt_text": "Kedai Uhat Dan Runcit CHONG HWA\n3, Jalan Perdana 5, Taman Indah Perdana,\nKepong, 52100 KL.\nTelephone No. 03-62801198\nGST No. 001379917824\nReceipt: 33037\nDate: Oct 3, 2016 12:16:25 PM\nTerminal: CW01\nServed by: Employee\nItem Price Qty Value\nLiquid Medicine RM33.90 X1 RM33.90\nItems count: 1\nTotal Sales Incl, GST @ 6% RM33.90\nCash\nTendered: RM100.00\nChange: RM66.10\nNett of Tax: RM31.98\nGST @ 6% : RM1.92\nSR RM31.98 RM1.92\nStandard Rated Tax RMO.00 RMO.00\nZR RMO.00 RMO.00\nZero Rated Tax (ZR RM0.00 RM0.00\nThank You",
+    "target": {
+      "company": "Kedai Uhat Dan Runcit CHONG HWA",
+      "date": "Oct 3, 2016",
+      "address": "3, Jalan Perdana 5, Taman Indah Perdana, Kepong, 52100 KL.",
+      "total": "RM33.90"
+    },
+    "prompt": [
+      {
+        "role": "system",
+        "content": "You are a document extraction engine. You read a document and return only a single JSON object matching the schema you are given. No explanations."
+      },
+      {
+        "role": "user",
+        "content": "Extract the following fields from this receipt: {\"company\": \"name of the merchant or business issuing the receipt\", \"date\": \"date of purchase, exactly as printed on the receipt\", \"address\": \"full street address of the merchant\", \"total\": \"final total amount paid\"}\n\nRespond with a single JSON object containing exactly these keys, in this order. If a field does not appear in the receipt, use null.\n\nReceipt text:\nKedai Uhat Dan Runcit CHONG HWA\n3, Jalan Perdana 5, Taman Indah Perdana,\nKepong, 52100 KL.\nTelephone No. 03-62801198\nGST No. 001379917824\nReceipt: 33037\nDate: Oct 3, 2016 12:16:25 PM\nTerminal: CW01\nServed by: Employee\nItem Price Qty Value\nLiquid Medicine RM33.90 X1 RM33.90\nItems count: 1\nTotal Sales Incl, GST @ 6% RM33.90\nCash\nTendered: RM100.00\nChange: RM66.10\nNett of Tax: RM31.98\nGST @ 6% : RM1.92\nSR RM31.98 RM1.92\nStandard Rated Tax RMO.00 RMO.00\nZR RMO.00 RMO.00\nZero Rated Tax (ZR RM0.00 RM0.00\nThank You"
+      }
+    ],
+    "completion": [
+      {
+        "role": "assistant",
+        "content": "{\"company\": \"Kedai Uhat Dan Runcit CHONG HWA\", \"date\": \"Oct 3, 2016\", \"address\": \"3, Jalan Perdana 5, Taman Indah Perdana, Kepong, 52100 KL.\", \"total\": \"RM33.90\"}"
+      }
+    ]
+  },
+  {
+    "id": "sroie-validation-00038-v0",
+    "receipt_id": "train-265",
+    "split": "validation",
+    "schema": [
+      "company",
+      "date",
+      "address",
+      "total"
+    ],
+    "receipt_text": "C. 1\nBroadview Marketing Sdn Bhd (728384-M)\nNo. 9-G, Jalan Dinar D U3/D\nTaman Subang Perdana, Sek,U3,\n40150 Shah Alam,Selangor D.E.\n03-78459183\nGST Req No: 000203587584\nInvoicPOSTED\nTax\nBill No BM-159572\nDate 15/05/2017 10:49:40 AM\nCashier : Marlin\nDescription Oty Price Amount\n1 SR TM BOS 10X 1 4.70 4.70\n16 (500pm)\nTotal : 4.70\nTotal Item Discount: 0.00\nTotal Sales Inclusive GST : 4.70\nCach Received : 4.70\nOK\nGST Summary\nTa: Code % Taxable Amount GST\nSR 6.00 4.43 0.27\nGST : 0.27\nGST Include Item ip- 70\nThank You. Please Come Again.",
+    "target": {
+      "company": "Broadview Marketing Sdn Bhd",
+      "date": "15/05/2017",
+      "address": "No. 9-G, Jalan Dinar D U3/D Taman Subang Perdana, Sek,U3, 40150 Shah Alam,Selangor D.E.",
+      "total": "4.70"
+    },
+    "prompt": [
+      {
+        "role": "system",
+        "content": "You are a document extraction engine. You read a document and return only a single JSON object matching the schema you are given. No explanations."
+      },
+      {
+        "role": "user",
+        "content": "Extract the following fields from this receipt: {\"company\": \"name of the merchant or business issuing the receipt\", \"date\": \"date of purchase, exactly as printed on the receipt\", \"address\": \"full street address of the merchant\", \"total\": \"final total amount paid\"}\n\nRespond with a single JSON object containing exactly these keys, in this order. If a field does not appear in the receipt, use null.\n\nReceipt text:\nC. 1\nBroadview Marketing Sdn Bhd (728384-M)\nNo. 9-G, Jalan Dinar D U3/D\nTaman Subang Perdana, Sek,U3,\n40150 Shah Alam,Selangor D.E.\n03-78459183\nGST Req No: 000203587584\nInvoicPOSTED\nTax\nBill No BM-159572\nDate 15/05/2017 10:49:40 AM\nCashier : Marlin\nDescription Oty Price Amount\n1 SR TM BOS 10X 1 4.70 4.70\n16 (500pm)\nTotal : 4.70\nTotal Item Discount: 0.00\nTotal Sales Inclusive GST : 4.70\nCach Received : 4.70\nOK\nGST Summary\nTa: Code % Taxable Amount GST\nSR 6.00 4.43 0.27\nGST : 0.27\nGST Include Item ip- 70\nThank You. Please Come Again."
+      }
+    ],
+    "completion": [
+      {
+        "role": "assistant",
+        "content": "{\"company\": \"Broadview Marketing Sdn Bhd\", \"date\": \"15/05/2017\", \"address\": \"No. 9-G, Jalan Dinar D U3/D Taman Subang Perdana, Sek,U3, 40150 Shah Alam,Selangor D.E.\", \"total\": \"4.70\"}"
+      }
+    ]
+  },
+  {
+    "id": "sroie-validation-00039-v0",
+    "receipt_id": "train-69",
+    "split": "validation",
+    "schema": [
+      "company",
+      "date",
+      "address",
+      "total"
+    ],
+    "receipt_text": "99 SPEED MART S/B (519537-X)\nLOT P.T. 2811, JALAN ANGSA,\nTAMAN BERKELEY\n41150 KLANG, SELANGOR\n1249-TMN PANDAN CAHAYA\nGST ID. NO : 000181747712\nINVOICE NO : 18314/102/T0422\n06:20PM 568008 20-02-18\n8991 NUTRI PLUS TELUR SEGAR RM9.90 z\nTotal Sales (Inclusive GST) RM 9.90\nCASH RM 10.00\nCHANGE RM .10\nGST Summary Amount (RM) Tax (RM)\nz = 0% 9.90 .00\nThank You. Please come again\nKeep the invoice for applicable returns",
+    "target": {
+      "company": "99 SPEED MART S/B",
+      "date": "20-02-18",
+      "address": "LOT P.T. 2811, JALAN ANGSA, TAMAN BERKELEY 41150 KLANG, SELANGOR 1249-TMN PANDAN CAHAYA",
+      "total": "RM9.90"
+    },
+    "prompt": [
+      {
+        "role": "system",
+        "content": "You are a document extraction engine. You read a document and return only a single JSON object matching the schema you are given. No explanations."
+      },
+      {
+        "role": "user",
+        "content": "Extract the following fields from this receipt: {\"company\": \"name of the merchant or business issuing the receipt\", \"date\": \"date of purchase, exactly as printed on the receipt\", \"address\": \"full street address of the merchant\", \"total\": \"final total amount paid\"}\n\nRespond with a single JSON object containing exactly these keys, in this order. If a field does not appear in the receipt, use null.\n\nReceipt text:\n99 SPEED MART S/B (519537-X)\nLOT P.T. 2811, JALAN ANGSA,\nTAMAN BERKELEY\n41150 KLANG, SELANGOR\n1249-TMN PANDAN CAHAYA\nGST ID. NO : 000181747712\nINVOICE NO : 18314/102/T0422\n06:20PM 568008 20-02-18\n8991 NUTRI PLUS TELUR SEGAR RM9.90 z\nTotal Sales (Inclusive GST) RM 9.90\nCASH RM 10.00\nCHANGE RM .10\nGST Summary Amount (RM) Tax (RM)\nz = 0% 9.90 .00\nThank You. Please come again\nKeep the invoice for applicable returns"
+      }
+    ],
+    "completion": [
+      {
+        "role": "assistant",
+        "content": "{\"company\": \"99 SPEED MART S/B\", \"date\": \"20-02-18\", \"address\": \"LOT P.T. 2811, JALAN ANGSA, TAMAN BERKELEY 41150 KLANG, SELANGOR 1249-TMN PANDAN CAHAYA\", \"total\": \"RM9.90\"}"
+      }
+    ]
+  },
+  {
+    "id": "sroie-validation-00040-v0",
+    "receipt_id": "train-519",
+    "split": "validation",
+    "schema": [
+      "company",
+      "date",
+      "address",
+      "total"
+    ],
+    "receipt_text": "TAX INVOICE\nBHPetrol Permas Jaya 2\nLOT PTD 101051\nJalan Permas 10/10\n81750 Masai, Johor\nEsjay Fuel Enterprise\nCO. REG. NO: 001011128-T\nGST REG. NO: 000153358336\n30-06-2018 09:09:49 Cashier: 465\nInvoice No: 1-642195\nPrepay Chit Number: 12091\nItem U\\Price Qnty Amount\nInf RON95 P3 2.200 22.73 50.00 R\nTOTAL SALES RM 50.00\nROUNDING ADJ RM 0.00\nTOTAL AMOUNT PAYABLE\nRM 50.00\nCASH RM 50.00\nPrepay Deposit RM 50.00\nPrepay Refund RM 0.00\nGST SUMMARY Amount RM Tax RM\nR: Relief* 50.00 0.00\n*Relief under Section 56(3) (b)GST Act 2014\nThank You For Shopping At BHPetromart\nCustomer Service 1-300-22-2828",
+    "target": {
+      "company": "Esjay Fuel Enterprise",
+      "date": "30-06-2018",
+      "address": "LOT PTD 101051 Jalan Permas 10/10 81750 Masai, Johor",
+      "total": "50.00"
+    },
+    "prompt": [
+      {
+        "role": "system",
+        "content": "You are a document extraction engine. You read a document and return only a single JSON object matching the schema you are given. No explanations."
+      },
+      {
+        "role": "user",
+        "content": "Extract the following fields from this receipt: {\"company\": \"name of the merchant or business issuing the receipt\", \"date\": \"date of purchase, exactly as printed on the receipt\", \"address\": \"full street address of the merchant\", \"total\": \"final total amount paid\"}\n\nRespond with a single JSON object containing exactly these keys, in this order. If a field does not appear in the receipt, use null.\n\nReceipt text:\nTAX INVOICE\nBHPetrol Permas Jaya 2\nLOT PTD 101051\nJalan Permas 10/10\n81750 Masai, Johor\nEsjay Fuel Enterprise\nCO. REG. NO: 001011128-T\nGST REG. NO: 000153358336\n30-06-2018 09:09:49 Cashier: 465\nInvoice No: 1-642195\nPrepay Chit Number: 12091\nItem U\\Price Qnty Amount\nInf RON95 P3 2.200 22.73 50.00 R\nTOTAL SALES RM 50.00\nROUNDING ADJ RM 0.00\nTOTAL AMOUNT PAYABLE\nRM 50.00\nCASH RM 50.00\nPrepay Deposit RM 50.00\nPrepay Refund RM 0.00\nGST SUMMARY Amount RM Tax RM\nR: Relief* 50.00 0.00\n*Relief under Section 56(3) (b)GST Act 2014\nThank You For Shopping At BHPetromart\nCustomer Service 1-300-22-2828"
+      }
+    ],
+    "completion": [
+      {
+        "role": "assistant",
+        "content": "{\"company\": \"Esjay Fuel Enterprise\", \"date\": \"30-06-2018\", \"address\": \"LOT PTD 101051 Jalan Permas 10/10 81750 Masai, Johor\", \"total\": \"50.00\"}"
+      }
+    ]
+  },
+  {
+    "id": "sroie-validation-00041-v0",
+    "receipt_id": "train-8",
+    "split": "validation",
+    "schema": [
+      "company",
+      "date",
+      "address",
+      "total"
+    ],
+    "receipt_text": "PERNIAGAAN ZHENG HUI\nJM0325956-V\nNO.59 JALAN PERMAS 9/5\nBANDAR BARU PERMAS JAYA\n81760 JOHOR BAHRU\nTEL : 07-386 7524 FAX : 07-386 3793\nGST NO : 000800589824\nSIMPLIFIED TAX INVOICE\nGOGIANT ENGINEERING (M) SDN BHD\nRecept#: CS00082552\nSalesperson: Date: 12/02/2018\nCashier: USER TIme: 08:30:00\n(RM) (RM;\nItem Qty RSP Amount\n8239 1 16.00 15.0¢\nSR: 11\" PROWESS H/DUTY SILICONE GUN G-DZ\n9555075109147 3 7.00 21.00\nSR: XTRASEAL RIV ACETIC SILICONE SA-107\n9744 GB 1 18.00 18.00\nSR: CENTRAL PUNCH SET 3PCS - 1/4\",5/32\". 1/4\"\n12525 GB 1 50.00 50.00\nSR. 24\" MARKSMAN PIPE WRENCH\n2016 GA 3 0.70 2.1C\nSR: PVC WIRE TAPE 1PC X 7YD\nTOT QTY:\" 9 106.10\n(Excluded GST) Sub Total (RM) : 106.10\nDiscount (RM) : 0.00\nTotal GST (RM) : 6.37\nRounding (RM) : -0.02\nTotal (RM) : 112.46\nCASH : 112.45\nChange (RM) : 6.00\nGST SUMMARY\nTax Code Amount GST\nSR 106.10 6.37\nTotal : 106.10 6.3\nGOODS SOLD ARE NOT RETURNABLE.\nTHANK YOU.",
+    "target": {
+      "company": "PERNIAGAAN ZHENG HUI",
+      "date": "12/02/2018",
+      "address": "NO.59 JALAN PERMAS 9/5 BANDAR BARU PERMAS JAYA 81760 JOHOR BAHRU",
+      "total": "112.45"
+    },
+    "prompt": [
+      {
+        "role": "system",
+        "content": "You are a document extraction engine. You read a document and return only a single JSON object matching the schema you are given. No explanations."
+      },
+      {
+        "role": "user",
+        "content": "Extract the following fields from this receipt: {\"company\": \"name of the merchant or business issuing the receipt\", \"date\": \"date of purchase, exactly as printed on the receipt\", \"address\": \"full street address of the merchant\", \"total\": \"final total amount paid\"}\n\nRespond with a single JSON object containing exactly these keys, in this order. If a field does not appear in the receipt, use null.\n\nReceipt text:\nPERNIAGAAN ZHENG HUI\nJM0325956-V\nNO.59 JALAN PERMAS 9/5\nBANDAR BARU PERMAS JAYA\n81760 JOHOR BAHRU\nTEL : 07-386 7524 FAX : 07-386 3793\nGST NO : 000800589824\nSIMPLIFIED TAX INVOICE\nGOGIANT ENGINEERING (M) SDN BHD\nRecept#: CS00082552\nSalesperson: Date: 12/02/2018\nCashier: USER TIme: 08:30:00\n(RM) (RM;\nItem Qty RSP Amount\n8239 1 16.00 15.0¢\nSR: 11\" PROWESS H/DUTY SILICONE GUN G-DZ\n9555075109147 3 7.00 21.00\nSR: XTRASEAL RIV ACETIC SILICONE SA-107\n9744 GB 1 18.00 18.00\nSR: CENTRAL PUNCH SET 3PCS - 1/4\",5/32\". 1/4\"\n12525 GB 1 50.00 50.00\nSR. 24\" MARKSMAN PIPE WRENCH\n2016 GA 3 0.70 2.1C\nSR: PVC WIRE TAPE 1PC X 7YD\nTOT QTY:\" 9 106.10\n(Excluded GST) Sub Total (RM) : 106.10\nDiscount (RM) : 0.00\nTotal GST (RM) : 6.37\nRounding (RM) : -0.02\nTotal (RM) : 112.46\nCASH : 112.45\nChange (RM) : 6.00\nGST SUMMARY\nTax Code Amount GST\nSR 106.10 6.37\nTotal : 106.10 6.3\nGOODS SOLD ARE NOT RETURNABLE.\nTHANK YOU."
+      }
+    ],
+    "completion": [
+      {
+        "role": "assistant",
+        "content": "{\"company\": \"PERNIAGAAN ZHENG HUI\", \"date\": \"12/02/2018\", \"address\": \"NO.59 JALAN PERMAS 9/5 BANDAR BARU PERMAS JAYA 81760 JOHOR BAHRU\", \"total\": \"112.45\"}"
+      }
+    ]
+  },
+  {
+    "id": "sroie-validation-00042-v0",
+    "receipt_id": "train-349",
+    "split": "validation",
+    "schema": [
+      "company",
+      "date",
+      "address",
+      "total"
+    ],
+    "receipt_text": "GARDENIA BAKERIES (KL) SDN BHD (139386 X)\nLot 3, Jalan Pelabur 23/1,\n40300 Shah Alam, Selangor.\nTel: 03- 55423228 Fax:03- 55423213\nGST ID: 000381399040\nTAX INVOICE / ADJUSTMENT NOTE\nCash Inv No.: 7925F716\nVEI Date: 25/09/2017\nMAKASSAR FRESH MARKET SDN BHD\nGROUND FLOOR, NO. 4 & 6,\nJALAN SS 15/4B,\n47500 SUBANG JAYA, SELANGOR\nVE05: Ridzuan (11900)\nDD: 25/09/2017 12:12\nDescription U.P Iss Exc D Sale Amt(RM)\nO.C. WHITE 2.13 3 0 3 6.39\nWHOLEMEAL 2.78 2 2 5.56\nO.C JUMBO 2.97 A 11.88\nTotal 0% supplies: 23.83\nDELICIA-B/SCOTCH 3.72 3 0 3 11.16\nCR-CHOCL1 0.72 20 0 20 14.40\nCR-B' SCOTCH 0.72 13 0 -13 -9.36\nSQ-S. BERRY 0.84 5 5 -4.20\nTotal 6% supplies (excl. GST): 12.00\nGST: 0.72\nTotal 6% supplies (Inc. GST): 12.72\nTotal 0% supplies: 23.83\nTotal Payable: 36.55\nE.&.O.E.\nReceived above goods in good order condition.\nThe recipient of Gardenia's products is\nrequired to make necessary adjustments to its\ninput tax claims, on the basic of the\nadjustments shown in this Tax Invoice /\nAdjustment Note\nRE- PRINT",
+    "target": {
+      "company": "GARDENIA BAKERIES (KL) SDN BHD",
+      "date": "25/09/2017",
+      "address": "Lot 3, Jalan Pelabur 23/1, 40300 Shah Alam, Selangor.",
+      "total": "36.55"
+    },
+    "prompt": [
+      {
+        "role": "system",
+        "content": "You are a document extraction engine. You read a document and return only a single JSON object matching the schema you are given. No explanations."
+      },
+      {
+        "role": "user",
+        "content": "Extract the following fields from this receipt: {\"company\": \"name of the merchant or business issuing the receipt\", \"date\": \"date of purchase, exactly as printed on the receipt\", \"address\": \"full street address of the merchant\", \"total\": \"final total amount paid\"}\n\nRespond with a single JSON object containing exactly these keys, in this order. If a field does not appear in the receipt, use null.\n\nReceipt text:\nGARDENIA BAKERIES (KL) SDN BHD (139386 X)\nLot 3, Jalan Pelabur 23/1,\n40300 Shah Alam, Selangor.\nTel: 03- 55423228 Fax:03- 55423213\nGST ID: 000381399040\nTAX INVOICE / ADJUSTMENT NOTE\nCash Inv No.: 7925F716\nVEI Date: 25/09/2017\nMAKASSAR FRESH MARKET SDN BHD\nGROUND FLOOR, NO. 4 & 6,\nJALAN SS 15/4B,\n47500 SUBANG JAYA, SELANGOR\nVE05: Ridzuan (11900)\nDD: 25/09/2017 12:12\nDescription U.P Iss Exc D Sale Amt(RM)\nO.C. WHITE 2.13 3 0 3 6.39\nWHOLEMEAL 2.78 2 2 5.56\nO.C JUMBO 2.97 A 11.88\nTotal 0% supplies: 23.83\nDELICIA-B/SCOTCH 3.72 3 0 3 11.16\nCR-CHOCL1 0.72 20 0 20 14.40\nCR-B' SCOTCH 0.72 13 0 -13 -9.36\nSQ-S. BERRY 0.84 5 5 -4.20\nTotal 6% supplies (excl. GST): 12.00\nGST: 0.72\nTotal 6% supplies (Inc. GST): 12.72\nTotal 0% supplies: 23.83\nTotal Payable: 36.55\nE.&.O.E.\nReceived above goods in good order condition.\nThe recipient of Gardenia's products is\nrequired to make necessary adjustments to its\ninput tax claims, on the basic of the\nadjustments shown in this Tax Invoice /\nAdjustment Note\nRE- PRINT"
+      }
+    ],
+    "completion": [
+      {
+        "role": "assistant",
+        "content": "{\"company\": \"GARDENIA BAKERIES (KL) SDN BHD\", \"date\": \"25/09/2017\", \"address\": \"Lot 3, Jalan Pelabur 23/1, 40300 Shah Alam, Selangor.\", \"total\": \"36.55\"}"
+      }
+    ]
+  },
+  {
+    "id": "sroie-validation-00043-v0",
+    "receipt_id": "train-526",
+    "split": "validation",
+    "schema": [
+      "company",
+      "date",
+      "address",
+      "total"
+    ],
+    "receipt_text": "Aoboa6\nUNIHAKKA INTERNATIONAL SDN BHD\n12 Jun 2018 18:18\n(867388-U) Perindustrian\n12, Jalan Tampoi 7/4, Kawasan\nTampoi, 81200 Johor Bahru, Johor\nTAX INVOICE\nInvoice # : OR18061202170371\nItem Qty Total\nSR 100100000006- Pork\nRM2.54 1 RM2.54\nSR 100100000060- 4 Vege\nRM5.18 1 RM5.18\nTotal Amount: RM7.72\nGST @0%: RM0.00\nRounding: -RM0.02\nNett Total: RM7.70\nPayment Mode Amount\nCASH RM7.70\nChange RM0.00\nGST Summary Amount(RM) Tax(RM)\nSR = GST @0% 7.72 0.00\nGST REG #000656195584\nBAR WANG RICE@PERMAS JAYA\nThank You & Come Again!\nLike and Follow Us on Facebook!\nFacebook.com/BarWangRice",
+    "target": {
+      "company": "UNIHAKKA INTERNATIONAL SDN BHD",
+      "date": "12 Jun 2018",
+      "address": "12, Jalan Tampoi 7/4, Kawasan Perindustrian Tampoi, 81200 Johor Bahru, Johor",
+      "total": "RM7.70"
+    },
+    "prompt": [
+      {
+        "role": "system",
+        "content": "You are a document extraction engine. You read a document and return only a single JSON object matching the schema you are given. No explanations."
+      },
+      {
+        "role": "user",
+        "content": "Extract the following fields from this receipt: {\"company\": \"name of the merchant or business issuing the receipt\", \"date\": \"date of purchase, exactly as printed on the receipt\", \"address\": \"full street address of the merchant\", \"total\": \"final total amount paid\"}\n\nRespond with a single JSON object containing exactly these keys, in this order. If a field does not appear in the receipt, use null.\n\nReceipt text:\nAoboa6\nUNIHAKKA INTERNATIONAL SDN BHD\n12 Jun 2018 18:18\n(867388-U) Perindustrian\n12, Jalan Tampoi 7/4, Kawasan\nTampoi, 81200 Johor Bahru, Johor\nTAX INVOICE\nInvoice # : OR18061202170371\nItem Qty Total\nSR 100100000006- Pork\nRM2.54 1 RM2.54\nSR 100100000060- 4 Vege\nRM5.18 1 RM5.18\nTotal Amount: RM7.72\nGST @0%: RM0.00\nRounding: -RM0.02\nNett Total: RM7.70\nPayment Mode Amount\nCASH RM7.70\nChange RM0.00\nGST Summary Amount(RM) Tax(RM)\nSR = GST @0% 7.72 0.00\nGST REG #000656195584\nBAR WANG RICE@PERMAS JAYA\nThank You & Come Again!\nLike and Follow Us on Facebook!\nFacebook.com/BarWangRice"
+      }
+    ],
+    "completion": [
+      {
+        "role": "assistant",
+        "content": "{\"company\": \"UNIHAKKA INTERNATIONAL SDN BHD\", \"date\": \"12 Jun 2018\", \"address\": \"12, Jalan Tampoi 7/4, Kawasan Perindustrian Tampoi, 81200 Johor Bahru, Johor\", \"total\": \"RM7.70\"}"
+      }
+    ]
+  },
+  {
+    "id": "sroie-validation-00044-v0",
+    "receipt_id": "train-15",
+    "split": "validation",
+    "schema": [
+      "company",
+      "date",
+      "address",
+      "total"
+    ],
+    "receipt_text": "HOME MASTER HARDWARE &\nELECTRICAL\nNO.113G & 115G, JALAN SETIA GEMBILANG\nU13/EG BANDAR SETIA ALAM,\n40170 BANDAR SETIA ALAM,\nSELANGOR.\nCompany Reg No. :SA03711551-P\nGST Reg No. :001637511168\nTAX INVOICE\nInvolce No.: CS 67832\nDate : 22/12/2017 14:03\nCashler #: CASHIER\nRM Code\n24MMx7Y M.ONE TAPE\n1.00 15.90 15.90 SR\nSubtotal : 15.90\nTotal Excl. of GST 15.00\nTotal Incl. of GST 15.90\n- -\nTotal Amt Rounded 15.90\nPayment : 50.00\nChange Due : 34.10\nTotal Item(6) : 1\nG Summary Amount (RM) Tax (RM)\nSR 15.00 0.90\n........ THANK YOU .\nANY GOODS RETURN PLEASE DO WITHIN\n7 DAYS WITH ORIGINAL RECEIPT TQM",
+    "target": {
+      "company": "HOME MASTER HARDWARE & ELECTRICAL",
+      "date": "22/12/2017",
+      "address": "NO.113G & 115G, JALAN SETIA GEMBILANG U13/EG BANDAR SETIA ALAM, 40170 BANDAR SETIA ALAM, SELANGOR.",
+      "total": "15.90"
+    },
+    "prompt": [
+      {
+        "role": "system",
+        "content": "You are a document extraction engine. You read a document and return only a single JSON object matching the schema you are given. No explanations."
+      },
+      {
+        "role": "user",
+        "content": "Extract the following fields from this receipt: {\"company\": \"name of the merchant or business issuing the receipt\", \"date\": \"date of purchase, exactly as printed on the receipt\", \"address\": \"full street address of the merchant\", \"total\": \"final total amount paid\"}\n\nRespond with a single JSON object containing exactly these keys, in this order. If a field does not appear in the receipt, use null.\n\nReceipt text:\nHOME MASTER HARDWARE &\nELECTRICAL\nNO.113G & 115G, JALAN SETIA GEMBILANG\nU13/EG BANDAR SETIA ALAM,\n40170 BANDAR SETIA ALAM,\nSELANGOR.\nCompany Reg No. :SA03711551-P\nGST Reg No. :001637511168\nTAX INVOICE\nInvolce No.: CS 67832\nDate : 22/12/2017 14:03\nCashler #: CASHIER\nRM Code\n24MMx7Y M.ONE TAPE\n1.00 15.90 15.90 SR\nSubtotal : 15.90\nTotal Excl. of GST 15.00\nTotal Incl. of GST 15.90\n- -\nTotal Amt Rounded 15.90\nPayment : 50.00\nChange Due : 34.10\nTotal Item(6) : 1\nG Summary Amount (RM) Tax (RM)\nSR 15.00 0.90\n........ THANK YOU .\nANY GOODS RETURN PLEASE DO WITHIN\n7 DAYS WITH ORIGINAL RECEIPT TQM"
+      }
+    ],
+    "completion": [
+      {
+        "role": "assistant",
+        "content": "{\"company\": \"HOME MASTER HARDWARE & ELECTRICAL\", \"date\": \"22/12/2017\", \"address\": \"NO.113G & 115G, JALAN SETIA GEMBILANG U13/EG BANDAR SETIA ALAM, 40170 BANDAR SETIA ALAM, SELANGOR.\", \"total\": \"15.90\"}"
+      }
+    ]
+  },
+  {
+    "id": "sroie-validation-00045-v0",
+    "receipt_id": "train-539",
+    "split": "validation",
+    "schema": [
+      "company",
+      "date",
+      "address",
+      "total"
+    ],
+    "receipt_text": "Gerbang Alaf Restaurants Sdn Bhd\n(65351-M)\nLicensee of McDonald's\nLevel 6, Bangunan TH, Damansara Uptown3\nNo. 3, Jalan SS21/38,47400 Petaling Jaya\nSelangor\n(GST ID No: 000504564064)\nMcDonald's Mutiara Rini DT (#309)\nTel No. 07-5542-467\nTAX INVOICE\nMFY Side 1\nINV# 003090200024723\nORD #60 -REG #2- 24/06/2018 22:43:04\nQTY ITEM TOTAL\n1 L 9Nuggets 12.80\n1 9Nuggets\n1 Barbecue Sauce\n1 Sweet and Sour Sauce\n1 L Sprite\nLess Ice\n1 L Fries\nEat-In Total (incl GST) 12.80\nTotal Rounded 12.80\nCash Tendered 13.00\nChange 0.20\nTOTAL INCLUDES 0% GST 0.00\nThank You and Please Come Again.",
+    "target": {
+      "company": "Gerbang Alaf Restaurants Sdn Bhd",
+      "date": "24/06/2018",
+      "address": "Level 6, Bangunan TH, Damansara Uptown3 No. 3, Jalan SS21/38,47400 Petaling Jaya Selangor",
+      "total": "12.80"
+    },
+    "prompt": [
+      {
+        "role": "system",
+        "content": "You are a document extraction engine. You read a document and return only a single JSON object matching the schema you are given. No explanations."
+      },
+      {
+        "role": "user",
+        "content": "Extract the following fields from this receipt: {\"company\": \"name of the merchant or business issuing the receipt\", \"date\": \"date of purchase, exactly as printed on the receipt\", \"address\": \"full street address of the merchant\", \"total\": \"final total amount paid\"}\n\nRespond with a single JSON object containing exactly these keys, in this order. If a field does not appear in the receipt, use null.\n\nReceipt text:\nGerbang Alaf Restaurants Sdn Bhd\n(65351-M)\nLicensee of McDonald's\nLevel 6, Bangunan TH, Damansara Uptown3\nNo. 3, Jalan SS21/38,47400 Petaling Jaya\nSelangor\n(GST ID No: 000504564064)\nMcDonald's Mutiara Rini DT (#309)\nTel No. 07-5542-467\nTAX INVOICE\nMFY Side 1\nINV# 003090200024723\nORD #60 -REG #2- 24/06/2018 22:43:04\nQTY ITEM TOTAL\n1 L 9Nuggets 12.80\n1 9Nuggets\n1 Barbecue Sauce\n1 Sweet and Sour Sauce\n1 L Sprite\nLess Ice\n1 L Fries\nEat-In Total (incl GST) 12.80\nTotal Rounded 12.80\nCash Tendered 13.00\nChange 0.20\nTOTAL INCLUDES 0% GST 0.00\nThank You and Please Come Again."
+      }
+    ],
+    "completion": [
+      {
+        "role": "assistant",
+        "content": "{\"company\": \"Gerbang Alaf Restaurants Sdn Bhd\", \"date\": \"24/06/2018\", \"address\": \"Level 6, Bangunan TH, Damansara Uptown3 No. 3, Jalan SS21/38,47400 Petaling Jaya Selangor\", \"total\": \"12.80\"}"
+      }
+    ]
+  },
+  {
+    "id": "sroie-validation-00046-v0",
+    "receipt_id": "train-589",
+    "split": "validation",
+    "schema": [
+      "company",
+      "date",
+      "address",
+      "total"
+    ],
+    "receipt_text": "TQ FOR SHOPPING WITH myNEWS.com\nOASIS VILLAGE\nLOUNGE 2, GROUND FLOOR, OASIS VILLAGE, NO 2,\nJALAN PJU 1A/7A, OASIS SQUARE, OASIS DAMANSARA ,,\n47301, PETALING JAYA, SELANGOR\nmyNEWScareline : 1800 88 1231\nmyNEWScareline@mynews.com.my\nMYNEWS RETAIL SB(306295-X) FKA BISON STORES SB\nTAX REG ID CBP 000709361664\nQTY PRICE DISC AMT\nHE-333-3S UNICORN BALL PEN BLUE\n1.90 0.00 1.90 SR\nHE-3S 70 UNICORN MARKER BK\n1 4.50 0.00 4.50 SR\nMR.BANANA 140G\n1 1.30 0.00 1.30 SR\nSUB TOTAL 7.70\nGRAND TOTAL 7.70\nCASH 8.00 MYR 8.00\nCHANGE DUE 0.30\nTOTAL QTY 3\nSR : 0% GOODS : 7.70 TAX : 0.00\n29/06/2018 8:26:57 AM\nBILL 4449 - 517 - 12949 - 2906180053\nPRICE IS GST INCLUSIVE",
+    "target": {
+      "company": "MYNEWS RETAIL SB(306295-X)",
+      "date": "29/06/2018",
+      "address": "OASIS VILLAGE LOUNGE 2, GROUND FLOOR, OASIS VILLAGE, NO 2, JALAN PJU 1A/7A, OASIS SQUARE, OASIS DAMANSARA ,, 47301, PETALING JAYA, SELANGOR",
+      "total": "7.70"
+    },
+    "prompt": [
+      {
+        "role": "system",
+        "content": "You are a document extraction engine. You read a document and return only a single JSON object matching the schema you are given. No explanations."
+      },
+      {
+        "role": "user",
+        "content": "Extract the following fields from this receipt: {\"company\": \"name of the merchant or business issuing the receipt\", \"date\": \"date of purchase, exactly as printed on the receipt\", \"address\": \"full street address of the merchant\", \"total\": \"final total amount paid\"}\n\nRespond with a single JSON object containing exactly these keys, in this order. If a field does not appear in the receipt, use null.\n\nReceipt text:\nTQ FOR SHOPPING WITH myNEWS.com\nOASIS VILLAGE\nLOUNGE 2, GROUND FLOOR, OASIS VILLAGE, NO 2,\nJALAN PJU 1A/7A, OASIS SQUARE, OASIS DAMANSARA ,,\n47301, PETALING JAYA, SELANGOR\nmyNEWScareline : 1800 88 1231\nmyNEWScareline@mynews.com.my\nMYNEWS RETAIL SB(306295-X) FKA BISON STORES SB\nTAX REG ID CBP 000709361664\nQTY PRICE DISC AMT\nHE-333-3S UNICORN BALL PEN BLUE\n1.90 0.00 1.90 SR\nHE-3S 70 UNICORN MARKER BK\n1 4.50 0.00 4.50 SR\nMR.BANANA 140G\n1 1.30 0.00 1.30 SR\nSUB TOTAL 7.70\nGRAND TOTAL 7.70\nCASH 8.00 MYR 8.00\nCHANGE DUE 0.30\nTOTAL QTY 3\nSR : 0% GOODS : 7.70 TAX : 0.00\n29/06/2018 8:26:57 AM\nBILL 4449 - 517 - 12949 - 2906180053\nPRICE IS GST INCLUSIVE"
+      }
+    ],
+    "completion": [
+      {
+        "role": "assistant",
+        "content": "{\"company\": \"MYNEWS RETAIL SB(306295-X)\", \"date\": \"29/06/2018\", \"address\": \"OASIS VILLAGE LOUNGE 2, GROUND FLOOR, OASIS VILLAGE, NO 2, JALAN PJU 1A/7A, OASIS SQUARE, OASIS DAMANSARA ,, 47301, PETALING JAYA, SELANGOR\", \"total\": \"7.70\"}"
+      }
+    ]
+  },
+  {
+    "id": "sroie-validation-00047-v0",
+    "receipt_id": "train-282",
+    "split": "validation",
+    "schema": [
+      "company",
+      "date",
+      "address",
+      "total"
+    ],
+    "receipt_text": "A04106\nRESTORAN SIAM VILLAGE\nNo. 8, Jalan Permas 10/7,\nPermas Jaya, 81750 Johor Bahru.\nTel: 013-7279552\nCash Receipt\nHQ Table\nBill No: 1863 5\nSevr By : manager-'\nCreate Time : 27/04/2018\n. Qty . . ...... Description Total (RM)\n1 BC001 CLAYPOT F/TOFU 18.90\n2 C004 STIR RED CURRY 37.80\n@RM18.90\n2 DR001C THAI ICE TEA 13.80\n@RM6.90\n2 DRO02C THAI ICE GREEN 13.80\n@RM6.90\n1 SD002 THAI STYLE 16.00\nACACIA LEAF\nSQ003L STEAMED SQUIDS 32.00\nI\n2 T002S SPICY THAI TOM 50.00\nAFOOD (S)\n@RM25.00\n1 V001 FRIED KANGKUNG 16.90\n1 V002 S/FRIED KAILAN 18.90\nD FISH\n2 WOO3 THAI STYLE 31.80\nPRAWN\n@RM15.90\n13 W006 WHITE RICE (PER 26.00\nFILL)\n@RM2.00\n28 SUBTOTAL: 275.90\nType : = Qty : 28\nBill Total : 275,90\nRounding Adj. : 0.00\nNET TOTAL : 275.90\nCASH 275.90\nThank You!\nPlease Come Again\nmanager-",
+    "target": {
+      "company": "RESTORAN SIAM VILLAGE",
+      "date": "27/04/2018",
+      "address": "No. 8, Jalan Permas 10/7, Permas Jaya, 81750 Johor Bahru.",
+      "total": "275.90"
+    },
+    "prompt": [
+      {
+        "role": "system",
+        "content": "You are a document extraction engine. You read a document and return only a single JSON object matching the schema you are given. No explanations."
+      },
+      {
+        "role": "user",
+        "content": "Extract the following fields from this receipt: {\"company\": \"name of the merchant or business issuing the receipt\", \"date\": \"date of purchase, exactly as printed on the receipt\", \"address\": \"full street address of the merchant\", \"total\": \"final total amount paid\"}\n\nRespond with a single JSON object containing exactly these keys, in this order. If a field does not appear in the receipt, use null.\n\nReceipt text:\nA04106\nRESTORAN SIAM VILLAGE\nNo. 8, Jalan Permas 10/7,\nPermas Jaya, 81750 Johor Bahru.\nTel: 013-7279552\nCash Receipt\nHQ Table\nBill No: 1863 5\nSevr By : manager-'\nCreate Time : 27/04/2018\n. Qty . . ...... Description Total (RM)\n1 BC001 CLAYPOT F/TOFU 18.90\n2 C004 STIR RED CURRY 37.80\n@RM18.90\n2 DR001C THAI ICE TEA 13.80\n@RM6.90\n2 DRO02C THAI ICE GREEN 13.80\n@RM6.90\n1 SD002 THAI STYLE 16.00\nACACIA LEAF\nSQ003L STEAMED SQUIDS 32.00\nI\n2 T002S SPICY THAI TOM 50.00\nAFOOD (S)\n@RM25.00\n1 V001 FRIED KANGKUNG 16.90\n1 V002 S/FRIED KAILAN 18.90\nD FISH\n2 WOO3 THAI STYLE 31.80\nPRAWN\n@RM15.90\n13 W006 WHITE RICE (PER 26.00\nFILL)\n@RM2.00\n28 SUBTOTAL: 275.90\nType : = Qty : 28\nBill Total : 275,90\nRounding Adj. : 0.00\nNET TOTAL : 275.90\nCASH 275.90\nThank You!\nPlease Come Again\nmanager-"
+      }
+    ],
+    "completion": [
+      {
+        "role": "assistant",
+        "content": "{\"company\": \"RESTORAN SIAM VILLAGE\", \"date\": \"27/04/2018\", \"address\": \"No. 8, Jalan Permas 10/7, Permas Jaya, 81750 Johor Bahru.\", \"total\": \"275.90\"}"
+      }
+    ]
+  },
+  {
+    "id": "sroie-validation-00048-v0",
+    "receipt_id": "train-573",
+    "split": "validation",
+    "schema": [
+      "company",
+      "date",
+      "address",
+      "total"
+    ],
+    "receipt_text": "MR. D.I.Y. (KUCHAI) SDN BHD\n(CO Reg : 750441-W)\nLOT 1851-A & 1851-B, JALAN KPB 6,\nKAWASAN PERINDUSTRIAN BALAKONG,\n43300 SERI KEMBANGAN, SELANGOR\n(GST ID No : 000473792512)\n(KEPONG )\n- TAX INVOICE -\nKNIFE 7240 *S\nBB21-41-61 - 12/72\n6926292571513 1 × 15.57 15.57\nM/FUNCTION SCISSORS K56 *S\nGA07 - 12/144\n6926292592327 1 × 7.45 7.45\nKIWI S/S KNIFE NO. 475 5' *S\nWA37 - 12/480\n8910041 1 × 4.25 4.25\nItem(s) : 3 Qty (s) : 3\nTotal Incl. GST RM 27.27\nROUNDING ADJUSTMENT -RM 0.02\nTOTAL ROUNDED RM 27.25\nCASH RM 30.00\nCHANGE RM 2.75\nGST Summary Amt (RM) Tax (RM)\nGST SR@0% 27.27 0.00\n* -*\n30-06-18 13:27 SH01 B003 T1 R000639004\nOPERATOR KPOT - ASYRAF ALI\nEXCHANGE ARE ALLOWED WITHIN\n7 DAYS WITH RECEIPT.\nSTRICTLY NO CASH REFUND.",
+    "target": {
+      "company": "MR. D.I.Y. (KUCHAI) SDN BHD",
+      "date": "30-06-18",
+      "address": "LOT 1851-A & 1851-B, JALAN KPB 6, KAWASAN PERINDUSTRIAN BALAKONG, 43300 SERI KEMBANGAN, SELANGOR",
+      "total": "27.25"
+    },
+    "prompt": [
+      {
+        "role": "system",
+        "content": "You are a document extraction engine. You read a document and return only a single JSON object matching the schema you are given. No explanations."
+      },
+      {
+        "role": "user",
+        "content": "Extract the following fields from this receipt: {\"company\": \"name of the merchant or business issuing the receipt\", \"date\": \"date of purchase, exactly as printed on the receipt\", \"address\": \"full street address of the merchant\", \"total\": \"final total amount paid\"}\n\nRespond with a single JSON object containing exactly these keys, in this order. If a field does not appear in the receipt, use null.\n\nReceipt text:\nMR. D.I.Y. (KUCHAI) SDN BHD\n(CO Reg : 750441-W)\nLOT 1851-A & 1851-B, JALAN KPB 6,\nKAWASAN PERINDUSTRIAN BALAKONG,\n43300 SERI KEMBANGAN, SELANGOR\n(GST ID No : 000473792512)\n(KEPONG )\n- TAX INVOICE -\nKNIFE 7240 *S\nBB21-41-61 - 12/72\n6926292571513 1 × 15.57 15.57\nM/FUNCTION SCISSORS K56 *S\nGA07 - 12/144\n6926292592327 1 × 7.45 7.45\nKIWI S/S KNIFE NO. 475 5' *S\nWA37 - 12/480\n8910041 1 × 4.25 4.25\nItem(s) : 3 Qty (s) : 3\nTotal Incl. GST RM 27.27\nROUNDING ADJUSTMENT -RM 0.02\nTOTAL ROUNDED RM 27.25\nCASH RM 30.00\nCHANGE RM 2.75\nGST Summary Amt (RM) Tax (RM)\nGST SR@0% 27.27 0.00\n* -*\n30-06-18 13:27 SH01 B003 T1 R000639004\nOPERATOR KPOT - ASYRAF ALI\nEXCHANGE ARE ALLOWED WITHIN\n7 DAYS WITH RECEIPT.\nSTRICTLY NO CASH REFUND."
+      }
+    ],
+    "completion": [
+      {
+        "role": "assistant",
+        "content": "{\"company\": \"MR. D.I.Y. (KUCHAI) SDN BHD\", \"date\": \"30-06-18\", \"address\": \"LOT 1851-A & 1851-B, JALAN KPB 6, KAWASAN PERINDUSTRIAN BALAKONG, 43300 SERI KEMBANGAN, SELANGOR\", \"total\": \"27.25\"}"
+      }
+    ]
+  },
+  {
+    "id": "sroie-validation-00049-v0",
+    "receipt_id": "train-241",
+    "split": "validation",
+    "schema": [
+      "company",
+      "date",
+      "address",
+      "total"
+    ],
+    "receipt_text": "BEMED (SP) SON. BHD.\nNo.49, Jalan Dinar G UNG,\nSubang Perdana,\n40150 Shah Alam, Selangor D.E.\n03-7845 3155\nGST Reg : 001734164480\nCASH RECEIPT\nCB#: 45978640320 25/Feb/2017 07:43:54\nGashier : be ()\nOy Code&Desc Price Total\nNH DELICADERMA PROTECTIVE CR 50M\n1 340000 76.00 76 SR\n11-(BEPROGENT CR LS) 30G\n1 178032 10.00 10 ZRL\nALPHA LIPID LIFE LINE 450MG 450G\n1 184310 185.00 185 3R\n3 Type: 3\nSubTotal: 251.00\nCash Promotion 34.00\nRounding Adj : 0.00\nTotal Inclusive GST: 217.00\nMA ER 217.00\nGST Summary: Amount Tax\n(MYR) (MYR.)\nSR 185.28 11.72\n-\nZAL 10.00 0.00\n-\nONG GUAT CHYE\ntle\nPoints :\n215\nThank you.\nPlease come again.",
+    "target": {
+      "company": "BEMED (SP) SON.",
+      "date": "25/Feb/2017",
+      "address": "BHD. No.49, Jalan Dinar G UNG, Subang Perdana, 40150 Shah Alam, Selangor D.E.",
+      "total": "217.00"
+    },
+    "prompt": [
+      {
+        "role": "system",
+        "content": "You are a document extraction engine. You read a document and return only a single JSON object matching the schema you are given. No explanations."
+      },
+      {
+        "role": "user",
+        "content": "Extract the following fields from this receipt: {\"company\": \"name of the merchant or business issuing the receipt\", \"date\": \"date of purchase, exactly as printed on the receipt\", \"address\": \"full street address of the merchant\", \"total\": \"final total amount paid\"}\n\nRespond with a single JSON object containing exactly these keys, in this order. If a field does not appear in the receipt, use null.\n\nReceipt text:\nBEMED (SP) SON. BHD.\nNo.49, Jalan Dinar G UNG,\nSubang Perdana,\n40150 Shah Alam, Selangor D.E.\n03-7845 3155\nGST Reg : 001734164480\nCASH RECEIPT\nCB#: 45978640320 25/Feb/2017 07:43:54\nGashier : be ()\nOy Code&Desc Price Total\nNH DELICADERMA PROTECTIVE CR 50M\n1 340000 76.00 76 SR\n11-(BEPROGENT CR LS) 30G\n1 178032 10.00 10 ZRL\nALPHA LIPID LIFE LINE 450MG 450G\n1 184310 185.00 185 3R\n3 Type: 3\nSubTotal: 251.00\nCash Promotion 34.00\nRounding Adj : 0.00\nTotal Inclusive GST: 217.00\nMA ER 217.00\nGST Summary: Amount Tax\n(MYR) (MYR.)\nSR 185.28 11.72\n-\nZAL 10.00 0.00\n-\nONG GUAT CHYE\ntle\nPoints :\n215\nThank you.\nPlease come again."
+      }
+    ],
+    "completion": [
+      {
+        "role": "assistant",
+        "content": "{\"company\": \"BEMED (SP) SON.\", \"date\": \"25/Feb/2017\", \"address\": \"BHD. No.49, Jalan Dinar G UNG, Subang Perdana, 40150 Shah Alam, Selangor D.E.\", \"total\": \"217.00\"}"
+      }
+    ]
+  },
+  {
+    "id": "sroie-validation-00050-v0",
+    "receipt_id": "train-317",
+    "split": "validation",
+    "schema": [
+      "company",
+      "date",
+      "address",
+      "total"
+    ],
+    "receipt_text": "3180404\nWESTERN EASTERN\nSTATIONERY SON. BHD\nCO REG NO : 210038-K\nGST ID : 000517095424\n42-46, JLN SULTAN AZLAN\nSHAH 51200 KUALA LUMPUR\nTEL : 03-4043 7678\nTAX INVOICE\nREG 16-04-2018 14:51\nC01 KL 001 037846\nCLR P.S A4/A3\nS RM5.00\n1 No\nGST TA AMT RM4.72\nGST 6% RMO. 28\nTOTAL RM5.00\nCASH RM5. 00\nTAX INVOICE OF GST\nGOODS SOLD ARE NOT\nRETURNABLE",
+    "target": {
+      "company": "WESTERN EASTERN STATIONERY SON. BHD",
+      "date": "16-04-2018",
+      "address": "42-46, JLN SULTAN AZLAN SHAH 51200 KUALA LUMPUR",
+      "total": "RM5.00"
+    },
+    "prompt": [
+      {
+        "role": "system",
+        "content": "You are a document extraction engine. You read a document and return only a single JSON object matching the schema you are given. No explanations."
+      },
+      {
+        "role": "user",
+        "content": "Extract the following fields from this receipt: {\"company\": \"name of the merchant or business issuing the receipt\", \"date\": \"date of purchase, exactly as printed on the receipt\", \"address\": \"full street address of the merchant\", \"total\": \"final total amount paid\"}\n\nRespond with a single JSON object containing exactly these keys, in this order. If a field does not appear in the receipt, use null.\n\nReceipt text:\n3180404\nWESTERN EASTERN\nSTATIONERY SON. BHD\nCO REG NO : 210038-K\nGST ID : 000517095424\n42-46, JLN SULTAN AZLAN\nSHAH 51200 KUALA LUMPUR\nTEL : 03-4043 7678\nTAX INVOICE\nREG 16-04-2018 14:51\nC01 KL 001 037846\nCLR P.S A4/A3\nS RM5.00\n1 No\nGST TA AMT RM4.72\nGST 6% RMO. 28\nTOTAL RM5.00\nCASH RM5. 00\nTAX INVOICE OF GST\nGOODS SOLD ARE NOT\nRETURNABLE"
+      }
+    ],
+    "completion": [
+      {
+        "role": "assistant",
+        "content": "{\"company\": \"WESTERN EASTERN STATIONERY SON. BHD\", \"date\": \"16-04-2018\", \"address\": \"42-46, JLN SULTAN AZLAN SHAH 51200 KUALA LUMPUR\", \"total\": \"RM5.00\"}"
+      }
+    ]
+  },
+  {
+    "id": "sroie-validation-00051-v0",
+    "receipt_id": "train-14",
+    "split": "validation",
+    "schema": [
+      "company",
+      "date",
+      "address",
+      "total"
+    ],
+    "receipt_text": "ASIA MART\n(SA0264195-T)\nNO.23 BATU 10, TAMAN SENTOSA,\nJALAN KAPAR, 42200 KLANG, SELANGOR.\nGST ID : 001609584640\nTAX INVOICE\nDoc No Date: 22/12/2017\n: CS02070163\nCashier EIRA Time: 00:06:00\nSalesperson : EIRA Ref.:\n(GST) (GST)\nItem Qty S/Price S/Price Amount Tax\n9556641320027 17 0.85 0.90 15.25 SR\nDELICIA CHOCOLATE [50G]\n955623111004! 1 3.55 3.55 3.55 ZRL\nGARDENIA ORIGINAL CLASSIC JUMBO [600G]\n9556127101331 1 1.41 1.50 1.50 SR\nHU IS LIME 50G\n8850199320722 1 1.42 1.51 1.51 SR\nDOREMON CATCAT JOY 15G\n885019932072: - 1.42 1.51 1.51 SR\nDOREMON CATCAT JOY 15G\n8888002188511 1 2.30 2.44 2.44 SR\nMINUTE MAID PULPY [OREN] [350ML]\n3888002188511 7 2.30 2.44 2.44 SR\nMINUTE MAID PULEY IOREN! [350ML]\n9568145026014 1.60 1.60 SR\nTINGE LEMON DRINK 500ML\n955657031212 2.74 2.90 2.90\n100 P: JS [1 5] SR\nTotal Ofv: 25\n32.69\nTotal Sales (Excluding GST) : 31.03\nDiscount : 0.00\nTotal GST : 1.65\nRounding : 0.02\nTatal Sales (Inclusive of GST) :\n32.70\nCASH : 40.00\nChange : 7.30\nGST SUMMARY\nTax Code Amt (RM)\nSR 6 27.48 Tax (RM)\nZRL 3.55 1.65\nTotal : 31.03 0.00\n1.65\nGOODS SOLD ARE NOT RETURNABLE,\nTHANK YOU.",
+    "target": {
+      "company": "ASIA MART",
+      "date": "22/12/2017",
+      "address": "NO.23 BATU 10, TAMAN SENTOSA, JALAN KAPAR, 42200 KLANG, SELANGOR.",
+      "total": "32.70"
+    },
+    "prompt": [
+      {
+        "role": "system",
+        "content": "You are a document extraction engine. You read a document and return only a single JSON object matching the schema you are given. No explanations."
+      },
+      {
+        "role": "user",
+        "content": "Extract the following fields from this receipt: {\"company\": \"name of the merchant or business issuing the receipt\", \"date\": \"date of purchase, exactly as printed on the receipt\", \"address\": \"full street address of the merchant\", \"total\": \"final total amount paid\"}\n\nRespond with a single JSON object containing exactly these keys, in this order. If a field does not appear in the receipt, use null.\n\nReceipt text:\nASIA MART\n(SA0264195-T)\nNO.23 BATU 10, TAMAN SENTOSA,\nJALAN KAPAR, 42200 KLANG, SELANGOR.\nGST ID : 001609584640\nTAX INVOICE\nDoc No Date: 22/12/2017\n: CS02070163\nCashier EIRA Time: 00:06:00\nSalesperson : EIRA Ref.:\n(GST) (GST)\nItem Qty S/Price S/Price Amount Tax\n9556641320027 17 0.85 0.90 15.25 SR\nDELICIA CHOCOLATE [50G]\n955623111004! 1 3.55 3.55 3.55 ZRL\nGARDENIA ORIGINAL CLASSIC JUMBO [600G]\n9556127101331 1 1.41 1.50 1.50 SR\nHU IS LIME 50G\n8850199320722 1 1.42 1.51 1.51 SR\nDOREMON CATCAT JOY 15G\n885019932072: - 1.42 1.51 1.51 SR\nDOREMON CATCAT JOY 15G\n8888002188511 1 2.30 2.44 2.44 SR\nMINUTE MAID PULPY [OREN] [350ML]\n3888002188511 7 2.30 2.44 2.44 SR\nMINUTE MAID PULEY IOREN! [350ML]\n9568145026014 1.60 1.60 SR\nTINGE LEMON DRINK 500ML\n955657031212 2.74 2.90 2.90\n100 P: JS [1 5] SR\nTotal Ofv: 25\n32.69\nTotal Sales (Excluding GST) : 31.03\nDiscount : 0.00\nTotal GST : 1.65\nRounding : 0.02\nTatal Sales (Inclusive of GST) :\n32.70\nCASH : 40.00\nChange : 7.30\nGST SUMMARY\nTax Code Amt (RM)\nSR 6 27.48 Tax (RM)\nZRL 3.55 1.65\nTotal : 31.03 0.00\n1.65\nGOODS SOLD ARE NOT RETURNABLE,\nTHANK YOU."
+      }
+    ],
+    "completion": [
+      {
+        "role": "assistant",
+        "content": "{\"company\": \"ASIA MART\", \"date\": \"22/12/2017\", \"address\": \"NO.23 BATU 10, TAMAN SENTOSA, JALAN KAPAR, 42200 KLANG, SELANGOR.\", \"total\": \"32.70\"}"
+      }
+    ]
+  },
+  {
+    "id": "sroie-validation-00052-v0",
+    "receipt_id": "train-487",
+    "split": "validation",
+    "schema": [
+      "company",
+      "date",
+      "address",
+      "total"
+    ],
+    "receipt_text": "SANYO STATIONERY SHOP\nNO. 31G&33G, JALAN SETIA INDAH X , 013/X\n40170 SETIA ALAM\nMobile /Whatsapps : +6012-918 7937\nTel: +603-3362 4137\nGST ID No: 001531760640 TAX INVOICE\nOwned By (1135772-K)\nSANYU SUPPLY SON BHD\nCASH SALES COUNTER\n1. 2005-0263 ARTLINE 500A W/BOARD\nMARKER - BLACK\n1 × 3.7000 3.70 SR\n2. 2012-0029 RESTAURANT ORDER CHIT NCR\n3.5\"x6\"\n3 × 2.9000 8.70 SR\n- -. GST @6% 12.40\nTotal Sales Inclusive\nDiscount 0.00\nTotal 12.40\nRound Adj 0.00\nFinal Total 12.40\nCASH 15.00\nCHANGE 2.60\nGST Summary Amount(RM) Tax(RM)\nSR @ 6% 11.70 0.70\nINV NO: CS-SA-0111837 Date : 18/09/2017\nGoods sold are not Returnable & Refundable\nTHANK YOU FOR YOUR PATRONAGE\nPLEASE COME AGAIN.\nTERIMA KASIH SILA DATANG LAGI\n** PLEASE KEEP THIS RECEIPT FOR PROVE OF\nPURCHASE DATE FOR I.T PRODUCT WARRANTY\nPURPOSE **\nFollow us in Facebook : Sanyu.Stationery",
+    "target": {
+      "company": "SANYO STATIONERY SHOP",
+      "date": "18/09/2017",
+      "address": "NO. 31G&33G, JALAN SETIA INDAH X , 013/X 40170 SETIA ALAM",
+      "total": "12.40"
+    },
+    "prompt": [
+      {
+        "role": "system",
+        "content": "You are a document extraction engine. You read a document and return only a single JSON object matching the schema you are given. No explanations."
+      },
+      {
+        "role": "user",
+        "content": "Extract the following fields from this receipt: {\"company\": \"name of the merchant or business issuing the receipt\", \"date\": \"date of purchase, exactly as printed on the receipt\", \"address\": \"full street address of the merchant\", \"total\": \"final total amount paid\"}\n\nRespond with a single JSON object containing exactly these keys, in this order. If a field does not appear in the receipt, use null.\n\nReceipt text:\nSANYO STATIONERY SHOP\nNO. 31G&33G, JALAN SETIA INDAH X , 013/X\n40170 SETIA ALAM\nMobile /Whatsapps : +6012-918 7937\nTel: +603-3362 4137\nGST ID No: 001531760640 TAX INVOICE\nOwned By (1135772-K)\nSANYU SUPPLY SON BHD\nCASH SALES COUNTER\n1. 2005-0263 ARTLINE 500A W/BOARD\nMARKER - BLACK\n1 × 3.7000 3.70 SR\n2. 2012-0029 RESTAURANT ORDER CHIT NCR\n3.5\"x6\"\n3 × 2.9000 8.70 SR\n- -. GST @6% 12.40\nTotal Sales Inclusive\nDiscount 0.00\nTotal 12.40\nRound Adj 0.00\nFinal Total 12.40\nCASH 15.00\nCHANGE 2.60\nGST Summary Amount(RM) Tax(RM)\nSR @ 6% 11.70 0.70\nINV NO: CS-SA-0111837 Date : 18/09/2017\nGoods sold are not Returnable & Refundable\nTHANK YOU FOR YOUR PATRONAGE\nPLEASE COME AGAIN.\nTERIMA KASIH SILA DATANG LAGI\n** PLEASE KEEP THIS RECEIPT FOR PROVE OF\nPURCHASE DATE FOR I.T PRODUCT WARRANTY\nPURPOSE **\nFollow us in Facebook : Sanyu.Stationery"
+      }
+    ],
+    "completion": [
+      {
+        "role": "assistant",
+        "content": "{\"company\": \"SANYO STATIONERY SHOP\", \"date\": \"18/09/2017\", \"address\": \"NO. 31G&33G, JALAN SETIA INDAH X , 013/X 40170 SETIA ALAM\", \"total\": \"12.40\"}"
+      }
+    ]
+  },
+  {
+    "id": "sroie-validation-00053-v0",
+    "receipt_id": "train-497",
+    "split": "validation",
+    "schema": [
+      "company",
+      "date",
+      "address",
+      "total"
+    ],
+    "receipt_text": "SANYU STATIONERY SHOP\nNO. 31G&33G, JALAN SETIA INDAH X ,U13/X\n40170 SETIA ALAM\nMobile /Whatsapps : +6012-918 7937\nTel: +603-3362 4137\nGST ID No: 001531760640 TAX INVOICE\nOwned By :\nSANYU SUPPLY SDN BHD (1135772-\nCASH SALES COUNTER\n1. 2012-0029 RESTAURANT ORDER CHIT NCR\n3.5\"x6\"\n3 × 2.9000 8.70 SR\nTotal Sales Inclusive GST @6% 8.70\nDiscount 0.00\nTotal 8.70\nOrder Book Round Adj 0.00\nFinal Total 8.70\n== = = === ==\n- CASH 10.00\n2 CHANGE 1.30\nGST Summary Amount(RM) Tax(RM)\nSR @ 6% 8.21 0.49\nINV NO: CS-SA-0094876 Date : 08/07/2017\nGoods sold are not Returnable & Refundable\nTHANK YOU FOR YOUR PATRONAGE\nPLEASE COME AGAIN.\nTERIMA KASIH SILA DATANG LAGI\n** PLEASE KEEP THIS RECEIPT FOR PROVE OF\nPURCHASE DATE FOR I.T PRODUCT WARRANTY\nPURPOSE **\nFollow us in Facebook : Sanyu.Stationery",
+    "target": {
+      "company": "SANYU STATIONERY SHOP",
+      "date": "08/07/2017",
+      "address": "NO. 31G&33G, JALAN SETIA INDAH X ,U13/X 40170 SETIA ALAM",
+      "total": "8.70"
+    },
+    "prompt": [
+      {
+        "role": "system",
+        "content": "You are a document extraction engine. You read a document and return only a single JSON object matching the schema you are given. No explanations."
+      },
+      {
+        "role": "user",
+        "content": "Extract the following fields from this receipt: {\"company\": \"name of the merchant or business issuing the receipt\", \"date\": \"date of purchase, exactly as printed on the receipt\", \"address\": \"full street address of the merchant\", \"total\": \"final total amount paid\"}\n\nRespond with a single JSON object containing exactly these keys, in this order. If a field does not appear in the receipt, use null.\n\nReceipt text:\nSANYU STATIONERY SHOP\nNO. 31G&33G, JALAN SETIA INDAH X ,U13/X\n40170 SETIA ALAM\nMobile /Whatsapps : +6012-918 7937\nTel: +603-3362 4137\nGST ID No: 001531760640 TAX INVOICE\nOwned By :\nSANYU SUPPLY SDN BHD (1135772-\nCASH SALES COUNTER\n1. 2012-0029 RESTAURANT ORDER CHIT NCR\n3.5\"x6\"\n3 × 2.9000 8.70 SR\nTotal Sales Inclusive GST @6% 8.70\nDiscount 0.00\nTotal 8.70\nOrder Book Round Adj 0.00\nFinal Total 8.70\n== = = === ==\n- CASH 10.00\n2 CHANGE 1.30\nGST Summary Amount(RM) Tax(RM)\nSR @ 6% 8.21 0.49\nINV NO: CS-SA-0094876 Date : 08/07/2017\nGoods sold are not Returnable & Refundable\nTHANK YOU FOR YOUR PATRONAGE\nPLEASE COME AGAIN.\nTERIMA KASIH SILA DATANG LAGI\n** PLEASE KEEP THIS RECEIPT FOR PROVE OF\nPURCHASE DATE FOR I.T PRODUCT WARRANTY\nPURPOSE **\nFollow us in Facebook : Sanyu.Stationery"
+      }
+    ],
+    "completion": [
+      {
+        "role": "assistant",
+        "content": "{\"company\": \"SANYU STATIONERY SHOP\", \"date\": \"08/07/2017\", \"address\": \"NO. 31G&33G, JALAN SETIA INDAH X ,U13/X 40170 SETIA ALAM\", \"total\": \"8.70\"}"
+      }
+    ]
+  },
+  {
+    "id": "sroie-validation-00054-v0",
+    "receipt_id": "train-168",
+    "split": "validation",
+    "schema": [
+      "company",
+      "date",
+      "address",
+      "total"
+    ],
+    "receipt_text": "KING'S CONFECTIONERY S/B 273500-U (KSB)\nNO.41, JALAN SERI BINTANG 2\nTAMAN SRI BINTANG,\n52100 KUALA LUMPUR.\nTEL NO:- 012 - 602 8832\n(GST ID : 000294060032)\nTax Invoice\nInv No :KSB80051978 Date:11/03/18 21:30\nCashier:FT8303 Ctr :02\n------\nCode Desc Qty RM D% Amt\n201019 KAYA PUFF 4 1.60 0 6.40 S\n231027 Slice Cak 1 8.70 0 8.70 S\n101110 Cheese Le 1 3.50 30 2.45 S\n251030 Cheese Ta 1 3.40 0 3.40 S\n171153 D/R BUTTE 1. 4.20 0 4.20 S\nQty 8 25.15\nRounding Adj - 0.00\n-----------.\nDue 25.15\nPay 25.15\n--------\nChange 0.00\n----- ---------- ---- - -----===\n(Total Included GST @ 6% : 1.42)\nGOODS SOLD NOT RETURNABLE/EXCHANGEABLE!\nTHANK YOU PLEASE COME AGAIN!!\nTASTY BAKING HEALTHY NATION!!\n== Visit us online at www.kings.com.my ==",
+    "target": {
+      "company": "KING'S CONFECTIONERY S/B",
+      "date": "Date:11/03/18",
+      "address": "NO.41, JALAN SERI BINTANG 2 TAMAN SRI BINTANG, 52100 KUALA LUMPUR.",
+      "total": "25.15"
+    },
+    "prompt": [
+      {
+        "role": "system",
+        "content": "You are a document extraction engine. You read a document and return only a single JSON object matching the schema you are given. No explanations."
+      },
+      {
+        "role": "user",
+        "content": "Extract the following fields from this receipt: {\"company\": \"name of the merchant or business issuing the receipt\", \"date\": \"date of purchase, exactly as printed on the receipt\", \"address\": \"full street address of the merchant\", \"total\": \"final total amount paid\"}\n\nRespond with a single JSON object containing exactly these keys, in this order. If a field does not appear in the receipt, use null.\n\nReceipt text:\nKING'S CONFECTIONERY S/B 273500-U (KSB)\nNO.41, JALAN SERI BINTANG 2\nTAMAN SRI BINTANG,\n52100 KUALA LUMPUR.\nTEL NO:- 012 - 602 8832\n(GST ID : 000294060032)\nTax Invoice\nInv No :KSB80051978 Date:11/03/18 21:30\nCashier:FT8303 Ctr :02\n------\nCode Desc Qty RM D% Amt\n201019 KAYA PUFF 4 1.60 0 6.40 S\n231027 Slice Cak 1 8.70 0 8.70 S\n101110 Cheese Le 1 3.50 30 2.45 S\n251030 Cheese Ta 1 3.40 0 3.40 S\n171153 D/R BUTTE 1. 4.20 0 4.20 S\nQty 8 25.15\nRounding Adj - 0.00\n-----------.\nDue 25.15\nPay 25.15\n--------\nChange 0.00\n----- ---------- ---- - -----===\n(Total Included GST @ 6% : 1.42)\nGOODS SOLD NOT RETURNABLE/EXCHANGEABLE!\nTHANK YOU PLEASE COME AGAIN!!\nTASTY BAKING HEALTHY NATION!!\n== Visit us online at www.kings.com.my =="
+      }
+    ],
+    "completion": [
+      {
+        "role": "assistant",
+        "content": "{\"company\": \"KING'S CONFECTIONERY S/B\", \"date\": \"Date:11/03/18\", \"address\": \"NO.41, JALAN SERI BINTANG 2 TAMAN SRI BINTANG, 52100 KUALA LUMPUR.\", \"total\": \"25.15\"}"
+      }
+    ]
+  },
+  {
+    "id": "sroie-validation-00055-v0",
+    "receipt_id": "train-302",
+    "split": "validation",
+    "schema": [
+      "company",
+      "date",
+      "address",
+      "total"
+    ],
+    "receipt_text": "004101\nAEON CO. (M) BHD (126926-H)\n3RD FLR, AEON TAMAN MALURI SC\nJLN JEJAKA, TAMAN MALURI\nCHERAS, 55100 KUALA LUMPUR\nGST ID : 002017394688\nSHOPPING HOURS\nSUN-THU: 1000 HRS - 2230 HRS\nFRI-SAT :1000 HRS - 2300 HRS\n1× 000008204363 14.99SR\nKIT KAT SHARE B\nItem promo @9.99 -5.00\n1× 000001018506 21.10SR\nBERYLS TTOW\n1× 000001057437 18.29SR\nVH BOX 180G SE\nItem promo @12.89 -5.40\n1× 000001057436 18.29SR\nVH BOX 180G RA\nItem promo @12.89 -5.40\n1× 000001011536 31.60SR\nLINDT DT125\n1× 000005914876 9,90SR\nMILO NUGGETS FU\nSub-total 98.37\nTotal Sales Incl GST 98.37\nRounding Adj -0.0\nTotal After Adj Incl GST 98.35\nCASH 100.00\nItem Count 6 Change Amt 1.65\nInvoice No: 2018042210100080567\nGST Summary Amount Tax\nSR @ 6% 92.80 5.57\nTotal 92.80 5.57\n22/04/2018 19:26 1010 008 0080567\n0307614 PJ HAZIQ\nAEON PERMAS JAYA\nTEL 1-300-80-AEON (2366)\nTHANK YOU FOR YOUR PATRONAGE\nPLEASE COME AGAIN",
+    "target": {
+      "company": "AEON CO. (M) BHD",
+      "date": "22/04/2018",
+      "address": "3RD FLR, AEON TAMAN MALURI SC JLN JEJAKA, TAMAN MALURI CHERAS, 55100 KUALA LUMPUR",
+      "total": "98.35"
+    },
+    "prompt": [
+      {
+        "role": "system",
+        "content": "You are a document extraction engine. You read a document and return only a single JSON object matching the schema you are given. No explanations."
+      },
+      {
+        "role": "user",
+        "content": "Extract the following fields from this receipt: {\"company\": \"name of the merchant or business issuing the receipt\", \"date\": \"date of purchase, exactly as printed on the receipt\", \"address\": \"full street address of the merchant\", \"total\": \"final total amount paid\"}\n\nRespond with a single JSON object containing exactly these keys, in this order. If a field does not appear in the receipt, use null.\n\nReceipt text:\n004101\nAEON CO. (M) BHD (126926-H)\n3RD FLR, AEON TAMAN MALURI SC\nJLN JEJAKA, TAMAN MALURI\nCHERAS, 55100 KUALA LUMPUR\nGST ID : 002017394688\nSHOPPING HOURS\nSUN-THU: 1000 HRS - 2230 HRS\nFRI-SAT :1000 HRS - 2300 HRS\n1× 000008204363 14.99SR\nKIT KAT SHARE B\nItem promo @9.99 -5.00\n1× 000001018506 21.10SR\nBERYLS TTOW\n1× 000001057437 18.29SR\nVH BOX 180G SE\nItem promo @12.89 -5.40\n1× 000001057436 18.29SR\nVH BOX 180G RA\nItem promo @12.89 -5.40\n1× 000001011536 31.60SR\nLINDT DT125\n1× 000005914876 9,90SR\nMILO NUGGETS FU\nSub-total 98.37\nTotal Sales Incl GST 98.37\nRounding Adj -0.0\nTotal After Adj Incl GST 98.35\nCASH 100.00\nItem Count 6 Change Amt 1.65\nInvoice No: 2018042210100080567\nGST Summary Amount Tax\nSR @ 6% 92.80 5.57\nTotal 92.80 5.57\n22/04/2018 19:26 1010 008 0080567\n0307614 PJ HAZIQ\nAEON PERMAS JAYA\nTEL 1-300-80-AEON (2366)\nTHANK YOU FOR YOUR PATRONAGE\nPLEASE COME AGAIN"
+      }
+    ],
+    "completion": [
+      {
+        "role": "assistant",
+        "content": "{\"company\": \"AEON CO. (M) BHD\", \"date\": \"22/04/2018\", \"address\": \"3RD FLR, AEON TAMAN MALURI SC JLN JEJAKA, TAMAN MALURI CHERAS, 55100 KUALA LUMPUR\", \"total\": \"98.35\"}"
+      }
+    ]
+  },
+  {
+    "id": "sroie-validation-00056-v0",
+    "receipt_id": "train-483",
+    "split": "validation",
+    "schema": [
+      "company",
+      "date",
+      "address",
+      "total"
+    ],
+    "receipt_text": "SANYU STATIONERY SHOP\nNO. 31G&33G, JALAN SETIA INDAH X ,U13/X\n40170 SETIA ALAM\nMobile /Whatsapps : +6012-918 7937\nTel: +603-3362 4137\nGST ID No: 001531760640\nTAX INVOICE\nOwned By :\nSANYU SUPPLY SDN BHD (1135772-K)\nCASH SALES COUNTER\n1. 2011-0025 MAX STAPLE 10-1M\n2 × 1.0000 2.00 SR\nTotal Sales Inclusive GST @6% 2.00\nDiscount 0.00\nTotal 2.00\nRound Adj 0.00\nFinal Total 2.00\nCASH 2.00\nCHANGE 0.00\nGST Summary Amount(RM) Tax(RM)\nSR @ 6% 1.89 0.11\nINV NO: CS-SA-0122858 Date : 07/11/2017\nGoods sold are not Returnable & Refundable\nTHANK YOU FOR YOUR PATRONAGE\nPLEASE COME AGAIN.\nTERIMA KASIH SILA DATANG LAGI\n** PLEASE KEEP THIS RECEIPT FOR PROVE OF\nPURCHASE DATE FOR I.T PRODUCT WARRANTY\nPURPOSE **\nFollow us in Facebook : Sanyu.Stationery",
+    "target": {
+      "company": "SANYU STATIONERY SHOP",
+      "date": "07/11/2017",
+      "address": "NO. 31G&33G, JALAN SETIA INDAH X ,U13/X 40170 SETIA ALAM",
+      "total": "2.00"
+    },
+    "prompt": [
+      {
+        "role": "system",
+        "content": "You are a document extraction engine. You read a document and return only a single JSON object matching the schema you are given. No explanations."
+      },
+      {
+        "role": "user",
+        "content": "Extract the following fields from this receipt: {\"company\": \"name of the merchant or business issuing the receipt\", \"date\": \"date of purchase, exactly as printed on the receipt\", \"address\": \"full street address of the merchant\", \"total\": \"final total amount paid\"}\n\nRespond with a single JSON object containing exactly these keys, in this order. If a field does not appear in the receipt, use null.\n\nReceipt text:\nSANYU STATIONERY SHOP\nNO. 31G&33G, JALAN SETIA INDAH X ,U13/X\n40170 SETIA ALAM\nMobile /Whatsapps : +6012-918 7937\nTel: +603-3362 4137\nGST ID No: 001531760640\nTAX INVOICE\nOwned By :\nSANYU SUPPLY SDN BHD (1135772-K)\nCASH SALES COUNTER\n1. 2011-0025 MAX STAPLE 10-1M\n2 × 1.0000 2.00 SR\nTotal Sales Inclusive GST @6% 2.00\nDiscount 0.00\nTotal 2.00\nRound Adj 0.00\nFinal Total 2.00\nCASH 2.00\nCHANGE 0.00\nGST Summary Amount(RM) Tax(RM)\nSR @ 6% 1.89 0.11\nINV NO: CS-SA-0122858 Date : 07/11/2017\nGoods sold are not Returnable & Refundable\nTHANK YOU FOR YOUR PATRONAGE\nPLEASE COME AGAIN.\nTERIMA KASIH SILA DATANG LAGI\n** PLEASE KEEP THIS RECEIPT FOR PROVE OF\nPURCHASE DATE FOR I.T PRODUCT WARRANTY\nPURPOSE **\nFollow us in Facebook : Sanyu.Stationery"
+      }
+    ],
+    "completion": [
+      {
+        "role": "assistant",
+        "content": "{\"company\": \"SANYU STATIONERY SHOP\", \"date\": \"07/11/2017\", \"address\": \"NO. 31G&33G, JALAN SETIA INDAH X ,U13/X 40170 SETIA ALAM\", \"total\": \"2.00\"}"
+      }
+    ]
+  },
+  {
+    "id": "sroie-validation-00057-v0",
+    "receipt_id": "train-421",
+    "split": "validation",
+    "schema": [
+      "company",
+      "date",
+      "address",
+      "total"
+    ],
+    "receipt_text": "buardian Health And Beauty Sdn Bhd\nBandar Baru Kawang\nNo 15 Jalan Bandar Kawang 10\nBandar Baru Kawang\nle1:03-60952052\nCompany Keg #1101083-1\nGS1 Reg #000899874816\nRM\n121056217 PRINGLES SUUK/CK 4.80 S\nSUBIUIAL 4.80\nDISCUUNIABLE 4.80\n6% IKX % DISU 0.29-\nKeason:\nSUBIUIAL 4.51\n------\nKUUNDING ADJUSTMENTS 0.01-\nTUIAL (GSI INCL) 4.50\nL'ASH 4.50\nYUUR SAVINGS FUR TUDAY 0.29\n651 - Rate ---- 651 Exci -- 651 Amt\n6% 4.25 0.26\nThank You For Shopping\nAt Guardian\nAll Amounts Are in KM\nboods soid are non-refundable.\nDispensed medicines sold are\nnot returnable.\nAll exchanges and returns including\nGuardian brand products must be made\nwithin 7days with original receipts and\nproduct in original condition.\nSt:8282 Ctr2 ID:2065 laxinv:98701\n18:15 24/05/18",
+    "target": {
+      "company": "buardian Health And Beauty Sdn Bhd",
+      "date": "24/05/18",
+      "address": "No 15 Jalan Bandar Kawang 10 Bandar Baru Kawang",
+      "total": "4.50"
+    },
+    "prompt": [
+      {
+        "role": "system",
+        "content": "You are a document extraction engine. You read a document and return only a single JSON object matching the schema you are given. No explanations."
+      },
+      {
+        "role": "user",
+        "content": "Extract the following fields from this receipt: {\"company\": \"name of the merchant or business issuing the receipt\", \"date\": \"date of purchase, exactly as printed on the receipt\", \"address\": \"full street address of the merchant\", \"total\": \"final total amount paid\"}\n\nRespond with a single JSON object containing exactly these keys, in this order. If a field does not appear in the receipt, use null.\n\nReceipt text:\nbuardian Health And Beauty Sdn Bhd\nBandar Baru Kawang\nNo 15 Jalan Bandar Kawang 10\nBandar Baru Kawang\nle1:03-60952052\nCompany Keg #1101083-1\nGS1 Reg #000899874816\nRM\n121056217 PRINGLES SUUK/CK 4.80 S\nSUBIUIAL 4.80\nDISCUUNIABLE 4.80\n6% IKX % DISU 0.29-\nKeason:\nSUBIUIAL 4.51\n------\nKUUNDING ADJUSTMENTS 0.01-\nTUIAL (GSI INCL) 4.50\nL'ASH 4.50\nYUUR SAVINGS FUR TUDAY 0.29\n651 - Rate ---- 651 Exci -- 651 Amt\n6% 4.25 0.26\nThank You For Shopping\nAt Guardian\nAll Amounts Are in KM\nboods soid are non-refundable.\nDispensed medicines sold are\nnot returnable.\nAll exchanges and returns including\nGuardian brand products must be made\nwithin 7days with original receipts and\nproduct in original condition.\nSt:8282 Ctr2 ID:2065 laxinv:98701\n18:15 24/05/18"
+      }
+    ],
+    "completion": [
+      {
+        "role": "assistant",
+        "content": "{\"company\": \"buardian Health And Beauty Sdn Bhd\", \"date\": \"24/05/18\", \"address\": \"No 15 Jalan Bandar Kawang 10 Bandar Baru Kawang\", \"total\": \"4.50\"}"
+      }
+    ]
+  },
+  {
+    "id": "sroie-validation-00058-v0",
+    "receipt_id": "train-404",
+    "split": "validation",
+    "schema": [
+      "company",
+      "date",
+      "address",
+      "total"
+    ],
+    "receipt_text": "Aneka Intertrade Marketing Sdn Bhd (524463-X)\nWellmart @ KP2\nGST Reg No 001532760064\nLot No2, Jalan Utarid U5/13.\nSeksyen US, 40150 Shah Alam,\nSelangor Darul Ehsan, Malaysia\nTel: (+603) 7831 0109 Fax (+603) 7831 2552\nKPB02201605190112 19/05/16 12:01:43 pm\nCashier: Hnin Aun 19/05/16 12:01 50 pm\nSamudra Bun 180g Blueberry\n9555039900843 3.05*1 3.05 S\nSIEW PAK CHOY +/- ikat\n7070184 0.94*2.000 3.78 Z\nITEM: 2 Total with GST @ 6% 6.83\nQTY: 3 ROUNDING 0.02\nTOTAL SAVING: 0.00 TOTAL 6.85\nTENDER\nCash 20.00\nCHANGE 13 15\nGST Analysis Goods Tax Amount\nS = 6% 2.88 0.17\nZ = 0% 3.78 0.00\nConsider PTS: 6\nPlease CHECK your BALANCE due and all goods\npurchased are IN ORDER.\nTHANK YOU. SEE YOU AGAIN!\n** NO REFUND OR EXCHANGE IS ALLOWED **",
+    "target": {
+      "company": "Aneka Intertrade Marketing Sdn Bhd",
+      "date": "19/05/16",
+      "address": "Lot No2, Jalan Utarid U5/13. Seksyen US, 40150 Shah Alam, Selangor Darul Ehsan, Malaysia",
+      "total": "6.85"
+    },
+    "prompt": [
+      {
+        "role": "system",
+        "content": "You are a document extraction engine. You read a document and return only a single JSON object matching the schema you are given. No explanations."
+      },
+      {
+        "role": "user",
+        "content": "Extract the following fields from this receipt: {\"company\": \"name of the merchant or business issuing the receipt\", \"date\": \"date of purchase, exactly as printed on the receipt\", \"address\": \"full street address of the merchant\", \"total\": \"final total amount paid\"}\n\nRespond with a single JSON object containing exactly these keys, in this order. If a field does not appear in the receipt, use null.\n\nReceipt text:\nAneka Intertrade Marketing Sdn Bhd (524463-X)\nWellmart @ KP2\nGST Reg No 001532760064\nLot No2, Jalan Utarid U5/13.\nSeksyen US, 40150 Shah Alam,\nSelangor Darul Ehsan, Malaysia\nTel: (+603) 7831 0109 Fax (+603) 7831 2552\nKPB02201605190112 19/05/16 12:01:43 pm\nCashier: Hnin Aun 19/05/16 12:01 50 pm\nSamudra Bun 180g Blueberry\n9555039900843 3.05*1 3.05 S\nSIEW PAK CHOY +/- ikat\n7070184 0.94*2.000 3.78 Z\nITEM: 2 Total with GST @ 6% 6.83\nQTY: 3 ROUNDING 0.02\nTOTAL SAVING: 0.00 TOTAL 6.85\nTENDER\nCash 20.00\nCHANGE 13 15\nGST Analysis Goods Tax Amount\nS = 6% 2.88 0.17\nZ = 0% 3.78 0.00\nConsider PTS: 6\nPlease CHECK your BALANCE due and all goods\npurchased are IN ORDER.\nTHANK YOU. SEE YOU AGAIN!\n** NO REFUND OR EXCHANGE IS ALLOWED **"
+      }
+    ],
+    "completion": [
+      {
+        "role": "assistant",
+        "content": "{\"company\": \"Aneka Intertrade Marketing Sdn Bhd\", \"date\": \"19/05/16\", \"address\": \"Lot No2, Jalan Utarid U5/13. Seksyen US, 40150 Shah Alam, Selangor Darul Ehsan, Malaysia\", \"total\": \"6.85\"}"
+      }
+    ]
+  },
+  {
+    "id": "sroie-validation-00059-v0",
+    "receipt_id": "train-492",
+    "split": "validation",
+    "schema": [
+      "company",
+      "date",
+      "address",
+      "total"
+    ],
+    "receipt_text": "SANYU STATIONERY SHOP\nNO. 31G&33G, JALAN SETIA INDAH X ,U13/X\n40170 SETIA ALAM\nMobile /Whatsapps : +6012-918 7937\nTel: +603-3362 4137\nGST ID No: 001531760640\nTAX INVOICE\nOwned By :\nSANYU SUPPLY SDN BHD (1135772-K)\nCASH SALES COUNTER\n1. 2046-0021 POM POM (M-2314)\n2 × 5.0000 10.00 SR\nTotal Sales Inclusive GST @6% 10.00\nDiscount 0.00\nTotal 10.00\nRound Adj 0.00\nFinal Total 10.00\n=\nCASH 20.00\nCHANGE 10.00\nGST Summary Amount(RM) Tax(RM)\nSR. @ 6% 9.43 0.57\nINV NO: CS-SA-0073011 Date : 21/03/2017\nGoods sold are not Returnable & Refundable\nTHANK YOU FOR YOUR PATRONAGE\nPLEASE COME AGAIN.\nTERIMA KASIH SILA DATANG LAGI\n** PLEASE KEEP THIS RECEIPT FOR PROVE OF\nPURCHASE DATE FOR I.T PRODUCI WARRANTY\nPURPOSE **\nFollow us in Facebook : Sanyu.Stationery",
+    "target": {
+      "company": "SANYU STATIONERY SHOP",
+      "date": "21/03/2017",
+      "address": "NO. 31G&33G, JALAN SETIA INDAH X ,U13/X 40170 SETIA ALAM",
+      "total": "10.00"
+    },
+    "prompt": [
+      {
+        "role": "system",
+        "content": "You are a document extraction engine. You read a document and return only a single JSON object matching the schema you are given. No explanations."
+      },
+      {
+        "role": "user",
+        "content": "Extract the following fields from this receipt: {\"company\": \"name of the merchant or business issuing the receipt\", \"date\": \"date of purchase, exactly as printed on the receipt\", \"address\": \"full street address of the merchant\", \"total\": \"final total amount paid\"}\n\nRespond with a single JSON object containing exactly these keys, in this order. If a field does not appear in the receipt, use null.\n\nReceipt text:\nSANYU STATIONERY SHOP\nNO. 31G&33G, JALAN SETIA INDAH X ,U13/X\n40170 SETIA ALAM\nMobile /Whatsapps : +6012-918 7937\nTel: +603-3362 4137\nGST ID No: 001531760640\nTAX INVOICE\nOwned By :\nSANYU SUPPLY SDN BHD (1135772-K)\nCASH SALES COUNTER\n1. 2046-0021 POM POM (M-2314)\n2 × 5.0000 10.00 SR\nTotal Sales Inclusive GST @6% 10.00\nDiscount 0.00\nTotal 10.00\nRound Adj 0.00\nFinal Total 10.00\n=\nCASH 20.00\nCHANGE 10.00\nGST Summary Amount(RM) Tax(RM)\nSR. @ 6% 9.43 0.57\nINV NO: CS-SA-0073011 Date : 21/03/2017\nGoods sold are not Returnable & Refundable\nTHANK YOU FOR YOUR PATRONAGE\nPLEASE COME AGAIN.\nTERIMA KASIH SILA DATANG LAGI\n** PLEASE KEEP THIS RECEIPT FOR PROVE OF\nPURCHASE DATE FOR I.T PRODUCI WARRANTY\nPURPOSE **\nFollow us in Facebook : Sanyu.Stationery"
+      }
+    ],
+    "completion": [
+      {
+        "role": "assistant",
+        "content": "{\"company\": \"SANYU STATIONERY SHOP\", \"date\": \"21/03/2017\", \"address\": \"NO. 31G&33G, JALAN SETIA INDAH X ,U13/X 40170 SETIA ALAM\", \"total\": \"10.00\"}"
+      }
+    ]
+  },
+  {
+    "id": "sroie-validation-00060-v0",
+    "receipt_id": "train-585",
+    "split": "validation",
+    "schema": [
+      "company",
+      "date",
+      "address",
+      "total"
+    ],
+    "receipt_text": "Sanjung Realiti Sdn. Bhd. (779763-K)\n(GST Registration No.: 001751072768)\nCar Park Office, Basement 1,\nLebuhraya SPRINT, PJUGA,\n47400 Petaling Jaya, Selangor\nTel.: +603 7726 2929 Fax: +603 7726 1326\n>>> TAX INVOICE <<<\nTax Invoice No.: 0714/0601/00601\n27/06/18 10:08\n010100 Pay parking ticket 1.50 RM\n27/06/18 09:49 - 27/06/18 10:08\nLength of stay: 0 Dy. 0 Hr. 19 Min.\n02472951053011038178353570??\nTotal amount 1.50 RM\nAccepted total 2.00 RM\nChange 0.50 RM\nGST 0% 0.00 RM\n****************************************\n** Thank you **\n****************************************",
+    "target": {
+      "company": "Sanjung Realiti Sdn. Bhd.",
+      "date": "27/06/18",
+      "address": "Car Park Office, Basement 1, Lebuhraya SPRINT, PJUGA, 47400 Petaling Jaya, Selangor",
+      "total": "1.50"
+    },
+    "prompt": [
+      {
+        "role": "system",
+        "content": "You are a document extraction engine. You read a document and return only a single JSON object matching the schema you are given. No explanations."
+      },
+      {
+        "role": "user",
+        "content": "Extract the following fields from this receipt: {\"company\": \"name of the merchant or business issuing the receipt\", \"date\": \"date of purchase, exactly as printed on the receipt\", \"address\": \"full street address of the merchant\", \"total\": \"final total amount paid\"}\n\nRespond with a single JSON object containing exactly these keys, in this order. If a field does not appear in the receipt, use null.\n\nReceipt text:\nSanjung Realiti Sdn. Bhd. (779763-K)\n(GST Registration No.: 001751072768)\nCar Park Office, Basement 1,\nLebuhraya SPRINT, PJUGA,\n47400 Petaling Jaya, Selangor\nTel.: +603 7726 2929 Fax: +603 7726 1326\n>>> TAX INVOICE <<<\nTax Invoice No.: 0714/0601/00601\n27/06/18 10:08\n010100 Pay parking ticket 1.50 RM\n27/06/18 09:49 - 27/06/18 10:08\nLength of stay: 0 Dy. 0 Hr. 19 Min.\n02472951053011038178353570??\nTotal amount 1.50 RM\nAccepted total 2.00 RM\nChange 0.50 RM\nGST 0% 0.00 RM\n****************************************\n** Thank you **\n****************************************"
+      }
+    ],
+    "completion": [
+      {
+        "role": "assistant",
+        "content": "{\"company\": \"Sanjung Realiti Sdn. Bhd.\", \"date\": \"27/06/18\", \"address\": \"Car Park Office, Basement 1, Lebuhraya SPRINT, PJUGA, 47400 Petaling Jaya, Selangor\", \"total\": \"1.50\"}"
+      }
+    ]
+  },
+  {
+    "id": "sroie-validation-00061-v0",
+    "receipt_id": "train-96",
+    "split": "validation",
+    "schema": [
+      "company",
+      "date",
+      "address",
+      "total"
+    ],
+    "receipt_text": "POPULAR BOOK\nCO. (M) SDN BHD\n(Co. No. 113825-W)\n(GST Reg No. 001492992000)\nNo 8, Jalan 7/118B, Desa Tun Razak\n56000 Kuala Lumpur, Malaysia\nSUNWAY VELOCITY\nTel : 03-9201 6281/6920\n-\n29/03/18 13:24 Slip No. : 0010111111\nWONG HUI LING Trans: 121722\n- -\nDescription Amount\nPB SHT/P 11H A4 10'S C/O.\n2pc @ 3.50 7.00 T\nR RING 500'S 2.65 T\n-\nTotal RM Incl. of GST 9.65\nCash -50.00\nCHANGE 40. 35\nItem Count 3\nGST Summary Amount (RM) Tax (RM)\nT @ 6% 9.10 0.55\nTotal Savings 0.00\n--\nBE A POPULAR CARD MEMBER\nAND ENJOY SPECIAL DISCOUNTS\nTHANK YOU. PLEASE COME AGAIN.\nwww. popular. com. my\nBuy Chinese books online\nwww. popularonline. com. my",
+    "target": {
+      "company": "POPULAR BOOK CO. (M) SDN BHD",
+      "date": "29/03/18",
+      "address": "No 8, Jalan 7/118B, Desa Tun Razak 56000 Kuala Lumpur, Malaysia",
+      "total": "9.65"
+    },
+    "prompt": [
+      {
+        "role": "system",
+        "content": "You are a document extraction engine. You read a document and return only a single JSON object matching the schema you are given. No explanations."
+      },
+      {
+        "role": "user",
+        "content": "Extract the following fields from this receipt: {\"company\": \"name of the merchant or business issuing the receipt\", \"date\": \"date of purchase, exactly as printed on the receipt\", \"address\": \"full street address of the merchant\", \"total\": \"final total amount paid\"}\n\nRespond with a single JSON object containing exactly these keys, in this order. If a field does not appear in the receipt, use null.\n\nReceipt text:\nPOPULAR BOOK\nCO. (M) SDN BHD\n(Co. No. 113825-W)\n(GST Reg No. 001492992000)\nNo 8, Jalan 7/118B, Desa Tun Razak\n56000 Kuala Lumpur, Malaysia\nSUNWAY VELOCITY\nTel : 03-9201 6281/6920\n-\n29/03/18 13:24 Slip No. : 0010111111\nWONG HUI LING Trans: 121722\n- -\nDescription Amount\nPB SHT/P 11H A4 10'S C/O.\n2pc @ 3.50 7.00 T\nR RING 500'S 2.65 T\n-\nTotal RM Incl. of GST 9.65\nCash -50.00\nCHANGE 40. 35\nItem Count 3\nGST Summary Amount (RM) Tax (RM)\nT @ 6% 9.10 0.55\nTotal Savings 0.00\n--\nBE A POPULAR CARD MEMBER\nAND ENJOY SPECIAL DISCOUNTS\nTHANK YOU. PLEASE COME AGAIN.\nwww. popular. com. my\nBuy Chinese books online\nwww. popularonline. com. my"
+      }
+    ],
+    "completion": [
+      {
+        "role": "assistant",
+        "content": "{\"company\": \"POPULAR BOOK CO. (M) SDN BHD\", \"date\": \"29/03/18\", \"address\": \"No 8, Jalan 7/118B, Desa Tun Razak 56000 Kuala Lumpur, Malaysia\", \"total\": \"9.65\"}"
+      }
+    ]
+  }
+]
