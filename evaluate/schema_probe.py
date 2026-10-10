@@ -19,8 +19,8 @@ the test set was touched:
     null (canonical and renamed), and unseen absent fields are answered null at
     least 80% of the time.
 
-`--conditions phase5` (test split) is Phase 5 itself - the README's four
-held-out conditions, whose names training was forbidden to use:
+`--conditions phase5` (test split) is Phase 5 itself - the four held-out
+conditions (decisions.md, D-31), whose names training was forbidden to use:
 
     renamed        merchant_name / purchase_date / amount_due, each with its
                    SROIE field's own description - the description is the
@@ -97,7 +97,7 @@ if set(RENAMED) & _taken or any(PHASE5_CONCEPTS.search(f"{n} {d}")
     raise SystemExit("[probe] a renamed field collides with a training or "
                      "Phase 5 field")
 
-# Phase 5: the README's held-out names (prepare_data.PHASE5_HELD_OUT).
+# Phase 5: the held-out names (prepare_data.PHASE5_HELD_OUT).
 PHASE5_RENAMED = {"merchant_name": "company", "purchase_date": "date",
                   "amount_due": "total"}
 PHASE5_NOVEL = {
