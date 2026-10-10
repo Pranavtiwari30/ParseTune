@@ -1,0 +1,7 @@
+# Phase 6 - the walkthrough notebook (notebooks/parsetune.ipynb), on top of
+# data/requirements.txt and train/requirements.txt. Apple Silicon only (MLX).
+ipykernel>=7.0
+nbclient>=0.10
+nbformat>=5.10
+matplotlib>=3.9
+pandas>=2.2

@@ -1,0 +1,1394 @@
+{
+  "system": "parsetune-v2",
+  "split": "test",
+  "sample_size": 50,
+  "reviewer": "Claude (AI assistant), reading each receipt's text - not a human",
+  "protocol": "A fixed sample of 50 test receipts (random.Random(2026).sample over the 347) was reviewed by the AI assistant, reading each receipt's full text beside the adapter's answers. Verdicts: *correct*; *defensible* (the right value with stray characters, or a count matching the receipt's own printed item total when that total counts units); *wrong*; *null, but printed* (the field is on the receipt); *null, correctly* (it is not). `line_item_count` counts distinct item lines. Every verdict and note is in `evaluate/results/phase5_spotcheck.json`; the review was by an AI, not a human.",
+  "verdicts": [
+    "correct",
+    "defensible",
+    "wrong",
+    "null, but printed",
+    "null, correctly"
+  ],
+  "summary": {
+    "payment_method": {
+      "correct": 32,
+      "defensible": 1,
+      "wrong": 10,
+      "null, but printed": 7,
+      "null, correctly": 0
+    },
+    "gst_id": {
+      "correct": 39,
+      "defensible": 1,
+      "wrong": 0,
+      "null, but printed": 8,
+      "null, correctly": 2
+    },
+    "line_item_count": {
+      "correct": 29,
+      "defensible": 4,
+      "wrong": 12,
+      "null, but printed": 5,
+      "null, correctly": 0
+    }
+  },
+  "items": [
+    {
+      "sample": 0,
+      "test_index": 1,
+      "id": "sroie-test-00001-v0",
+      "field": "payment_method",
+      "answer": "Cash Bill",
+      "verdict": "wrong",
+      "note": "'Cash Bill' is the receipt header; paid by VISA card"
+    },
+    {
+      "sample": 0,
+      "test_index": 1,
+      "id": "sroie-test-00001-v0",
+      "field": "gst_id",
+      "answer": null,
+      "verdict": "null, correctly",
+      "note": "no GST id printed, only an ROC number"
+    },
+    {
+      "sample": 0,
+      "test_index": 1,
+      "id": "sroie-test-00001-v0",
+      "field": "line_item_count",
+      "answer": "1",
+      "verdict": "correct",
+      "note": ""
+    },
+    {
+      "sample": 1,
+      "test_index": 5,
+      "id": "sroie-test-00005-v0",
+      "field": "payment_method",
+      "answer": "CASH",
+      "verdict": "correct",
+      "note": ""
+    },
+    {
+      "sample": 1,
+      "test_index": 5,
+      "id": "sroie-test-00005-v0",
+      "field": "gst_id",
+      "answer": "001610833920",
+      "verdict": "correct",
+      "note": ""
+    },
+    {
+      "sample": 1,
+      "test_index": 5,
+      "id": "sroie-test-00005-v0",
+      "field": "line_item_count",
+      "answer": "2",
+      "verdict": "correct",
+      "note": ""
+    },
+    {
+      "sample": 2,
+      "test_index": 12,
+      "id": "sroie-test-00012-v0",
+      "field": "payment_method",
+      "answer": null,
+      "verdict": "null, but printed",
+      "note": "'CASI RM 278.80' is OCR for CASH"
+    },
+    {
+      "sample": 2,
+      "test_index": 12,
+      "id": "sroie-test-00012-v0",
+      "field": "gst_id",
+      "answer": "000584089600",
+      "verdict": "correct",
+      "note": ""
+    },
+    {
+      "sample": 2,
+      "test_index": 12,
+      "id": "sroie-test-00012-v0",
+      "field": "line_item_count",
+      "answer": "4",
+      "verdict": "correct",
+      "note": "receipt prints 'Item Count: 4'"
+    },
+    {
+      "sample": 3,
+      "test_index": 39,
+      "id": "sroie-test-00039-v0",
+      "field": "payment_method",
+      "answer": "Cash",
+      "verdict": "correct",
+      "note": ""
+    },
+    {
+      "sample": 3,
+      "test_index": 39,
+      "id": "sroie-test-00039-v0",
+      "field": "gst_id",
+      "answer": null,
+      "verdict": "null, correctly",
+      "note": "'GST No.' printed but blank"
+    },
+    {
+      "sample": 3,
+      "test_index": 39,
+      "id": "sroie-test-00039-v0",
+      "field": "line_item_count",
+      "answer": "1",
+      "verdict": "correct",
+      "note": ""
+    },
+    {
+      "sample": 4,
+      "test_index": 41,
+      "id": "sroie-test-00041-v0",
+      "field": "payment_method",
+      "answer": null,
+      "verdict": "null, but printed",
+      "note": "'Cash -10.00' printed"
+    },
+    {
+      "sample": 4,
+      "test_index": 41,
+      "id": "sroie-test-00041-v0",
+      "field": "gst_id",
+      "answer": "001492992000",
+      "verdict": "correct",
+      "note": ""
+    },
+    {
+      "sample": 4,
+      "test_index": 41,
+      "id": "sroie-test-00041-v0",
+      "field": "line_item_count",
+      "answer": "4pc",
+      "verdict": "defensible",
+      "note": "'4pc': one product x 4 pieces; receipt prints 'Item Count 4'"
+    },
+    {
+      "sample": 5,
+      "test_index": 45,
+      "id": "sroie-test-00045-v0",
+      "field": "payment_method",
+      "answer": "cash1",
+      "verdict": "wrong",
+      "note": "'cash1' is the cashier id; paid CASH"
+    },
+    {
+      "sample": 5,
+      "test_index": 45,
+      "id": "sroie-test-00045-v0",
+      "field": "gst_id",
+      "answer": "001125220352",
+      "verdict": "correct",
+      "note": ""
+    },
+    {
+      "sample": 5,
+      "test_index": 45,
+      "id": "sroie-test-00045-v0",
+      "field": "line_item_count",
+      "answer": "1",
+      "verdict": "correct",
+      "note": ""
+    },
+    {
+      "sample": 6,
+      "test_index": 46,
+      "id": "sroie-test-00046-v0",
+      "field": "payment_method",
+      "answer": "Pay Cash",
+      "verdict": "correct",
+      "note": "'Pay Cash'"
+    },
+    {
+      "sample": 6,
+      "test_index": 46,
+      "id": "sroie-test-00046-v0",
+      "field": "gst_id",
+      "answer": null,
+      "verdict": "null, but printed",
+      "note": "printed as 'NO. ID GBT' (OCR for GST)"
+    },
+    {
+      "sample": 6,
+      "test_index": 46,
+      "id": "sroie-test-00046-v0",
+      "field": "line_item_count",
+      "answer": "1",
+      "verdict": "correct",
+      "note": ""
+    },
+    {
+      "sample": 7,
+      "test_index": 50,
+      "id": "sroie-test-00050-v0",
+      "field": "payment_method",
+      "answer": "CASH",
+      "verdict": "correct",
+      "note": ""
+    },
+    {
+      "sample": 7,
+      "test_index": 50,
+      "id": "sroie-test-00050-v0",
+      "field": "gst_id",
+      "answer": "002098102272",
+      "verdict": "correct",
+      "note": ""
+    },
+    {
+      "sample": 7,
+      "test_index": 50,
+      "id": "sroie-test-00050-v0",
+      "field": "line_item_count",
+      "answer": "1",
+      "verdict": "correct",
+      "note": ""
+    },
+    {
+      "sample": 8,
+      "test_index": 52,
+      "id": "sroie-test-00052-v0",
+      "field": "payment_method",
+      "answer": "CASH",
+      "verdict": "correct",
+      "note": ""
+    },
+    {
+      "sample": 8,
+      "test_index": 52,
+      "id": "sroie-test-00052-v0",
+      "field": "gst_id",
+      "answer": "002017394688",
+      "verdict": "correct",
+      "note": ""
+    },
+    {
+      "sample": 8,
+      "test_index": 52,
+      "id": "sroie-test-00052-v0",
+      "field": "line_item_count",
+      "answer": "2",
+      "verdict": "correct",
+      "note": ""
+    },
+    {
+      "sample": 9,
+      "test_index": 56,
+      "id": "sroie-test-00056-v0",
+      "field": "payment_method",
+      "answer": "Cashier",
+      "verdict": "wrong",
+      "note": "'Cashier' label; no method printed (answer should be null)"
+    },
+    {
+      "sample": 9,
+      "test_index": 56,
+      "id": "sroie-test-00056-v0",
+      "field": "gst_id",
+      "answer": "001269075968",
+      "verdict": "correct",
+      "note": ""
+    },
+    {
+      "sample": 9,
+      "test_index": 56,
+      "id": "sroie-test-00056-v0",
+      "field": "line_item_count",
+      "answer": "15.00",
+      "verdict": "defensible",
+      "note": "'15.00': one product x 15; receipt prints 'Total Item(s): 15'"
+    },
+    {
+      "sample": 10,
+      "test_index": 60,
+      "id": "sroie-test-00060-v0",
+      "field": "payment_method",
+      "answer": "Cashier",
+      "verdict": "wrong",
+      "note": "'Cashier' label; no method printed"
+    },
+    {
+      "sample": 10,
+      "test_index": 60,
+      "id": "sroie-test-00060-v0",
+      "field": "gst_id",
+      "answer": "001269075968",
+      "verdict": "correct",
+      "note": ""
+    },
+    {
+      "sample": 10,
+      "test_index": 60,
+      "id": "sroie-test-00060-v0",
+      "field": "line_item_count",
+      "answer": "12",
+      "verdict": "defensible",
+      "note": "one product x 12; receipt prints 'Total Item(s): 12'"
+    },
+    {
+      "sample": 11,
+      "test_index": 72,
+      "id": "sroie-test-00072-v0",
+      "field": "payment_method",
+      "answer": "CASH",
+      "verdict": "correct",
+      "note": ""
+    },
+    {
+      "sample": 11,
+      "test_index": 72,
+      "id": "sroie-test-00072-v0",
+      "field": "gst_id",
+      "answer": "000750673920",
+      "verdict": "correct",
+      "note": ""
+    },
+    {
+      "sample": 11,
+      "test_index": 72,
+      "id": "sroie-test-00072-v0",
+      "field": "line_item_count",
+      "answer": "5",
+      "verdict": "wrong",
+      "note": "5; three products, 13 units"
+    },
+    {
+      "sample": 12,
+      "test_index": 107,
+      "id": "sroie-test-00107-v0",
+      "field": "payment_method",
+      "answer": "CASH",
+      "verdict": "correct",
+      "note": ""
+    },
+    {
+      "sample": 12,
+      "test_index": 107,
+      "id": "sroie-test-00107-v0",
+      "field": "gst_id",
+      "answer": "001147981824",
+      "verdict": "correct",
+      "note": ""
+    },
+    {
+      "sample": 12,
+      "test_index": 107,
+      "id": "sroie-test-00107-v0",
+      "field": "line_item_count",
+      "answer": "1",
+      "verdict": "correct",
+      "note": ""
+    },
+    {
+      "sample": 13,
+      "test_index": 114,
+      "id": "sroie-test-00114-v0",
+      "field": "payment_method",
+      "answer": "18 MASTER CARD",
+      "verdict": "defensible",
+      "note": "'18 MASTER CARD': right method, stray '18' from the OCR line"
+    },
+    {
+      "sample": 13,
+      "test_index": 114,
+      "id": "sroie-test-00114-v0",
+      "field": "gst_id",
+      "answer": "000639090688",
+      "verdict": "correct",
+      "note": ""
+    },
+    {
+      "sample": 13,
+      "test_index": 114,
+      "id": "sroie-test-00114-v0",
+      "field": "line_item_count",
+      "answer": "6",
+      "verdict": "correct",
+      "note": ""
+    },
+    {
+      "sample": 14,
+      "test_index": 122,
+      "id": "sroie-test-00122-v0",
+      "field": "payment_method",
+      "answer": "VISA CARD",
+      "verdict": "correct",
+      "note": ""
+    },
+    {
+      "sample": 14,
+      "test_index": 122,
+      "id": "sroie-test-00122-v0",
+      "field": "gst_id",
+      "answer": "000639090688",
+      "verdict": "correct",
+      "note": ""
+    },
+    {
+      "sample": 14,
+      "test_index": 122,
+      "id": "sroie-test-00122-v0",
+      "field": "line_item_count",
+      "answer": "1",
+      "verdict": "correct",
+      "note": ""
+    },
+    {
+      "sample": 15,
+      "test_index": 128,
+      "id": "sroie-test-00128-v0",
+      "field": "payment_method",
+      "answer": "Cashier",
+      "verdict": "wrong",
+      "note": "'Cashier'; paid by Credit Card"
+    },
+    {
+      "sample": 15,
+      "test_index": 128,
+      "id": "sroie-test-00128-v0",
+      "field": "gst_id",
+      "answer": "001833082880",
+      "verdict": "correct",
+      "note": ""
+    },
+    {
+      "sample": 15,
+      "test_index": 128,
+      "id": "sroie-test-00128-v0",
+      "field": "line_item_count",
+      "answer": "9",
+      "verdict": "wrong",
+      "note": "9; eleven products"
+    },
+    {
+      "sample": 16,
+      "test_index": 147,
+      "id": "sroie-test-00147-v0",
+      "field": "payment_method",
+      "answer": "Cashier",
+      "verdict": "wrong",
+      "note": "'Cashier'; method not named (change given)"
+    },
+    {
+      "sample": 16,
+      "test_index": 147,
+      "id": "sroie-test-00147-v0",
+      "field": "gst_id",
+      "answer": "000294060032",
+      "verdict": "correct",
+      "note": ""
+    },
+    {
+      "sample": 16,
+      "test_index": 147,
+      "id": "sroie-test-00147-v0",
+      "field": "line_item_count",
+      "answer": "1",
+      "verdict": "correct",
+      "note": ""
+    },
+    {
+      "sample": 17,
+      "test_index": 149,
+      "id": "sroie-test-00149-v0",
+      "field": "payment_method",
+      "answer": "CASH1",
+      "verdict": "wrong",
+      "note": "'CASH1' is the counter id; paid by VISA"
+    },
+    {
+      "sample": 17,
+      "test_index": 149,
+      "id": "sroie-test-00149-v0",
+      "field": "gst_id",
+      "answer": "002147033088",
+      "verdict": "correct",
+      "note": ""
+    },
+    {
+      "sample": 17,
+      "test_index": 149,
+      "id": "sroie-test-00149-v0",
+      "field": "line_item_count",
+      "answer": "3",
+      "verdict": "correct",
+      "note": ""
+    },
+    {
+      "sample": 18,
+      "test_index": 158,
+      "id": "sroie-test-00158-v0",
+      "field": "payment_method",
+      "answer": "Cash",
+      "verdict": "correct",
+      "note": ""
+    },
+    {
+      "sample": 18,
+      "test_index": 158,
+      "id": "sroie-test-00158-v0",
+      "field": "gst_id",
+      "answer": "No.001410277376",
+      "verdict": "defensible",
+      "note": "right id with a stray 'No.' prefix"
+    },
+    {
+      "sample": 18,
+      "test_index": 158,
+      "id": "sroie-test-00158-v0",
+      "field": "line_item_count",
+      "answer": "2",
+      "verdict": "correct",
+      "note": ""
+    },
+    {
+      "sample": 19,
+      "test_index": 160,
+      "id": "sroie-test-00160-v0",
+      "field": "payment_method",
+      "answer": "Cash",
+      "verdict": "correct",
+      "note": ""
+    },
+    {
+      "sample": 19,
+      "test_index": 160,
+      "id": "sroie-test-00160-v0",
+      "field": "gst_id",
+      "answer": "000549584896",
+      "verdict": "correct",
+      "note": ""
+    },
+    {
+      "sample": 19,
+      "test_index": 160,
+      "id": "sroie-test-00160-v0",
+      "field": "line_item_count",
+      "answer": "1",
+      "verdict": "correct",
+      "note": ""
+    },
+    {
+      "sample": 20,
+      "test_index": 163,
+      "id": "sroie-test-00163-v0",
+      "field": "payment_method",
+      "answer": "Cash",
+      "verdict": "correct",
+      "note": ""
+    },
+    {
+      "sample": 20,
+      "test_index": 163,
+      "id": "sroie-test-00163-v0",
+      "field": "gst_id",
+      "answer": "000549584896",
+      "verdict": "correct",
+      "note": ""
+    },
+    {
+      "sample": 20,
+      "test_index": 163,
+      "id": "sroie-test-00163-v0",
+      "field": "line_item_count",
+      "answer": "3",
+      "verdict": "defensible",
+      "note": "one product x 3; receipt prints '3 Item(s)'"
+    },
+    {
+      "sample": 21,
+      "test_index": 174,
+      "id": "sroie-test-00174-v0",
+      "field": "payment_method",
+      "answer": "Cash",
+      "verdict": "correct",
+      "note": ""
+    },
+    {
+      "sample": 21,
+      "test_index": 174,
+      "id": "sroie-test-00174-v0",
+      "field": "gst_id",
+      "answer": "001532760054",
+      "verdict": "correct",
+      "note": ""
+    },
+    {
+      "sample": 21,
+      "test_index": 174,
+      "id": "sroie-test-00174-v0",
+      "field": "line_item_count",
+      "answer": "1",
+      "verdict": "correct",
+      "note": ""
+    },
+    {
+      "sample": 22,
+      "test_index": 178,
+      "id": "sroie-test-00178-v0",
+      "field": "payment_method",
+      "answer": "CASH",
+      "verdict": "correct",
+      "note": ""
+    },
+    {
+      "sample": 22,
+      "test_index": 178,
+      "id": "sroie-test-00178-v0",
+      "field": "gst_id",
+      "answer": null,
+      "verdict": "null, but printed",
+      "note": "'GST REG #...' at the bottom"
+    },
+    {
+      "sample": 22,
+      "test_index": 178,
+      "id": "sroie-test-00178-v0",
+      "field": "line_item_count",
+      "answer": "5",
+      "verdict": "wrong",
+      "note": "5; four lines"
+    },
+    {
+      "sample": 23,
+      "test_index": 182,
+      "id": "sroie-test-00182-v0",
+      "field": "payment_method",
+      "answer": "Cashier",
+      "verdict": "wrong",
+      "note": "'Cashier'; paid CASH"
+    },
+    {
+      "sample": 23,
+      "test_index": 182,
+      "id": "sroie-test-00182-v0",
+      "field": "gst_id",
+      "answer": "001699237888",
+      "verdict": "correct",
+      "note": ""
+    },
+    {
+      "sample": 23,
+      "test_index": 182,
+      "id": "sroie-test-00182-v0",
+      "field": "line_item_count",
+      "answer": "3",
+      "verdict": "wrong",
+      "note": "3; receipt prints 'Main Item Count 2'"
+    },
+    {
+      "sample": 24,
+      "test_index": 186,
+      "id": "sroie-test-00186-v0",
+      "field": "payment_method",
+      "answer": "Cashier",
+      "verdict": "wrong",
+      "note": "'Cashier'; paid CASH"
+    },
+    {
+      "sample": 24,
+      "test_index": 186,
+      "id": "sroie-test-00186-v0",
+      "field": "gst_id",
+      "answer": "001177063424",
+      "verdict": "correct",
+      "note": ""
+    },
+    {
+      "sample": 24,
+      "test_index": 186,
+      "id": "sroie-test-00186-v0",
+      "field": "line_item_count",
+      "answer": "8",
+      "verdict": "correct",
+      "note": ""
+    },
+    {
+      "sample": 25,
+      "test_index": 188,
+      "id": "sroie-test-00188-v0",
+      "field": "payment_method",
+      "answer": "CASH",
+      "verdict": "correct",
+      "note": ""
+    },
+    {
+      "sample": 25,
+      "test_index": 188,
+      "id": "sroie-test-00188-v0",
+      "field": "gst_id",
+      "answer": "002017394688",
+      "verdict": "correct",
+      "note": ""
+    },
+    {
+      "sample": 25,
+      "test_index": 188,
+      "id": "sroie-test-00188-v0",
+      "field": "line_item_count",
+      "answer": "6",
+      "verdict": "correct",
+      "note": ""
+    },
+    {
+      "sample": 26,
+      "test_index": 192,
+      "id": "sroie-test-00192-v0",
+      "field": "payment_method",
+      "answer": "CASH",
+      "verdict": "correct",
+      "note": ""
+    },
+    {
+      "sample": 26,
+      "test_index": 192,
+      "id": "sroie-test-00192-v0",
+      "field": "gst_id",
+      "answer": "000468594688",
+      "verdict": "correct",
+      "note": ""
+    },
+    {
+      "sample": 26,
+      "test_index": 192,
+      "id": "sroie-test-00192-v0",
+      "field": "line_item_count",
+      "answer": "1",
+      "verdict": "correct",
+      "note": ""
+    },
+    {
+      "sample": 27,
+      "test_index": 203,
+      "id": "sroie-test-00203-v0",
+      "field": "payment_method",
+      "answer": null,
+      "verdict": "null, but printed",
+      "note": "supplier delivery note; only cue is the 'Cash Inv No.' label"
+    },
+    {
+      "sample": 27,
+      "test_index": 203,
+      "id": "sroie-test-00203-v0",
+      "field": "gst_id",
+      "answer": "000381399040",
+      "verdict": "correct",
+      "note": ""
+    },
+    {
+      "sample": 27,
+      "test_index": 203,
+      "id": "sroie-test-00203-v0",
+      "field": "line_item_count",
+      "answer": null,
+      "verdict": "null, but printed",
+      "note": "one item listed"
+    },
+    {
+      "sample": 28,
+      "test_index": 215,
+      "id": "sroie-test-00215-v0",
+      "field": "payment_method",
+      "answer": null,
+      "verdict": "null, but printed",
+      "note": "supplier delivery note ('Cash Inv No.')"
+    },
+    {
+      "sample": 28,
+      "test_index": 215,
+      "id": "sroie-test-00215-v0",
+      "field": "gst_id",
+      "answer": "000381399040",
+      "verdict": "correct",
+      "note": ""
+    },
+    {
+      "sample": 28,
+      "test_index": 215,
+      "id": "sroie-test-00215-v0",
+      "field": "line_item_count",
+      "answer": null,
+      "verdict": "null, but printed",
+      "note": "four items listed"
+    },
+    {
+      "sample": 29,
+      "test_index": 216,
+      "id": "sroie-test-00216-v0",
+      "field": "payment_method",
+      "answer": null,
+      "verdict": "null, but printed",
+      "note": "supplier delivery note ('Cash Inv No.')"
+    },
+    {
+      "sample": 29,
+      "test_index": 216,
+      "id": "sroie-test-00216-v0",
+      "field": "gst_id",
+      "answer": "000381399040",
+      "verdict": "correct",
+      "note": ""
+    },
+    {
+      "sample": 29,
+      "test_index": 216,
+      "id": "sroie-test-00216-v0",
+      "field": "line_item_count",
+      "answer": null,
+      "verdict": "null, but printed",
+      "note": "eight items listed"
+    },
+    {
+      "sample": 30,
+      "test_index": 225,
+      "id": "sroie-test-00225-v0",
+      "field": "payment_method",
+      "answer": null,
+      "verdict": "null, but printed",
+      "note": "supplier delivery note ('Cash Inv No.')"
+    },
+    {
+      "sample": 30,
+      "test_index": 225,
+      "id": "sroie-test-00225-v0",
+      "field": "gst_id",
+      "answer": "000381399040",
+      "verdict": "correct",
+      "note": ""
+    },
+    {
+      "sample": 30,
+      "test_index": 225,
+      "id": "sroie-test-00225-v0",
+      "field": "line_item_count",
+      "answer": null,
+      "verdict": "null, but printed",
+      "note": "three items listed"
+    },
+    {
+      "sample": 31,
+      "test_index": 230,
+      "id": "sroie-test-00230-v0",
+      "field": "payment_method",
+      "answer": "Cash",
+      "verdict": "correct",
+      "note": ""
+    },
+    {
+      "sample": 31,
+      "test_index": 230,
+      "id": "sroie-test-00230-v0",
+      "field": "gst_id",
+      "answer": null,
+      "verdict": "null, but printed",
+      "note": "printed as 'GETID No' (OCR for GSTID)"
+    },
+    {
+      "sample": 31,
+      "test_index": 230,
+      "id": "sroie-test-00230-v0",
+      "field": "line_item_count",
+      "answer": "3",
+      "verdict": "wrong",
+      "note": "3; two products"
+    },
+    {
+      "sample": 32,
+      "test_index": 234,
+      "id": "sroie-test-00234-v0",
+      "field": "payment_method",
+      "answer": null,
+      "verdict": "null, but printed",
+      "note": "'CREDIT RM 85.45' printed"
+    },
+    {
+      "sample": 32,
+      "test_index": 234,
+      "id": "sroie-test-00234-v0",
+      "field": "gst_id",
+      "answer": "000181747712",
+      "verdict": "correct",
+      "note": ""
+    },
+    {
+      "sample": 32,
+      "test_index": 234,
+      "id": "sroie-test-00234-v0",
+      "field": "line_item_count",
+      "answer": "5",
+      "verdict": "correct",
+      "note": ""
+    },
+    {
+      "sample": 33,
+      "test_index": 236,
+      "id": "sroie-test-00236-v0",
+      "field": "payment_method",
+      "answer": "CASH",
+      "verdict": "correct",
+      "note": ""
+    },
+    {
+      "sample": 33,
+      "test_index": 236,
+      "id": "sroie-test-00236-v0",
+      "field": "gst_id",
+      "answer": "000473792512",
+      "verdict": "correct",
+      "note": ""
+    },
+    {
+      "sample": 33,
+      "test_index": 236,
+      "id": "sroie-test-00236-v0",
+      "field": "line_item_count",
+      "answer": "3",
+      "verdict": "wrong",
+      "note": "3; receipt prints 'Item(s): 2'"
+    },
+    {
+      "sample": 34,
+      "test_index": 251,
+      "id": "sroie-test-00251-v0",
+      "field": "payment_method",
+      "answer": "CASH",
+      "verdict": "correct",
+      "note": ""
+    },
+    {
+      "sample": 34,
+      "test_index": 251,
+      "id": "sroie-test-00251-v0",
+      "field": "gst_id",
+      "answer": "000306020352",
+      "verdict": "correct",
+      "note": ""
+    },
+    {
+      "sample": 34,
+      "test_index": 251,
+      "id": "sroie-test-00251-v0",
+      "field": "line_item_count",
+      "answer": "5",
+      "verdict": "wrong",
+      "note": "5; receipt prints 'Item(s): 3'"
+    },
+    {
+      "sample": 35,
+      "test_index": 257,
+      "id": "sroie-test-00257-v0",
+      "field": "payment_method",
+      "answer": "CASH",
+      "verdict": "correct",
+      "note": ""
+    },
+    {
+      "sample": 35,
+      "test_index": 257,
+      "id": "sroie-test-00257-v0",
+      "field": "gst_id",
+      "answer": "000181747712",
+      "verdict": "correct",
+      "note": ""
+    },
+    {
+      "sample": 35,
+      "test_index": 257,
+      "id": "sroie-test-00257-v0",
+      "field": "line_item_count",
+      "answer": "1",
+      "verdict": "correct",
+      "note": ""
+    },
+    {
+      "sample": 36,
+      "test_index": 262,
+      "id": "sroie-test-00262-v0",
+      "field": "payment_method",
+      "answer": "Cash",
+      "verdict": "correct",
+      "note": ""
+    },
+    {
+      "sample": 36,
+      "test_index": 262,
+      "id": "sroie-test-00262-v0",
+      "field": "gst_id",
+      "answer": "000784498688",
+      "verdict": "correct",
+      "note": ""
+    },
+    {
+      "sample": 36,
+      "test_index": 262,
+      "id": "sroie-test-00262-v0",
+      "field": "line_item_count",
+      "answer": "3",
+      "verdict": "wrong",
+      "note": "3; two products"
+    },
+    {
+      "sample": 37,
+      "test_index": 275,
+      "id": "sroie-test-00275-v0",
+      "field": "payment_method",
+      "answer": "CASH",
+      "verdict": "correct",
+      "note": ""
+    },
+    {
+      "sample": 37,
+      "test_index": 275,
+      "id": "sroie-test-00275-v0",
+      "field": "gst_id",
+      "answer": "000306020352",
+      "verdict": "correct",
+      "note": ""
+    },
+    {
+      "sample": 37,
+      "test_index": 275,
+      "id": "sroie-test-00275-v0",
+      "field": "line_item_count",
+      "answer": "2",
+      "verdict": "correct",
+      "note": ""
+    },
+    {
+      "sample": 38,
+      "test_index": 280,
+      "id": "sroie-test-00280-v0",
+      "field": "payment_method",
+      "answer": "CASH",
+      "verdict": "correct",
+      "note": ""
+    },
+    {
+      "sample": 38,
+      "test_index": 280,
+      "id": "sroie-test-00280-v0",
+      "field": "gst_id",
+      "answer": null,
+      "verdict": "null, but printed",
+      "note": "'GST REG #...' at the bottom"
+    },
+    {
+      "sample": 38,
+      "test_index": 280,
+      "id": "sroie-test-00280-v0",
+      "field": "line_item_count",
+      "answer": "1",
+      "verdict": "correct",
+      "note": ""
+    },
+    {
+      "sample": 39,
+      "test_index": 284,
+      "id": "sroie-test-00284-v0",
+      "field": "payment_method",
+      "answer": "CASH",
+      "verdict": "correct",
+      "note": ""
+    },
+    {
+      "sample": 39,
+      "test_index": 284,
+      "id": "sroie-test-00284-v0",
+      "field": "gst_id",
+      "answer": null,
+      "verdict": "null, but printed",
+      "note": "'GST REG #...' at the bottom"
+    },
+    {
+      "sample": 39,
+      "test_index": 284,
+      "id": "sroie-test-00284-v0",
+      "field": "line_item_count",
+      "answer": "1",
+      "verdict": "correct",
+      "note": ""
+    },
+    {
+      "sample": 40,
+      "test_index": 285,
+      "id": "sroie-test-00285-v0",
+      "field": "payment_method",
+      "answer": "Cash",
+      "verdict": "correct",
+      "note": ""
+    },
+    {
+      "sample": 40,
+      "test_index": 285,
+      "id": "sroie-test-00285-v0",
+      "field": "gst_id",
+      "answer": "000368820224",
+      "verdict": "correct",
+      "note": ""
+    },
+    {
+      "sample": 40,
+      "test_index": 285,
+      "id": "sroie-test-00285-v0",
+      "field": "line_item_count",
+      "answer": "1",
+      "verdict": "correct",
+      "note": ""
+    },
+    {
+      "sample": 41,
+      "test_index": 293,
+      "id": "sroie-test-00293-v0",
+      "field": "payment_method",
+      "answer": "CASH",
+      "verdict": "correct",
+      "note": ""
+    },
+    {
+      "sample": 41,
+      "test_index": 293,
+      "id": "sroie-test-00293-v0",
+      "field": "gst_id",
+      "answer": "001531760640",
+      "verdict": "correct",
+      "note": ""
+    },
+    {
+      "sample": 41,
+      "test_index": 293,
+      "id": "sroie-test-00293-v0",
+      "field": "line_item_count",
+      "answer": "1",
+      "verdict": "correct",
+      "note": ""
+    },
+    {
+      "sample": 42,
+      "test_index": 295,
+      "id": "sroie-test-00295-v0",
+      "field": "payment_method",
+      "answer": "CASH",
+      "verdict": "correct",
+      "note": ""
+    },
+    {
+      "sample": 42,
+      "test_index": 295,
+      "id": "sroie-test-00295-v0",
+      "field": "gst_id",
+      "answer": "001531760640",
+      "verdict": "correct",
+      "note": ""
+    },
+    {
+      "sample": 42,
+      "test_index": 295,
+      "id": "sroie-test-00295-v0",
+      "field": "line_item_count",
+      "answer": null,
+      "verdict": "null, but printed",
+      "note": "one product listed"
+    },
+    {
+      "sample": 43,
+      "test_index": 300,
+      "id": "sroie-test-00300-v0",
+      "field": "payment_method",
+      "answer": "CASH",
+      "verdict": "correct",
+      "note": ""
+    },
+    {
+      "sample": 43,
+      "test_index": 300,
+      "id": "sroie-test-00300-v0",
+      "field": "gst_id",
+      "answer": "001531760640",
+      "verdict": "correct",
+      "note": ""
+    },
+    {
+      "sample": 43,
+      "test_index": 300,
+      "id": "sroie-test-00300-v0",
+      "field": "line_item_count",
+      "answer": "3",
+      "verdict": "correct",
+      "note": ""
+    },
+    {
+      "sample": 44,
+      "test_index": 307,
+      "id": "sroie-test-00307-v0",
+      "field": "payment_method",
+      "answer": "CASH",
+      "verdict": "correct",
+      "note": ""
+    },
+    {
+      "sample": 44,
+      "test_index": 307,
+      "id": "sroie-test-00307-v0",
+      "field": "gst_id",
+      "answer": null,
+      "verdict": "null, but printed",
+      "note": "'GST REG #...' at the bottom"
+    },
+    {
+      "sample": 44,
+      "test_index": 307,
+      "id": "sroie-test-00307-v0",
+      "field": "line_item_count",
+      "answer": "3",
+      "verdict": "wrong",
+      "note": "3; two lines"
+    },
+    {
+      "sample": 45,
+      "test_index": 314,
+      "id": "sroie-test-00314-v0",
+      "field": "payment_method",
+      "answer": "CASH",
+      "verdict": "correct",
+      "note": ""
+    },
+    {
+      "sample": 45,
+      "test_index": 314,
+      "id": "sroie-test-00314-v0",
+      "field": "gst_id",
+      "answer": null,
+      "verdict": "null, but printed",
+      "note": "'GST REG #...' at the bottom"
+    },
+    {
+      "sample": 45,
+      "test_index": 314,
+      "id": "sroie-test-00314-v0",
+      "field": "line_item_count",
+      "answer": "1",
+      "verdict": "correct",
+      "note": ""
+    },
+    {
+      "sample": 46,
+      "test_index": 318,
+      "id": "sroie-test-00318-v0",
+      "field": "payment_method",
+      "answer": "CASH",
+      "verdict": "correct",
+      "note": ""
+    },
+    {
+      "sample": 46,
+      "test_index": 318,
+      "id": "sroie-test-00318-v0",
+      "field": "gst_id",
+      "answer": "002017394688",
+      "verdict": "correct",
+      "note": ""
+    },
+    {
+      "sample": 46,
+      "test_index": 318,
+      "id": "sroie-test-00318-v0",
+      "field": "line_item_count",
+      "answer": "3",
+      "verdict": "wrong",
+      "note": "3; receipt prints 'Item Count 2'"
+    },
+    {
+      "sample": 47,
+      "test_index": 326,
+      "id": "sroie-test-00326-v0",
+      "field": "payment_method",
+      "answer": "CASH",
+      "verdict": "correct",
+      "note": ""
+    },
+    {
+      "sample": 47,
+      "test_index": 326,
+      "id": "sroie-test-00326-v0",
+      "field": "gst_id",
+      "answer": null,
+      "verdict": "null, but printed",
+      "note": "'GST REG #...' at the bottom"
+    },
+    {
+      "sample": 47,
+      "test_index": 326,
+      "id": "sroie-test-00326-v0",
+      "field": "line_item_count",
+      "answer": "4",
+      "verdict": "wrong",
+      "note": "4; three lines"
+    },
+    {
+      "sample": 48,
+      "test_index": 330,
+      "id": "sroie-test-00330-v0",
+      "field": "payment_method",
+      "answer": "Cash",
+      "verdict": "correct",
+      "note": ""
+    },
+    {
+      "sample": 48,
+      "test_index": 330,
+      "id": "sroie-test-00330-v0",
+      "field": "gst_id",
+      "answer": "000000241664",
+      "verdict": "correct",
+      "note": ""
+    },
+    {
+      "sample": 48,
+      "test_index": 330,
+      "id": "sroie-test-00330-v0",
+      "field": "line_item_count",
+      "answer": "3",
+      "verdict": "wrong",
+      "note": "3; one item ('Cold' is a modifier)"
+    },
+    {
+      "sample": 49,
+      "test_index": 331,
+      "id": "sroie-test-00331-v0",
+      "field": "payment_method",
+      "answer": "Cashier: Thandar",
+      "verdict": "wrong",
+      "note": "'Cashier: Thandar'; paid CASH"
+    },
+    {
+      "sample": 49,
+      "test_index": 331,
+      "id": "sroie-test-00331-v0",
+      "field": "gst_id",
+      "answer": "001335787520",
+      "verdict": "correct",
+      "note": ""
+    },
+    {
+      "sample": 49,
+      "test_index": 331,
+      "id": "sroie-test-00331-v0",
+      "field": "line_item_count",
+      "answer": "4",
+      "verdict": "correct",
+      "note": ""
+    }
+  ],
+  "notes": [
+    "payment_method: all 10 wrong answers copy a nearby label containing 'cash' - 'Cashier' (7), a cashier or counter id ('cash1', 'CASH1'), the 'Cash Bill' header - including on receipts paid by VISA or credit card. It is the verbatim-copy habit from training applied to a field it never learned.",
+    "gst_id: never a wrong value. Every miss is a format unlike the usual 'GST ID:' line - 'GST REG #...' printed at the bottom (6 receipts, one chain) or an OCR-garbled label ('GBT', 'GETID').",
+    "line_item_count: right on single-item receipts; on multi-item receipts it often misses by one or two rather than reading the printed 'Item(s)' total, and on supplier delivery notes it answers null."
+  ]
+}

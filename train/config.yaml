@@ -1,0 +1,51 @@
+# ParseTune - Phase 2: QLoRA fine-tune of Phi-3.5-mini with MLX (mlx-lm).
+#
+# Read by train/sft_train.py; paths are relative to the project root. The
+# `mlx_lm` block goes straight to mlx-lm's LoRA trainer, so its keys are
+# mlx-lm's own (mlx_lm/lora.py, CONFIG_DEFAULTS). The script fills in the rest:
+# model, data and adapter paths, `iters` (from `epochs`), one checkpoint per
+# epoch, and the warmup + cosine learning-rate schedule.
+
+base_model: microsoft/Phi-3.5-mini-instruct
+model_path: models/phi-3.5-mini-instruct-4bit     # MLX conversion, made once
+quantization:
+  bits: 4
+  group_size: 64
+
+data_dir: data/processed                  # Phase 1 output
+export_dir: train/data                    # mlx-lm chat JSONL, rebuilt every run
+adapter_path: train/adapters/phi35-sroie-v2  # v2: with absent-field examples
+smoke_adapter_path: train/adapters/smoke     # used instead when --limit is given
+
+epochs: 3
+warmup_ratio: 0.03                        # fraction of optimizer updates
+
+mlx_lm:
+  fine_tune_type: lora
+  num_layers: -1                          # all 32 blocks; mlx-lm defaults to the last 16
+  lora_parameters:
+    # Phi-3 uses fused projections - the usual q_proj/k_proj names match nothing.
+    keys: [self_attn.qkv_proj, self_attn.o_proj, mlp.gate_up_proj, mlp.down_proj]
+    rank: 16
+    scale: 2.0                            # multiplies the LoRA output: alpha 32 / rank 16
+    dropout: 0.05
+  # Effective batch 8. mlx-lm batches by length and silently skips the tail
+  # that cannot fill a batch - always the longest examples. Validation (62)
+  # is even, so batch 2 scores all of it; train (1,671 with the absent-field
+  # examples) is odd, so its one longest example sits out every epoch - that
+  # receipt still trains through its other variants. Batch 8 would drop 7
+  # training examples and never score 6 of the 62.
+  batch_size: 2
+  grad_accumulation_steps: 4
+  learning_rate: 2.0e-4                   # peak, after warmup
+  optimizer: adamw
+  optimizer_config:
+    adamw:
+      weight_decay: 0.0
+  max_seq_length: 2048
+  grad_checkpoint: true
+  mask_prompt: true                       # loss on the assistant's JSON only
+  val_batches: -1                         # the whole validation split
+  steps_per_report: 20
+  steps_per_eval: 100
+  seed: 42

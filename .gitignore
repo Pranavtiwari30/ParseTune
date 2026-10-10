@@ -2,6 +2,7 @@
 __pycache__/
 *.py[cod]
 *$py.class
+.pytest_cache/
 
 # C extensions
 *.so
@@ -36,6 +37,21 @@ venv.bak/
 # Jupyter Notebook checkpoints
 .ipynb_checkpoints/
 */.ipynb_checkpoints/*
+
+# Phase 2 (MLX): converted base model, exported training JSONL
+models/
+train/data/
+
+# Adapters: weights, checkpoints and console logs stay local (96 MB per file);
+# the run records of the real runs are kept
+train/adapters/*/*
+!train/adapters/phi35-sroie*/run_log.json
+!train/adapters/phi35-sroie*/adapter_config.json
+
+# Phase 4: console logs stay local (the per-run results JSON are kept),
+# except the batch-4 out-of-memory log the README cites
+evaluate/results/*.log
+!evaluate/results/benchmark-batch4-oom.log
 
 # Model checkpoints, logs & large artifacts
 *.pt

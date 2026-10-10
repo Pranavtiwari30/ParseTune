@@ -1,0 +1,2 @@
+# Phase 1 - data preparation (data/prepare_data.py). Everything else is stdlib.
+datasets>=3.0

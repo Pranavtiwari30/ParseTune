@@ -1,0 +1,94 @@
+[benchmark] 4 systems on 347 test receipts: parsetune, zero-shot, three-shot, zero-shot-bf16
+
+=== parsetune: models/phi-3.5-mini-instruct-4bit + train/adapters/phi35-sroie-v2 | 347 test receipts, batch 4 ===
+[transformers] This model config has set a `rope_parameters['original_max_position_embeddings']` field, to be used together with `max_position_embeddings` to determine a scaling factor. Please set the `factor` field of `rope_parameters`with this ratio instead -- we recommend the use of this field over `original_max_position_embeddings`, as it is compatible with most model architectures.
+[parsetune] model loaded in 0s
+[parsetune] 2/347 receipts (1%) - 0.49/s - about 11.8 min left
+[parsetune] 19/347 receipts (5%) - 0.87/s - about 6.3 min left
+[parsetune] 36/347 receipts (10%) - 0.92/s - about 5.7 min left
+[parsetune] 53/347 receipts (15%) - 0.94/s - about 5.2 min left
+[parsetune] 70/347 receipts (20%) - 0.96/s - about 4.8 min left
+[parsetune] 87/347 receipts (25%) - 0.96/s - about 4.5 min left
+[parsetune] 104/347 receipts (30%) - 0.97/s - about 4.2 min left
+[parsetune] 121/347 receipts (35%) - 0.96/s - about 3.9 min left
+[parsetune] 138/347 receipts (40%) - 0.96/s - about 3.6 min left
+[parsetune] 155/347 receipts (45%) - 0.96/s - about 3.3 min left
+[parsetune] 172/347 receipts (50%) - 0.97/s - about 3.0 min left
+[parsetune] 189/347 receipts (54%) - 0.98/s - about 2.7 min left
+[parsetune] 206/347 receipts (59%) - 0.97/s - about 2.4 min left
+[parsetune] 223/347 receipts (64%) - 0.97/s - about 2.1 min left
+[parsetune] 240/347 receipts (69%) - 0.97/s - about 1.8 min left
+[parsetune] 257/347 receipts (74%) - 0.96/s - about 1.6 min left
+[parsetune] 274/347 receipts (79%) - 0.95/s - about 1.3 min left
+[parsetune] 291/347 receipts (84%) - 0.95/s - about 1.0 min left
+[parsetune] 308/347 receipts (89%) - 0.95/s - about 0.7 min left
+[parsetune] 325/347 receipts (94%) - 0.95/s - about 0.4 min left
+[parsetune] 342/347 receipts (99%) - 0.95/s - about 0.1 min left
+[parsetune] 347/347 receipts (100%) - 0.95/s - about 0.0 min left
+[parsetune] done in 6.1 min - normalised 94.4% [93.1-95.7], exact 93.8%, valid JSON 99.7% - wrote 20261008T173124Z_test_parsetune.json
+
+=== zero-shot: models/phi-3.5-mini-instruct-4bit | 347 test receipts, batch 4 ===
+[zero-shot] model loaded in 0s
+[zero-shot] 1/347 receipts (0%) - 0.35/s - about 16.3 min left
+[zero-shot] 18/347 receipts (5%) - 0.99/s - about 5.6 min left
+[zero-shot] 35/347 receipts (10%) - 1.02/s - about 5.1 min left
+[zero-shot] 52/347 receipts (15%) - 0.98/s - about 5.0 min left
+[zero-shot] 69/347 receipts (20%) - 0.89/s - about 5.2 min left
+[zero-shot] 86/347 receipts (25%) - 0.89/s - about 4.9 min left
+[zero-shot] 103/347 receipts (30%) - 0.90/s - about 4.5 min left
+[zero-shot] 120/347 receipts (35%) - 0.88/s - about 4.3 min left
+[zero-shot] 137/347 receipts (39%) - 0.90/s - about 3.9 min left
+[zero-shot] 154/347 receipts (44%) - 0.92/s - about 3.5 min left
+[zero-shot] 171/347 receipts (49%) - 0.93/s - about 3.1 min left
+[zero-shot] 188/347 receipts (54%) - 0.95/s - about 2.8 min left
+[zero-shot] 205/347 receipts (59%) - 0.97/s - about 2.4 min left
+[zero-shot] 222/347 receipts (64%) - 0.98/s - about 2.1 min left
+[zero-shot] 239/347 receipts (69%) - 0.99/s - about 1.8 min left
+[zero-shot] 256/347 receipts (74%) - 1.00/s - about 1.5 min left
+[zero-shot] 273/347 receipts (79%) - 1.01/s - about 1.2 min left
+[zero-shot] 290/347 receipts (84%) - 1.02/s - about 0.9 min left
+[zero-shot] 307/347 receipts (88%) - 1.03/s - about 0.6 min left
+[zero-shot] 324/347 receipts (93%) - 1.04/s - about 0.4 min left
+[zero-shot] 341/347 receipts (98%) - 1.05/s - about 0.1 min left
+[zero-shot] 347/347 receipts (100%) - 1.06/s - about 0.0 min left
+[zero-shot] done in 5.5 min - normalised 44.1% [41.3-47.1], exact 33.0%, valid JSON 88.2% - wrote 20261008T173653Z_test_zero-shot.json
+
+=== three-shot: models/phi-3.5-mini-instruct-4bit, 3 shots | 347 test receipts, batch 4 ===
+[three-shot] model loaded in 0s
+[three-shot] 1/347 receipts (0%) - 0.11/s - about 52.7 min left
+[three-shot] 18/347 receipts (5%) - 0.32/s - about 17.3 min left
+[three-shot] 35/347 receipts (10%) - 0.35/s - about 14.9 min left
+[three-shot] 52/347 receipts (15%) - 0.35/s - about 14.0 min left
+[three-shot] 69/347 receipts (20%) - 0.35/s - about 13.1 min left
+[three-shot] 86/347 receipts (25%) - 0.36/s - about 12.1 min left
+[three-shot] 103/347 receipts (30%) - 0.36/s - about 11.4 min left
+Traceback (most recent call last):
+  File "evaluate/benchmark.py", line 243, in <module>
+    sys.exit(main())
+             ^^^^^^
+  File "evaluate/benchmark.py", line 234, in main
+    run_system(name, rows, template, args)
+  File "evaluate/benchmark.py", line 120, in run_system
+    records, stats = predict(model, tokenizer, template, jobs, args.batch_size,
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "evaluate/predict.py", line 300, in predict
+    outputs, stats = generate_batch(model, tokenizer, messages, budgets,
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "evaluate/predict.py", line 254, in generate_batch
+    while responses := gen.next_generated():
+                       ^^^^^^^^^^^^^^^^^^^^
+  File ".venv/lib/python3.12/site-packages/mlx_lm/generate.py", line 1881, in next_generated
+    prompt_responses, generation_responses = self._next()
+                                             ^^^^^^^^^^^^
+  File ".venv/lib/python3.12/site-packages/mlx_lm/generate.py", line 1825, in _next
+    gen_batch = self._prompt_batch.split(split).generate(last_inputs)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ".venv/lib/python3.12/site-packages/mlx_lm/generate.py", line 1225, in generate
+    generation = GenerationBatch(
+                 ^^^^^^^^^^^^^^^^
+  File ".venv/lib/python3.12/site-packages/mlx_lm/generate.py", line 1323, in __init__
+    self._step()
+  File ".venv/lib/python3.12/site-packages/mlx_lm/generate.py", line 1405, in _step
+    mx.async_eval(self._next_tokens, self._next_logprobs, token_context)
+RuntimeError: [METAL] Command buffer execution failed: Insufficient Memory (00000008:kIOGPUCommandBufferCallbackErrorOutOfMemory).
+exit=1

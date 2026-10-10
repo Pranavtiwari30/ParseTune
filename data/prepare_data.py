@@ -3,7 +3,7 @@ ParseTune - Step 1: dataset preparation.
 
 Turns the SROIE receipt dataset (ICDAR 2019, key-information-extraction task)
 into instruction-following pairs for supervised fine-tuning of Phi-3.5-mini
-with QLoRA + PEFT + TRL's SFTTrainer.
+with QLoRA on Apple's MLX (mlx-lm; see train/sft_train.py).
 
 Each receipt becomes one (or more) example shaped like:
 
@@ -29,6 +29,9 @@ Usage
     # no schema augmentation (one canonical example per receipt)
     python data/prepare_data.py --schema-variants 1
 
+    # without the absent-field examples (the original four-field data)
+    python data/prepare_data.py --absent-variants 0
+
     # offline: read the official SROIE files you unzipped into data/raw/
     python data/prepare_data.py --source local
 
@@ -50,7 +53,7 @@ import sys
 from collections import Counter
 from datetime import datetime, timezone
 from pathlib import Path
-from typing import Any, Iterable
+from typing import Any, Callable, Iterable
 
 # --------------------------------------------------------------------------
 # 1. Task definition: the four SROIE key-information fields.
@@ -65,6 +68,129 @@ FIELD_SPECS: dict[str, str] = {
     "total":   "final total amount paid",
 }
 CANONICAL_SCHEMA: list[str] = list(FIELD_SPECS)
+
+
+# --------------------------------------------------------------------------
+# 1b. Beyond the four fields: teaching the model that "absent" is an answer.
+# --------------------------------------------------------------------------
+# SROIE labels four fields and nearly every receipt has all four, so the
+# canonical data holds almost no null answers - and a model that has never
+# seen one confabulates instead (asked for a tracking number, it returned a
+# document number off the receipt). These pools add real nulls without
+# inventing any text: every example is a real receipt, and every answer is
+# either a verbatim span of it or a null whose absence has been checked.
+#
+# NEVER_PRESENT fields cannot occur on these retail receipts; each carries the
+# keywords that would betray one, and a receipt that matches is skipped. On
+# their own they would teach "unfamiliar name -> null", so GROUNDING fields
+# come with them: fields printed on some receipts and not others, labelled
+# only where a strict pattern finds exactly one value or rules the field out.
+# The same name then sometimes has a value and sometimes null, and the only
+# way to tell which is to read the receipt.
+
+NEVER_PRESENT: dict[str, tuple[str, str]] = {
+    # name: (description, keywords that disqualify a receipt)
+    "flight_number":        ("airline flight number for the journey",
+                             r"FLIGHT|BOARDING|AIRLINE"),
+    "patient_name":         ("name of the patient receiving treatment",
+                             r"PATIENT|DOCTOR|\bDR\."),
+    "vehicle_plate_number": ("registration plate number of the customer's vehicle",
+                             r"VEHICLE|PLATE|CAR\s*NO"),
+    "hotel_room_number":    ("hotel room number for the guest's stay",
+                             r"HOTEL|\bROOM\b"),
+    "bank_account_number":  ("bank account number to transfer money into",
+                             r"IBAN|SWIFT|ACCOUNT\s*NO|A/C\s*NO"),
+    "student_id":           ("identification number of the student",
+                             r"STUDENT|MATRIC"),
+}
+
+# Grounding patterns. Spaces and tabs only, never `\s`: a number must not run
+# on into digits on the next printed line.
+TIME_RE = re.compile(r"\b\d{1,2}:\d{2}(?::\d{2})?(?:[ \t]*[AP]M)?\b", re.I)
+TEL_RE = re.compile(r"\bTEL\b[ \t]*[:.]?[ \t]*(?:NO\.?)?[ \t]*[:.]?[ \t]*"
+                    r"(\(?\d[\d \t()-]{6,}\d)", re.I)
+FAX_RE = re.compile(r"\bFAX\b[ \t]*[:.]?[ \t]*(?:NO\.?)?[ \t]*[:.]?[ \t]*"
+                    r"(\(?\d[\d \t()-]{6,}\d)", re.I)
+# An address must start its line or follow a label's colon, and end in an
+# alphabetic domain: "SR@6.00" is tax notation, and in "IVAN KONG12@..." OCR
+# has split the address, so a match after other text may be only a fragment.
+EMAIL_RE = re.compile(r"(?:^|:)[ \t]*([A-Za-z0-9._%+-]+@[A-Za-z0-9-]+"
+                      r"(?:\.[A-Za-z0-9-]+)*\.[A-Za-z]{2,})\b", re.M)
+PHONE_SHAPED_RE = re.compile(r"\b0\d{1,2}[ \t-]?\d{3,4}[ \t-]?\d{3,4}\b")
+AT_NOTATION_RE = re.compile(r"@[ \t]*\(?[ \t]*\d")      # "GST @6%", "2 @ 3.50"
+
+GROUNDING: dict[str, tuple[str, re.Pattern, Callable[[str], bool]]] = {
+    # name: (description, value pattern, rules_out(text) -> field certainly absent)
+    "time_of_purchase": ("time of purchase, exactly as printed on the receipt",
+                         TIME_RE,
+                         lambda t: not TIME_RE.search(t)),
+    "store_phone":      ("telephone number of the merchant",
+                         TEL_RE,
+                         lambda t: not re.search(r"\bTEL", t, re.I)
+                         and not PHONE_SHAPED_RE.search(t)),
+    "store_fax":        ("fax number of the merchant",
+                         FAX_RE,
+                         lambda t: not re.search(r"\bFAX", t, re.I)),
+    "store_email":      ("email address of the merchant",
+                         EMAIL_RE,
+                         lambda t: t.count("@") == len(AT_NOTATION_RE.findall(t))),
+}
+
+# Never trained on: model selection measures null answers on concepts the
+# model has not met (evaluate/schema_probe.py, validation split only).
+VALIDATION_ONLY_ABSENT: dict[str, tuple[str, str]] = {
+    "passport_number":         ("passport number of the traveller", r"PASSPORT"),
+    "insurance_policy_number": ("number of the customer's insurance policy",
+                                r"INSURANCE|INSURED"),
+    "court_case_number":       ("reference number of the court case",
+                                r"COURT|\bCASE\s*NO"),
+}
+
+# Phase 5's held-out tests. These names - and the concepts behind its novel
+# and absent conditions - must never reach training or model selection, or
+# Phase 5 stops measuring generalisation.
+PHASE5_HELD_OUT = ("merchant_name", "purchase_date", "amount_due",
+                   "payment_method", "gst_id", "line_item_count",
+                   "shipping_tracking_number")
+PHASE5_CONCEPTS = re.compile(r"track|shipping|courier|parcel|payment|\bgst\b|"
+                             r"line.?item", re.I)
+
+
+def check_field_pools() -> None:
+    """Refuse to build data if two pools overlap or one touches Phase 5."""
+    pools = [FIELD_SPECS, NEVER_PRESENT, GROUNDING, VALIDATION_ONLY_ABSENT,
+             dict.fromkeys(PHASE5_HELD_OUT)]
+    names = [name for pool in pools for name in pool]
+    if len(names) != len(set(names)):
+        raise SystemExit(f"[pools] field pools overlap: {sorted(names)}")
+    for pool in (NEVER_PRESENT, GROUNDING, VALIDATION_ONLY_ABSENT):
+        for name, (description, *_rest) in pool.items():
+            if PHASE5_CONCEPTS.search(f"{name} {description}"):
+                raise SystemExit(f"[pools] {name} touches a Phase 5 concept")
+
+
+def grounding_value(text: str, field: str) -> tuple[bool, str | None]:
+    """
+    Label one grounding field on one receipt: (usable, value).
+
+    The value is the single distinct verbatim match, or None when the field
+    is certainly absent. Anything in between - several candidates, or no
+    match but traces of the field - is unusable, and the receipt is skipped
+    for this field rather than guessed at.
+    """
+    _description, pattern, rules_out = GROUNDING[field]
+    found = {m.strip() for m in pattern.findall(text)}
+    if len(found) == 1:
+        return True, found.pop()
+    if not found and rules_out(text):
+        return True, None
+    return False, None
+
+
+def absent_on(text: str, keywords: str) -> bool:
+    """A never-present field is safe to ask for only if no keyword appears."""
+    return not re.search(keywords, text, re.I)
+
 
 # Label ids used by the SROIE token-classification mirrors on the Hub.
 # Order is fixed by the original `darentang/sroie` loading script; the parquet
@@ -115,14 +241,17 @@ def clean_block(text: str) -> str:
     return "\n".join(line for line in lines if line)
 
 
-def render_schema(fields: Iterable[str]) -> str:
+def render_schema(
+    fields: Iterable[str],
+    specs: dict[str, str] = FIELD_SPECS,
+) -> str:
     """
     Render a schema as compact JSON: {"company": "name of the merchant...", ...}
 
     Passing descriptions (not just bare names) is deliberate - it is the
     handle the model uses to interpret unfamiliar field names later.
     """
-    return json.dumps({f: FIELD_SPECS[f] for f in fields}, ensure_ascii=False)
+    return json.dumps({f: specs[f] for f in fields}, ensure_ascii=False)
 
 
 def render_target(fields: Iterable[str], values: dict[str, str]) -> str:
@@ -235,6 +364,16 @@ def reconstruct_text(
 
     return clean_block(
         "\n".join(" ".join(w for _x, w in sorted(line)) for line in lines)
+    )
+
+
+def receipt_text(record: dict[str, Any], args: argparse.Namespace) -> str:
+    """The receipt body exactly as the model will see it, for either source."""
+    if "text" in record:                   # local records arrive pre-resolved
+        return record["text"]
+    return reconstruct_text(
+        record["raw_words"], record.get("bboxes"),
+        line_tol=args.line_tol, flat=args.flat_text,
     )
 
 
@@ -409,34 +548,45 @@ def build_example(
     schema: list[str],
     raw_text: str,
     values: dict[str, str],
+    specs: dict[str, str] | None = None,
 ) -> dict[str, Any]:
     """
     Assemble one training record.
 
-    `prompt` / `completion` are lists of chat messages - TRL calls this the
-    "conversational prompt-completion" format. SFTTrainer applies the Phi-3.5
-    chat template itself and masks the prompt out of the loss, so we must not
-    hand-format any special tokens here. The remaining keys are metadata for
-    the evaluation step (they are ignored during training).
+    `prompt` / `completion` are lists of chat messages (TRL's "conversational
+    prompt-completion" format). Phase 2 joins them into one mlx-lm chat record;
+    mlx-lm applies the Phi-3.5 chat template itself and masks the prompt out of
+    the loss, so we must not hand-format any special tokens here. The
+    remaining keys are metadata for the evaluation step (they are ignored
+    during training).
+
+    `specs` carries descriptions for fields beyond SROIE's four; a record
+    built with it also stores its `schema_spec`, so later phases can rebuild
+    the exact prompt. Records of the four fields are unchanged.
     """
     instruction = INSTRUCTION_TEMPLATE.format(
-        schema=render_schema(schema), raw_text=raw_text
+        schema=render_schema(schema, specs or FIELD_SPECS), raw_text=raw_text
     )
-    return {
+    example: dict[str, Any] = {
         "id": example_id,
         "receipt_id": receipt_id,
         "split": split,
         "schema": schema,
-        "receipt_text": raw_text,
-        "target": {f: values.get(f) or None for f in schema},
-        "prompt": [
+    }
+    if specs is not None:
+        example["schema_spec"] = {f: specs[f] for f in schema}
+    example.update(
+        receipt_text=raw_text,
+        target={f: values.get(f) or None for f in schema},
+        prompt=[
             {"role": "system", "content": SYSTEM_PROMPT},
             {"role": "user", "content": instruction},
         ],
-        "completion": [
+        completion=[
             {"role": "assistant", "content": render_target(schema, values)},
         ],
-    }
+    )
+    return example
 
 
 def convert_split(
@@ -453,13 +603,9 @@ def convert_split(
         # Local records arrive pre-resolved; Hub records need tag decoding.
         if "values" in record:
             values = record["values"]
-            raw_text = record["text"]
         else:
             values = extract_fields(record["raw_words"], record["tags"])
-            raw_text = reconstruct_text(
-                record["raw_words"], record.get("bboxes"),
-                line_tol=args.line_tol, flat=args.flat_text,
-            )
+        raw_text = receipt_text(record, args)
 
         # Drop receipts we could not read or could not label at all - they
         # would only teach the model to emit all-null objects.
@@ -496,6 +642,79 @@ def convert_split(
     stats[f"{split}_receipts"] += len(records)
     stats[f"{split}_examples"] += len(examples)
     return examples
+
+
+def absent_field_variants(
+    examples: list[dict[str, Any]],
+    rng: random.Random,
+    stats: Counter,
+) -> list[dict[str, Any]]:
+    """
+    One more training example per receipt, mixing real values with real nulls.
+
+    Each asks for 1-3 of the receipt's SROIE fields, one grounding field that
+    can be labelled on this receipt, and - in about a third of examples - one
+    never-present field, in random order. The grounding pick alternates
+    between preferring a field the receipt has and one it lacks, and among
+    those takes the (field, has-value) pairing used least so far - emails
+    are printed on few receipts, so without this they would almost always
+    be asked for when absent, and the name alone would predict null. Built
+    from the canonical (v0) examples in a separate pass with its own RNG:
+    every existing example stays byte-identical, and these are appended.
+    """
+    extra: list[dict[str, Any]] = []
+    used: Counter = Counter()           # (field, has value) -> times picked
+    canonical = [e for e in examples if e["id"].endswith("-v0")]
+    for i, ex in enumerate(canonical):
+        text, gold = ex["receipt_text"], ex["target"]
+
+        labelled: dict[str, str | None] = {}
+        for field in GROUNDING:
+            usable, value = grounding_value(text, field)
+            outcome = ("present" if value else "absent") if usable else "skipped"
+            stats[f"grounding_{field}_{outcome}"] += 1
+            if usable:
+                labelled[field] = value
+
+        with_value = [f for f, v in labelled.items() if v is not None]
+        without = [f for f, v in labelled.items() if v is None]
+        first, second = (with_value, without) if i % 2 == 0 else (without, with_value)
+        if not (first or second):
+            stats["absent_variant_skipped"] += 1
+            continue
+        pool = first or second
+        fewest = min(used[f, labelled[f] is not None] for f in pool)
+        grounding = rng.choice(
+            [f for f in pool if used[f, labelled[f] is not None] == fewest])
+        used[grounding, labelled[grounding] is not None] += 1
+
+        present = [f for f in CANONICAL_SCHEMA if gold.get(f)]
+        schema = rng.sample(present, rng.randint(1, min(3, len(present))))
+        schema.append(grounding)
+        values = {**gold, grounding: labelled[grounding]}
+        specs = {**FIELD_SPECS, grounding: GROUNDING[grounding][0]}
+
+        never = [f for f, (_d, kw) in NEVER_PRESENT.items() if absent_on(text, kw)]
+        if never and rng.random() < 1 / 3:
+            field = rng.choice(never)
+            schema.append(field)
+            values[field] = None
+            specs[field] = NEVER_PRESENT[field][0]
+        rng.shuffle(schema)
+
+        extra.append(build_example(
+            example_id=f"sroie-train-{len(examples) + len(extra):05d}-v2",
+            receipt_id=ex["receipt_id"],
+            split="train",
+            schema=schema,
+            raw_text=text,
+            values=values,
+            specs=specs,
+        ))
+        stats["null_slots"] += sum(v is None for v in extra[-1]["target"].values())
+
+    stats["absent_variant_examples"] += len(extra)
+    return extra
 
 
 # --------------------------------------------------------------------------
@@ -543,11 +762,49 @@ def make_splits(
     return splits
 
 
+def drop_cross_split_duplicates(
+    splits: dict[str, list[dict[str, Any]]],
+    args: argparse.Namespace,
+    stats: Counter,
+) -> dict[str, list[dict[str, Any]]]:
+    """
+    Drop receipts that appear in more than one split, keeping the test copy.
+
+    SROIE's official split is not clean: 7 test receipts reappear in train
+    with identical OCR text, under different ids (each id carries its split
+    prefix), so only the text can catch them. Test stays untouched - scores
+    must remain comparable with published numbers - so the copy on the
+    training side goes. Validation is cleaned against test, and train against
+    both. Duplicates *within* one split are left alone; they cannot leak.
+    """
+    seen: set[str] = set()
+    for split in ("test", "validation", "train"):          # earlier ones win
+        records = splits.get(split, [])
+        texts = [receipt_text(r, args) for r in records]
+        splits[split] = [r for r, t in zip(records, texts) if t not in seen]
+        stats["dropped_split_overlap"] += len(records) - len(splits[split])
+        seen.update(texts)
+    return splits
+
+
 # --------------------------------------------------------------------------
 # 8. Entry point.
 # --------------------------------------------------------------------------
+PROJECT_ROOT = Path(__file__).resolve().parents[1]
+
+
+def project_relative(path: Path) -> str:
+    """
+    A path as dataset_info.json records it: relative to the repository when it
+    lies inside it, unchanged otherwise - so the record never carries the
+    machine it was written on.
+    """
+    if path.is_absolute() and path.is_relative_to(PROJECT_ROOT):
+        return path.relative_to(PROJECT_ROOT).as_posix()
+    return str(path)
+
+
 def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
-    project_root = Path(__file__).resolve().parents[1]
     p = argparse.ArgumentParser(
         description="Prepare SROIE as instruction pairs for ParseTune SFT.",
         formatter_class=argparse.ArgumentDefaultsHelpFormatter,
@@ -556,10 +813,10 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
                    help="Pull from the Hugging Face Hub, or read data/raw/.")
     p.add_argument("--hf-dataset", default=None,
                    help=f"Override the Hub repo id (tried in order: {HF_SOURCES}).")
-    p.add_argument("--raw-dir", type=Path, default=project_root / "data" / "raw",
+    p.add_argument("--raw-dir", type=Path, default=PROJECT_ROOT / "data" / "raw",
                    help="Where the official SROIE files live (--source local).")
     p.add_argument("--out-dir", type=Path,
-                   default=project_root / "data" / "processed",
+                   default=PROJECT_ROOT / "data" / "processed",
                    help="Where the processed JSON files are written.")
     p.add_argument("--val-ratio", type=float, default=0.1,
                    help="Fraction of the training receipts held out for validation.")
@@ -568,6 +825,10 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     p.add_argument("--schema-variants", type=int, default=2,
                    help="Examples per TRAIN receipt: 1 = canonical schema only, "
                         ">1 adds random schema subsets/orderings.")
+    p.add_argument("--absent-variants", type=int, choices=[0, 1], default=1,
+                   help="Add one TRAIN example per receipt that mixes real fields "
+                        "with grounding and never-present ones (real nulls). "
+                        "0 = off, reproducing the four-field data exactly.")
     p.add_argument("--max-chars", type=int, default=4000,
                    help="Truncate receipt text longer than this many characters.")
     p.add_argument("--line-tol", type=int, default=10,
@@ -583,15 +844,19 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
 
 def main(argv: list[str] | None = None) -> int:
     args = parse_args(argv)
+    check_field_pools()
     rng = random.Random(args.seed)
+    absent_rng = random.Random(args.seed + 1)      # separate: v0/v1 unaffected
     stats: Counter = Counter()
 
     # Step 1 - load the raw dataset.
     raw = (load_from_local(args.raw_dir) if args.source == "local"
            else load_from_hub(args.hf_dataset))
 
-    # Step 2 - split into train / validation / test.
+    # Step 2 - split into train / validation / test, then make sure no receipt
+    # sits in two splits (before --limit, so smoke runs are leak-free too).
     splits = make_splits(raw, args, rng)
+    splits = drop_cross_split_duplicates(splits, args, stats)
     if args.limit:
         splits = {k: v[: args.limit] for k, v in splits.items()}
 
@@ -600,6 +865,9 @@ def main(argv: list[str] | None = None) -> int:
     written: dict[str, int] = {}
     for split in ("train", "validation", "test"):
         examples = convert_split(splits.get(split, []), split, args, rng, stats)
+        if split == "train" and args.absent_variants:
+            examples += absent_field_variants(examples, absent_rng, stats)
+            stats["train_examples"] = len(examples)
         path = args.out_dir / f"{split}.json"
         path.write_text(
             json.dumps(examples, ensure_ascii=False, indent=2), encoding="utf-8"
@@ -615,10 +883,19 @@ def main(argv: list[str] | None = None) -> int:
         "system_prompt": SYSTEM_PROMPT,
         "instruction_template": INSTRUCTION_TEMPLATE,
         "format": "TRL conversational prompt-completion (prompt/completion)",
+        "extra_fields": {
+            "never_present": {n: {"description": d, "keywords": kw}
+                              for n, (d, kw) in NEVER_PRESENT.items()},
+            "grounding": {n: {"description": d, "pattern": p.pattern}
+                          for n, (d, p, _rule) in GROUNDING.items()},
+            "validation_only_absent": {n: {"description": d, "keywords": kw}
+                                       for n, (d, kw) in VALIDATION_ONLY_ABSENT.items()},
+            "phase5_held_out": list(PHASE5_HELD_OUT),
+        },
         "counts": written,
         "stats": dict(stats),
         "config": {
-            k: (str(v) if isinstance(v, Path) else v)
+            k: (project_relative(v) if isinstance(v, Path) else v)
             for k, v in vars(args).items()
         },
     }

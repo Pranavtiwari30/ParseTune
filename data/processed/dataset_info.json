@@ -1,5 +1,5 @@
 {
-  "created_utc": "2026-08-23T09:19:36+00:00",
+  "created_utc": "2026-10-08T14:40:51+00:00",
   "fields": {
     "company": "name of the merchant or business issuing the receipt",
     "date": "date of purchase, exactly as printed on the receipt",
@@ -9,15 +9,99 @@
   "system_prompt": "You are a document extraction engine. You read a document and return only a single JSON object matching the schema you are given. No explanations.",
   "instruction_template": "Extract the following fields from this receipt: {schema}\n\nRespond with a single JSON object containing exactly these keys, in this order. If a field does not appear in the receipt, use null.\n\nReceipt text:\n{raw_text}",
   "format": "TRL conversational prompt-completion (prompt/completion)",
+  "extra_fields": {
+    "never_present": {
+      "flight_number": {
+        "description": "airline flight number for the journey",
+        "keywords": "FLIGHT|BOARDING|AIRLINE"
+      },
+      "patient_name": {
+        "description": "name of the patient receiving treatment",
+        "keywords": "PATIENT|DOCTOR|\\bDR\\."
+      },
+      "vehicle_plate_number": {
+        "description": "registration plate number of the customer's vehicle",
+        "keywords": "VEHICLE|PLATE|CAR\\s*NO"
+      },
+      "hotel_room_number": {
+        "description": "hotel room number for the guest's stay",
+        "keywords": "HOTEL|\\bROOM\\b"
+      },
+      "bank_account_number": {
+        "description": "bank account number to transfer money into",
+        "keywords": "IBAN|SWIFT|ACCOUNT\\s*NO|A/C\\s*NO"
+      },
+      "student_id": {
+        "description": "identification number of the student",
+        "keywords": "STUDENT|MATRIC"
+      }
+    },
+    "grounding": {
+      "time_of_purchase": {
+        "description": "time of purchase, exactly as printed on the receipt",
+        "pattern": "\\b\\d{1,2}:\\d{2}(?::\\d{2})?(?:[ \\t]*[AP]M)?\\b"
+      },
+      "store_phone": {
+        "description": "telephone number of the merchant",
+        "pattern": "\\bTEL\\b[ \\t]*[:.]?[ \\t]*(?:NO\\.?)?[ \\t]*[:.]?[ \\t]*(\\(?\\d[\\d \\t()-]{6,}\\d)"
+      },
+      "store_fax": {
+        "description": "fax number of the merchant",
+        "pattern": "\\bFAX\\b[ \\t]*[:.]?[ \\t]*(?:NO\\.?)?[ \\t]*[:.]?[ \\t]*(\\(?\\d[\\d \\t()-]{6,}\\d)"
+      },
+      "store_email": {
+        "description": "email address of the merchant",
+        "pattern": "(?:^|:)[ \\t]*([A-Za-z0-9._%+-]+@[A-Za-z0-9-]+(?:\\.[A-Za-z0-9-]+)*\\.[A-Za-z]{2,})\\b"
+      }
+    },
+    "validation_only_absent": {
+      "passport_number": {
+        "description": "passport number of the traveller",
+        "keywords": "PASSPORT"
+      },
+      "insurance_policy_number": {
+        "description": "number of the customer's insurance policy",
+        "keywords": "INSURANCE|INSURED"
+      },
+      "court_case_number": {
+        "description": "reference number of the court case",
+        "keywords": "COURT|\\bCASE\\s*NO"
+      }
+    },
+    "phase5_held_out": [
+      "merchant_name",
+      "purchase_date",
+      "amount_due",
+      "payment_method",
+      "gst_id",
+      "line_item_count",
+      "shipping_tracking_number"
+    ]
+  },
   "counts": {
-    "train": 1128,
+    "train": 1671,
     "validation": 62,
     "test": 347
   },
   "stats": {
+    "dropped_split_overlap": 7,
     "missing_address": 1,
-    "train_receipts": 564,
-    "train_examples": 1128,
+    "train_receipts": 557,
+    "train_examples": 1671,
+    "grounding_time_of_purchase_absent": 40,
+    "grounding_store_phone_skipped": 135,
+    "grounding_store_fax_absent": 426,
+    "grounding_store_email_absent": 476,
+    "null_slots": 495,
+    "grounding_time_of_purchase_present": 441,
+    "grounding_store_phone_present": 242,
+    "grounding_store_fax_skipped": 17,
+    "grounding_store_phone_absent": 180,
+    "grounding_store_fax_present": 114,
+    "grounding_store_email_present": 21,
+    "grounding_time_of_purchase_skipped": 76,
+    "grounding_store_email_skipped": 60,
+    "absent_variant_examples": 557,
     "validation_receipts": 62,
     "validation_examples": 62,
     "test_receipts": 347,
@@ -26,11 +110,12 @@
   "config": {
     "source": "hf",
     "hf_dataset": null,
-    "raw_dir": "C:\\Users\\tiwar\\OneDrive\\Desktop\\ParseTune\\data\\raw",
-    "out_dir": "C:\\Users\\tiwar\\OneDrive\\Desktop\\ParseTune\\data\\processed",
+    "raw_dir": "data/raw",
+    "out_dir": "data/processed",
     "val_ratio": 0.1,
     "test_ratio": 0.2,
     "schema_variants": 2,
+    "absent_variants": 1,
     "max_chars": 4000,
     "line_tol": 10,
     "flat_text": false,
